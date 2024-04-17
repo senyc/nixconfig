@@ -36,7 +36,6 @@
           # swallow_regex = "^(Alacritty|wezterm)$";
         };
         decoration = {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
           rounding = 5;
           drop_shadow = true;
           shadow_range = 30;
@@ -56,14 +55,11 @@
           ];
         };
         dwindle = {
-          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
           pseudotile = true; # master switch for pseudotiling. Enabling is bound to mod + P in the keybinds section below
           preserve_split = true; # you probably want this
         };
         master = {
-          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
           new_is_master = true;
-          # soon :)
           # orientation = "center";
         };
         gestures = {
@@ -71,7 +67,6 @@
           workspace_swipe = false;
         };
         "$mod" = "SUPER";
-        "$browser" = "brave";
         bind =
           [
             "$mod, X, killactive,"
@@ -82,7 +77,6 @@
             "$mod, bracketleft, changegroupactive, b"
             "$mod, bracketright, changegroupactive, f"
             "$mod, P, pin, active"
-            # "$mod, B, exec, $browser"
 
             "$mod, left, movefocus, l"
             "$mod, right, movefocus, r"
@@ -108,22 +102,23 @@
             "$mod, V, workspace, 3"
             "$mod, O, workspace, 4"
           ] ++ [
-          ",XF86AudioRaiseVolume,exec, pamixer -i 2"
-            ",XF86AudioLowerVolume,exec, pamixer -d 2"
-            ",XF86AudioMute,exec, pamixer -t"
-            ",XF86AudioPlay,exec, playerctl play-pause"
-            ",XF86AudioNext,exec, playerctl next"
-            ",XF86AudioPrev,exec, playerctl previous"
+            ",XF86AudioRaiseVolume, exec, pamixer -i 2"
+            ",XF86AudioLowerVolume, exec, pamixer -d 2"
+            ",XF86AudioMute, exec, pamixer -t"
+            ",XF86AudioPlay, exec, playerctl play-pause"
+            ",XF86AudioNext, exec, playerctl next"
+            ",XF86AudioPrev, exec, playerctl previous"
+            ",Print,exec, screenshot"
           ];
         bindm = [
           "SUPER, mouse:272, movewindow"
-            "SUPER, mouse:273, resizewindow"
+          "SUPER, mouse:273, resizewindow"
         ];
         binde = [
           "$mod CONTROL, L, resizeactive, 20 0"
-            "$mod CONTROL, H, resizeactive, -20 0"
-            "$mod CONTROL, K, resizeactive, 0 -20"
-            "$mod CONTROL, J, resizeactive, 0 20"
+          "$mod CONTROL, H, resizeactive, -20 0"
+          "$mod CONTROL, K, resizeactive, 0 -20"
+          "$mod CONTROL, J, resizeactive, 0 20"
         ];
         bindr = [
           "SUPER, SUPER_L, exec, pkill wofi || wofi"
