@@ -18,6 +18,7 @@
       shell = "${pkgs.zsh}/bin/zsh";
       escapeTime = 10;
       disableConfirmationPrompt = true;
+      newSession = true;
       plugins = with pkgs; [
         tmuxPlugins.yank
       ];

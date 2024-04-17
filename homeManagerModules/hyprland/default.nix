@@ -71,7 +71,7 @@
             "$mod, X, killactive,"
             "$mod SHIFT, M, exit,"
             "$mod SHIFT, F, togglefloating,"
-            "$mod, F, fullscreen,"
+            "$mod, F, fullscreen, 1"
             # "$mod, G, togglegroup,"
             "$mod, bracketleft, changegroupactive, b"
             "$mod, bracketright, changegroupactive, f"
