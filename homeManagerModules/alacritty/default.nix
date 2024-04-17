@@ -17,9 +17,9 @@ options = {
         font = {
           size = 12;
         };
-        window.opacity = 0.65;
-        window.padding.x = 13;
-        window.padding.y = 13;
+        window.opacity = 0.60;
+        window.padding.x = 5;
+        window.padding.y = 5;
         scrolling.history = 5000;
       };
     };

@@ -28,6 +28,8 @@
         bind k select-pane -U
         bind l select-pane -R
 
+        set -g pane-active-border-style "bg=default fg=#EBBCBA"
+
         set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q' # This is for the cursor shape in nvim
 
         bind '"' split-window -v -c "#{pane_current_path}"
