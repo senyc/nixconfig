@@ -1,0 +1,149 @@
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
+  options = {
+    hyprland.enable = lib.mkEnableOption "Enable hyprland";
+  };
+  config = lib.mkIf config.hyprland.enable {
+    wayland.windowManager.hyprland = {
+      enable = true;
+      settings = {
+      general = {
+        gaps_in = 4;
+        gaps_out = 8;
+        border_size = 1;
+        layout = "master";
+        cursor_inactive_timeout = 10;
+      };
+      input = {
+        follow_mouse = 1;
+           touchpad = {
+             natural_scroll = false;
+           };
+           repeat_rate = 40;
+           repeat_delay = 300;
+           force_no_accel = true;
+           sensitivity = 0.8; # -1.0 - 1.0, 0 means no modification.
+        };
+        misc = {
+          enable_swallow = true;
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+          vrr = 1;
+          # swallow_regex = "^(Alacritty|wezterm)$";
+        };
+        decoration = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+          rounding = 5;
+          drop_shadow = true;
+          shadow_range = 30;
+          shadow_render_power = 3;
+          "col.shadow" = "rgba(1a1a1aee)";
+        };
+        animations = {
+          enabled = true;
+          bezier = "myBezier, 0.25, 0.9, 0.1, 1.02";
+          animation = [
+            "windows, 1, 7, myBezier"
+            "windowsOut, 1, 7, default, popin 80%"
+            "border, 1, 10, default"
+            "borderangle, 1, 8, default"
+            "fade, 1, 7, default"
+            "workspaces, 1, 7, myBezier, slidefade"
+          ];
+        };
+        dwindle = {
+          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+          pseudotile = true; # master switch for pseudotiling. Enabling is bound to mod + P in the keybinds section below
+          preserve_split = true; # you probably want this
+        };
+        master = {
+          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+          new_is_master = true;
+          # soon :)
+          # orientation = "center";
+        };
+        gestures = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+          workspace_swipe = false;
+        };
+        "$mod" = "SUPER";
+        "$browser" = "brave";
+        bind =
+          [
+            "$mod, X, killactive,"
+            "$mod SHIFT, M, exit,"
+            "$mod SHIFT, F, togglefloating,"
+            "$mod, F, fullscreen,"
+            # "$mod, G, togglegroup,"
+            "$mod, bracketleft, changegroupactive, b"
+            "$mod, bracketright, changegroupactive, f"
+            "$mod, P, pin, active"
+            # "$mod, B, exec, $browser"
+
+            "$mod, left, movefocus, l"
+            "$mod, right, movefocus, r"
+            "$mod, up, movefocus, u"
+            "$mod, down, movefocus, d"
+
+            "$mod, H, movefocus, l"
+            "$mod, L, movefocus, r"
+            "$mod, K, movefocus, u"
+            "$mod, J, movefocus, d"
+
+            "$mod SHIFT, H, movewindow, l"
+            "$mod SHIFT, L, movewindow, r"
+            "$mod SHIFT, K, movewindow, u"
+            "$mod SHIFT, J, movewindow, d"
+          ] ++ [
+            # Scroll through existing workspaces with mod + scroll
+            "$mod, mouse_down, workspace, e+1"
+            "$mod, mouse_up, workspace, e-1"
+
+            "$mod, I, workspace, 1"
+            "$mod, R, workspace, 2"
+            "$mod, V, workspace, 3"
+            "$mod, O, workspace, 4"
+          ] ++ [
+          ",XF86AudioRaiseVolume,exec, pamixer -i 2"
+            ",XF86AudioLowerVolume,exec, pamixer -d 2"
+            ",XF86AudioMute,exec, pamixer -t"
+            ",XF86AudioPlay,exec, playerctl play-pause"
+            ",XF86AudioNext,exec, playerctl next"
+            ",XF86AudioPrev,exec, playerctl previous"
+          ];
+        bindm = [
+          "SUPER, mouse:272, movewindow"
+            "SUPER, mouse:273, resizewindow"
+        ];
+        binde = [
+          "$mod CONTROL, L, resizeactive, 20 0"
+            "$mod CONTROL, H, resizeactive, -20 0"
+            "$mod CONTROL, K, resizeactive, 0 -20"
+            "$mod CONTROL, J, resizeactive, 0 20"
+        ];
+        bindr = [
+          "SUPER, SUPER_L, exec, pkill wofi || wofi"
+          ];
+        };
+        extraConfig = ''
+          monitor=,highrr,auto,1
+          workspace= 1 default:true, monitor:DP-2
+          windowrulev2 = workspace 1, class:^(Alacritty)$
+          windowrulev2 = workspace 2, class:^(brave-browser)$
+          windowrulev2 = workspace 3, title:^(Spotify( Premium)?)$
+          windowrulev2 = workspace 4, class:^(Slack)$
+          exec-once = [workspace 3 silent] spotify
+          exec-once = [workspace 2 silent] brave
+          exec-once = [workspace 4 silent] slack
+          exec-once = alacritty -e tmux
+          exec-once = gBar bar DP-2
+          exec-once = swww init
+          exec-once = swww img ~/.dotfiles/backgrounds/primary_background.png
+        '';
+      };
+    }; 
+}
