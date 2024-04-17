@@ -52,6 +52,7 @@
           padding: 10px;
           margin-bottom: 10px;
           border-radius: 15px;
+          border: 1px solid #ebbcba;
         }
 
         #input:focused {

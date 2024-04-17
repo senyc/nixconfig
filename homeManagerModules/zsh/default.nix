@@ -31,6 +31,7 @@
         gd = "git diff";
         gds = "git diff --staged";
         gs = "git status";
+        gf = "git fetch";
         gsw = "git switch";
         gsw- = "git switch -";
         gc = "git commit";
