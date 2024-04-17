@@ -40,6 +40,8 @@
         gap = "git add -p";
         gaa = "git add --all";
         gcpm = "git cherry-pick -e -x -m 1";
+
+        ts = "tmux-sessionizer";
       };
       shellGlobalAliases = {
         "..."="../..";            

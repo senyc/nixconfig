@@ -6,6 +6,7 @@
 }: {
   imports = [ 
     inputs.gBar.homeManagerModules.x86_64-linux.default 
+    ./homeManagerModules/tmux
     ./homeManagerModules/alacritty
     ./homeManagerModules/zsh
     ./homeManagerModules/git
@@ -13,19 +14,20 @@
     ./homeManagerModules/hyprland
     ./homeManagerModules/gbar
     ./homeManagerModules/nvim
-    ./homeManagerModules/tmux
+    ./homeManagerModules/tmux-sessionizer
   ]; 
 
   home.username = "senyc";
  
   alacritty.enable = true;
+  tmux.enable = true;
   zsh.enable = true;
   git.enable = true;
   wofi.enable = true;
   hyprland.enable = true;
   gbar.enable = true;
   nvim.enable = true;
-  tmux.enable = true;
+  tmux-sessionizer.enable = true;
 
   home.homeDirectory = "/home/senyc";
 

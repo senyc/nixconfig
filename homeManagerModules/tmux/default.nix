@@ -34,6 +34,7 @@
         bind % split-window -h -c "#{pane_current_path}"
         bind c new-window -c "#{pane_current_path}"
 
+        bind-key -r f run-shell "tmux neww tmux-sessionizer"
 
         bind-key -T copy-mode-vi v send-keys -X begin-selection
         bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
