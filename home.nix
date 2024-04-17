@@ -14,7 +14,6 @@
     ./homeManagerModules/hyprland
     ./homeManagerModules/gbar
     ./homeManagerModules/nvim
-    ./homeManagerModules/tmux-sessionizer
   ]; 
 
   home.username = "senyc";
@@ -27,7 +26,6 @@
   hyprland.enable = true;
   gbar.enable = true;
   nvim.enable = true;
-  tmux-sessionizer.enable = true;
 
   home.homeDirectory = "/home/senyc";
 

@@ -59,6 +59,36 @@
       ];
       initExtra = ''
         source ~/.p10k.zsh
+
+        cdp() {
+            if [ -n "$1" ]; then
+                case $1 in
+                    "--help")
+                        echo "Gets current tmux project and sets current directory to the project directory"
+                        return
+                        ;;
+                    -*)
+                        echo "Gets current tmux project and sets current directory to the project directory"
+                        return
+                        ;;
+                esac
+                return
+            fi
+
+            project_name=$(tmux display-message -p '#S')
+            if [[ "$project_name" == "main" ]]; then
+                cd $HOME
+                return
+            fi
+            # This may cause issues where the order of similar named projects will impact outcome
+            # This would be fixed by better regex
+            project_path=$(grep "$project_name" "$HOME/projectdir" | head -n1)
+            if [ -n "$project_path" ]; then
+                cd "$project_path" || return
+            else
+                echo "Can't find base project path, are you sure one exists?"
+            fi
+        }
         '';
     };
   };

@@ -11,7 +11,7 @@
     programs.gBar = {
       enable = true;
       config = {
-          Location = "R";
+          Location = "L";
           EnableSNI = true;
           WorkspaceSymbols = [ " " " " " " " 󰭹" ];
           DateTimeStyle = "%H\\n%M";
@@ -37,7 +37,7 @@
         }
 
         .bar {
-          margin: 8px 0 8px 8px;
+          margin: 8px 0 8px 4px;
           border: 1px solid #ebbcba;
         }
 

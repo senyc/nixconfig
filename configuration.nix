@@ -100,6 +100,10 @@
     t = "tmux";
   };
 
+  networking.hosts = {
+   "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" "youtube.com" "www.youtube.com" "www.reddit.com" "reddit.com"];
+  };
+
    # services.displayManager.sddm.enable = true;
    # services.displayManager.sddm.wayland.enable = true;
 

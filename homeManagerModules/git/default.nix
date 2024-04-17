@@ -41,7 +41,7 @@
             insteadOf = "https://github.com/";
           };
           "git@github.com:" = {
-            instedOf = "gh:";
+            insteadOf = "gh:";
           };
         };
       };

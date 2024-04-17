@@ -3,7 +3,7 @@
   config,
   lib,
   ...
-}: {
+}@inputs: {
   options = {
     tmux.enable = lib.mkEnableOption "Enable tmux";
   };
@@ -38,6 +38,7 @@
         bind c new-window -c "#{pane_current_path}"
 
         bind-key -r f run-shell "tmux neww tmux-sessionizer"
+        bind-key -r b run-shell "tmux neww tmux-sessionizer -"
 
         bind-key -T copy-mode-vi v send-keys -X begin-selection
         bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
@@ -45,5 +46,46 @@
         set-option -g status off
       '';
     };
+
+    home.packages = with pkgs;[
+    (writeShellScriptBin "tmux-sessionizer" ''
+      fuzzy_find_projects() { echo -e "$(find ~/projects -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig\nmain" | ${fzf}/bin/fzf --cycle; }
+      if [[ $# -eq 1 ]]; then
+          if [[ "$1" == "-" ]]; then
+              if [[ -n $TMUX ]]; then
+                  # Gets the most recently used tmux session
+                  selected=$(tmux list-sessions -F "#{session_name}:#{session_activity}" | sort -t':' -k2r | head -n2 | tail -n1 | cut -d: -f1)
+              else
+                  selected=$(fuzzy_find_projects)
+              fi
+          else
+              selected=$1
+          fi
+      else
+          selected=$(fuzzy_find_projects)
+      fi
+
+      if [[ -z $selected ]]; then
+          exit 0
+      fi
+
+      # If there is a period in the name, remove it
+      selected_name=$(basename "$selected" | tr -d .)
+
+
+      if [[ -z $TMUX ]] && [[ -z $(pgrep tmux) ]]; then
+          tmux new-session -s "$selected_name" -c "$selected"
+          exit 0
+      elif [[ -z $TMUX ]]; then
+          tmux attach
+      fi
+
+      if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+          tmux new-session -ds "$selected_name" -c "$selected"
+      fi
+
+      tmux switch-client -t "$selected_name"
+    '')
+    ];
   };
 }
