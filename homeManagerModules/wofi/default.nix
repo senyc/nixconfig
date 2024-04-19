@@ -31,7 +31,7 @@
         display_generic=false;
         location="center";
         key_expand="Tab";
-        insensitive="true";
+        insensitive="false";
       };
       style = ''
         * {
@@ -81,17 +81,14 @@
       '';
     };
     home.packages =  with pkgs; [
+     # to speed this up we would just have to get the path for all of the icons instead of searching
     (writeShellScriptBin "omnipicker" ''
-        for i in Alacritty Brave Spotify Slack Nvim; do
-            for z in $HOME/.nix-profile/share/icons/hicolor/scalable/apps/* $HOME/.nix-profile/share/icons/hicolor/128x128/apps/* $HOME/.nix-profile/share/pixmaps/*; do
-                if echo "$z" | rg -i "$i" > /dev/null; then
-                    printed_items+=("img:$z:text:$i")
-                    break
-                fi
-            done
-        done
 
-        case "$(echo "''${printed_items[@]}" | tr " " "\n" | ${wofi}/bin/wofi)" in
+        # I did try to make this dynamic - it was just too slow ):
+        printed_items="img:/home/senyc/.nix-profile/share/icons/hicolor/scalable/apps/Alacritty.svg:text:Alacritty\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/brave-browser.png:text:Brave\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/spotify-client.png:text:Spotify\nimg:/home/senyc/.nix-profile/share/pixmaps/slack.png:text:Slack\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/nvim.png:text:Nvim"
+        
+
+        case "$(echo -e $printed_items | ${wofi}/bin/wofi)" in
             *"Alacritty"*)
                 alacritty &
                 ;;
