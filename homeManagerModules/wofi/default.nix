@@ -13,8 +13,8 @@
       enable = true;
       settings = {
         hide_scroll=true;
-        show="drun";
-        width="30%";
+        show="dmenu";
+        width="25%";
         lines=6;
         line_wrap="word";
         term="alacritty";
@@ -24,14 +24,14 @@
         print_command=true;
         layer="overlay";
         allow_images=true;
-        sort_order="alphabetical";
+        sort_order="default";
         gtk_dark=true;
         prompt="";
-        image_size=20;
+        image_size=24;
         display_generic=false;
         location="center";
         key_expand="Tab";
-        insensitive="false";
+        insensitive="true";
       };
       style = ''
         * {
@@ -42,7 +42,6 @@
 
         #window {
           background: rgba(41, 46, 66, 0.5);
-          margin: auto;
           padding: 10px;
           border-radius: 20px;
           border: 3px solid #ebbcba;
@@ -55,7 +54,7 @@
           border: 1px solid #ebbcba;
         }
 
-        #input:focused {
+        #input:focus {
           box-shadow: none;
         }
 
@@ -81,5 +80,45 @@
         }
       '';
     };
+    home.packages =  with pkgs; [
+    (writeShellScriptBin "omnipicker" ''
+        for i in Alacritty Brave Spotify Slack Nvim; do
+            for z in $HOME/.nix-profile/share/icons/hicolor/scalable/apps/* $HOME/.nix-profile/share/icons/hicolor/128x128/apps/* $HOME/.nix-profile/share/pixmaps/*; do
+                if echo "$z" | rg -i "$i" > /dev/null; then
+                    printed_items+=("img:$z:text:$i")
+                    break
+                fi
+            done
+        done
+
+        case "$(echo "''${printed_items[@]}" | tr " " "\n" | ${wofi}/bin/wofi)" in
+            *"Alacritty"*)
+                alacritty &
+                ;;
+            *"Slack"*)
+                if pgrep slack; then
+                    hyprctl dispatch workspace 4 
+                else 
+                    slack &
+                fi
+                ;;
+            *"Nvim"*)
+                hyprctl dispatch workspace 1
+                ;;
+            *"Spotify"*)
+                if pgrep spotify; then
+                    hyprctl dispatch workspace 3 
+                else 
+                    spotify &
+                fi
+                ;;
+            *"Brave"*)
+                brave &
+                ;;
+            default)
+            ;;
+        esac
+    '')
+    ];
   };
 }

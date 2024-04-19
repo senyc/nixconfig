@@ -79,10 +79,13 @@
             if [[ "$project_name" == "main" ]]; then
                 cd $HOME
                 return
+            elif [[ "$project_name" == "nixconfig" ]]; then
+              cd "$HOME/nixconfig/"
+              return
             fi
             # This may cause issues where the order of similar named projects will impact outcome
             # This would be fixed by better regex
-            project_path=$(grep "$project_name" "$HOME/projectdir" | head -n1)
+            project_path="$HOME/projects/$project_name"
             if [ -n "$project_path" ]; then
                 cd "$project_path" || return
             else

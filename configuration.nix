@@ -2,7 +2,7 @@
   config, 
   lib, 
   pkgs, 
-  inputs, 
+  inputs,
   ... 
 }: {
   imports =
@@ -16,8 +16,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # AMD drivers
- boot.initrd.kernelModules = [ "amdgpu" ];
+# AMD drivers
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Networking
   networking.hostName = "nixos";
@@ -65,7 +65,7 @@
     uid = 1000;
     home = "/home/senyc";
     createHome = true;
-    extraGroups = [ "wheel" "networkmanager"];
+    extraGroups = [ "wheel" "networkmanager" "docker"];
     initialPassword = "password";
     shell = pkgs.zsh;
   };
@@ -94,14 +94,16 @@
     rustc
     cargo
     lm_sensors # run sudo sensors-detect initially then sensors to get results
+    docker-compose
    ];
 
-  environment.shellAliases = {
-    t = "tmux";
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
   };
-
   networking.hosts = {
-   "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" "youtube.com" "www.youtube.com" "www.reddit.com" "reddit.com"];
+
+   "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" "youtube.com" "www.youtube.com" "www.reddit.com" "reddit.com" ];
   };
 
    # services.displayManager.sddm.enable = true;

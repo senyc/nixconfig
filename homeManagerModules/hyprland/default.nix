@@ -8,6 +8,32 @@
     hyprland.enable = lib.mkEnableOption "Enable hyprland";
   };
   config = lib.mkIf config.hyprland.enable {
+    home.packages = with pkgs; [
+      (writeShellScriptBin "showdesktop" ''
+        stack_file="/tmp/hide_window_pid_stack.txt"
+
+        function hide_window(){
+          pid=$(hyprctl activewindow -j | jq '.pid')
+          hyprctl dispatch movetoworkspacesilent 88,pid:$pid
+          echo $pid > $stack_file
+        }
+
+        function show_window(){
+          pid=$(tail -1 $stack_file && sed -i '$d' $stack_file)
+          [ -z $pid ] && exit
+
+          current_workspace=$(hyprctl activeworkspace -j | jq '.id')	
+          hyprctl dispatch movetoworkspace $current_workspace,pid:$pid
+        }
+
+        if [ -f "$stack_file" ]; then
+          show_window > /dev/null
+          rm "$stack_file"
+        else
+          hide_window > /dev/null
+        fi
+      '')
+    ];
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
@@ -69,9 +95,10 @@
           "$mod" = "SUPER";
           bind = [
             "$mod, X, killactive,"
+            "$mod, D, exec, showdesktop"
             "$mod SHIFT, M, exit,"
-            "$mod SHIFT, F, togglefloating,"
             "$mod, F, fullscreen, 1"
+            "$mod SHIFT, F, fullscreen, 0"
             # "$mod, G, togglegroup,"
             "$mod, bracketleft, changegroupactive, b"
             "$mod, bracketright, changegroupactive, f"
@@ -120,7 +147,7 @@
             "$mod CONTROL, J, resizeactive, 0 20"
           ];
           bindr = [
-            "SUPER, SUPER_L, exec, pkill wofi || wofi"
+            "SUPER, SUPER_L, exec, pkill wofi || omnipicker"
             ];
           monitor = [
             ",highrr,auto,1"
@@ -139,9 +166,9 @@
             "[workspace 2 silent] brave"                              
             "[workspace 4 silent] slack"                              
             "alacritty -e tmux new -s main"                           
-            "gBar bar DP-2"                                           
-            "swww init"                                               
-            "swww img ~/.dotfiles/backgrounds/primary_background.png" 
+            "${pkgs.swww}/bin/swww-daemon"                                               
+            "${pkgs.swww}/bin/swww img ${./backgrounds/primary_background.jpg}" 
+            "gBar bar 0"                                           
           ];
         };
      };
