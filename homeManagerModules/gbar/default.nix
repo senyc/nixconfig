@@ -17,6 +17,8 @@
           DateTimeStyle = "%H\\n%M";
           NumWorkspaces = 4;
           AudioRevealer = true;
+          LockCommand = "hyprlock";
+          CPUThermalZone = "/sys/class/thermal/thermal_zone0/temp";
       };
       extraConfig = ''
           WidgetsLeft: [Workspaces]
