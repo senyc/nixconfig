@@ -37,7 +37,7 @@
         dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0;
         dots_center = true;
         outer_color = "rgba(0, 0, 0, 0)";
-        placeholder_text = ''<i><span foreground="##cdd6f4">Password</span></i>'';
+        placeholder_text = ''<i><span foreground="##ffffffb3">Password...</span></i>'';
         inner_color = "rgba(0, 0, 0, 0.5)";
         font_color = "rgba(255, 255, 255, .7)";
         fade_on_empty = false;
@@ -50,6 +50,7 @@
         {
           monitor = "DP-2";
           text = ''cmd[update:1000] echo "$(date +"%R")"'';
+          # color = "$foreground";
           color = "rgba(255, 255, 255, .7)";
           font_size = 135;
           font_family = "JetBrains Mono Nerd Font Mono ExtraBold";

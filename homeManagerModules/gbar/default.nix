@@ -12,7 +12,7 @@
       enable = true;
       config = {
           Location = "L";
-          EnableSNI = true;
+          EnableSNI = false;
           WorkspaceSymbols = [ " " " " " " " 󰭹" ];
           DateTimeStyle = "%H\\n%M";
           NumWorkspaces = 4;
