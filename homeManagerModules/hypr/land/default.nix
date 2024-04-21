@@ -127,6 +127,8 @@
             "$mod, R, workspace, 2"
             "$mod, V, workspace, 3"
             "$mod, O, workspace, 4"
+            "$mod, N, workspace, 5"
+
           ] ++ [
             ",XF86AudioRaiseVolume, exec, pamixer -i 2"
             ",XF86AudioLowerVolume, exec, pamixer -d 2"
@@ -164,6 +166,7 @@
             "workspace 2, class:^(brave-browser)$"      
             "workspace 3, title:^(Spotify( Premium)?)$" 
             "workspace 4, class:^(Slack)$"              
+            "workspace 5, class:^(Logseq)$"              
           ];
           exec-once = with pkgs; [
             "[workspace 3 silent] spotify"                            

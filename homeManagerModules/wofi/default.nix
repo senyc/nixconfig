@@ -15,12 +15,13 @@
         hide_scroll=true;
         show="dmenu";
         width="25%";
-        lines=6;
+        lines=7;
         line_wrap="word";
         term="alacritty";
         allow_markup=true;
         always_parse_args=false;
         show_all=true;
+        parse_search = true;
         print_command=true;
         layer="overlay";
         allow_images=true;
@@ -31,7 +32,7 @@
         display_generic=false;
         location="center";
         key_expand="Tab";
-        insensitive="false";
+        insensitive=true;
       };
       style = ''
         * {
@@ -109,6 +110,13 @@
                 ;;
             *"Brave"*)
                 brave &
+                ;;
+            *"Logseq"*)
+                if pgrep -f logseq; then
+                    hyprctl dispatch workspace 5 
+                else 
+                    logseq &
+                fi
                 ;;
             default)
             ;;

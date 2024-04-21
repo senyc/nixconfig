@@ -14,6 +14,7 @@
           Location = "L";
           EnableSNI = true;
           WorkspaceSymbols = [ "" "" "" "󰭹" "" ];
+          ExitCommand = "loginctl terminate-user $USER";
           DateTimeStyle = "%H\\n%M";
           NumWorkspaces = 5;
           AudioRevealer = true;
