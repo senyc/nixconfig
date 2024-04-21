@@ -84,7 +84,7 @@
      # to speed this up we would just have to get the path for all of the icons instead of searching
     (writeShellScriptBin "omnipicker" ''
         # I did try to make this dynamic - it was just too slow ):
-        printed_items="img:/home/senyc/.nix-profile/share/icons/hicolor/scalable/apps/Alacritty.svg:text:Alacritty\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/brave-browser.png:text:Brave\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/spotify-client.png:text:Spotify\nimg:/home/senyc/.nix-profile/share/pixmaps/slack.png:text:Slack\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/nvim.png:text:Nvim"
+        printed_items="img:/home/senyc/.nix-profile/share/icons/hicolor/scalable/apps/Alacritty.svg:text:Alacritty\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/brave-browser.png:text:Brave\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/spotify-client.png:text:Spotify\nimg:/home/senyc/.nix-profile/share/pixmaps/slack.png:text:Slack\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/nvim.png:text:Nvim\nimg:${./icons/logseq.png}:text:Logseq"
 
         case "$(echo -e $printed_items | ${wofi}/bin/wofi)" in
             *"Alacritty"*)

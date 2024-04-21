@@ -18,6 +18,7 @@
     ./hypr/lock
     ./hypr/idle
     ./nvim
+    ./spicetify
   ]; 
 
   home.username = "senyc";
@@ -32,6 +33,7 @@
   hyprland.enable = true;
   gbar.enable = true;
   nvim.enable = true;
+  spicetify.enable = true;
 
   home.homeDirectory = "/home/senyc";
 
@@ -42,8 +44,8 @@
   home.packages = with pkgs; [
     brave
     slack
-    spotify
     neofetch
+    logseq
     pamixer
     playerctl
     aspell

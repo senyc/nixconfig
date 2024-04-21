@@ -12,10 +12,10 @@
       enable = true;
       config = {
           Location = "L";
-          EnableSNI = false;
-          WorkspaceSymbols = [ " " " " " " " 󰭹" ];
+          EnableSNI = true;
+          WorkspaceSymbols = [ "" "" "" "󰭹" "" ];
           DateTimeStyle = "%H\\n%M";
-          NumWorkspaces = 4;
+          NumWorkspaces = 5;
           AudioRevealer = true;
           LockCommand = "hyprlock";
           CPUThermalZone = "/sys/class/thermal/thermal_zone0/temp";
@@ -23,9 +23,10 @@
       extraConfig = ''
           WidgetsLeft: [Workspaces]
           WidgetsCenter: [Time]
-          WidgetsRight: [Tray, Audio, Network, Disk, GPU, RAM, CPU, Power]
+          WidgetsRight: [Audio, Tray, GPU, CPU, RAM, Disk, Power]
           IconsAlwaysUp: true
           SensorTooltips: true
+          DrmAmdCard: card1
       '';
       # This is only this long because I had to convert from scss to css
       extraCSS = ''
@@ -57,6 +58,9 @@
           font-size: 18px;
         }
 
+        .workspaces {
+          margin-left: 5px;
+        }
         .reboot-button {
           font-size: 28px;
           color: #908caa;
@@ -65,6 +69,10 @@
         .sleep-button {
           font-size: 28px;
           color: #908caa;
+        }
+
+        .sni {
+          margin-left: 8px;
         }
 
         .exit-button {
@@ -114,6 +122,7 @@
         }
 
         .audio-volume {
+          padding-top: 0;
           font-size: 16px;
           color: #ebbcba;
         }

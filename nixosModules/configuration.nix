@@ -5,17 +5,21 @@
   inputs,
   ... 
 }: {
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      ./greetd
     ];
+
 
   # Nix configurations 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  greeter.enable = true;
 # AMD drivers
   boot.initrd.kernelModules = [ "amdgpu" ];
 
@@ -42,7 +46,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" "DroidSansMono" ]; })
+    (nerdfonts.override { fonts = [  "JetBrainsMono" "Iosevka" "FiraCode" ]; })
     corefonts
   ];
 
@@ -106,8 +110,7 @@
     "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" "youtube.com"  "www.youtube.com" "reddit.com" ];
   };
 
-   # services.displayManager.sddm.enable = true;
-   # services.displayManager.sddm.wayland.enable = true;
+
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
