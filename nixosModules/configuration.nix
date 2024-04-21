@@ -5,22 +5,21 @@
   inputs,
   ... 
 }: {
-
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-      ./greetd
-    ];
-
+  imports = [ # Include the results of the hardware scan.
+    inputs.home-manager.nixosModules.default
+    ./hardware-configuration.nix
+    ./greetd
+  ];
 
   # Nix configurations 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  greeter.enable = true;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  greeter.enable = true;
-# AMD drivers
+  # AMD drivers
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Networking
@@ -30,6 +29,23 @@
   # Fonts/TZ/Locales
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
+
+  # Allow certain unfree packages
+  nixpkgs.config.allowUnfreePredicate = pkg: lib.elem (lib.getName pkg) [ "corefonts" ];
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "FiraCode" ]; })
+    corefonts
+  ];
+
+  fonts.enableDefaultPackages = true;
+  fonts.fontconfig = {
+    defaultFonts = {
+      monospace = ["JetBrainsMono Nerd Font Mono"];
+      sansSerif = ["JetBrainsMono Nerd Font"];
+      serif = ["JetBrainsMono Nerd Font"];
+    };
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -43,21 +59,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-  };
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [  "JetBrainsMono" "Iosevka" "FiraCode" ]; })
-    corefonts
-  ];
-
-  nixpkgs.config.allowUnfree = true;
-  fonts.enableDefaultPackages = true;
-  fonts.fontconfig = {
-    defaultFonts = {
-      monospace = ["JetBrainsMono Nerd Font Mono"];
-      sansSerif = ["JetBrainsMono Nerd Font"];
-      serif = ["JetBrainsMono Nerd Font"];
-    };
   };
 
   # Required to add nix related functionality to path?
@@ -105,13 +106,12 @@
     enable = true;
     enableOnBoot = true;
   };
-  networking.hosts = {
 
-    "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" "youtube.com"  "www.youtube.com" "reddit.com" ];
+  networking.hosts = {
+    "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" "www.youtube.com" "youtube.com" "reddit.com" "www.reddit.com" ];
   };
 
-
-
+  # Hopefully fix issues with wayland and cursors
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
@@ -121,24 +121,8 @@
     opengl.enable = true;
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "23.11"; # Don't delete this
 }

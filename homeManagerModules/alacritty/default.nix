@@ -4,9 +4,8 @@
   lib,
   ...
 }: {
-
-options = {
-  alacritty.enable = lib.mkEnableOption "Enable alacritty";
+  options = {
+    alacritty.enable = lib.mkEnableOption "Enable alacritty";
   };
   config = lib.mkIf config.alacritty.enable {
     programs.alacritty = {
@@ -17,7 +16,7 @@ options = {
         font = {
           size = 12;
         };
-        window.opacity = 0.50;
+        window.opacity = 0.60;
         window.padding.x = 5;
         window.padding.y = 5;
         scrolling.history = 5000;

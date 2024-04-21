@@ -1,9 +1,14 @@
 {
   pkgs,
-    config,
-    lib,
-    ...
+  config,
+  lib,
+  inputs,
+  ...
 } : {
+  imports = [
+    inputs.hypridle.homeManagerModules.default 
+  ];
+
   options = {
     hypridle.enable = lib.mkEnableOption "Enable hypridle";
   };

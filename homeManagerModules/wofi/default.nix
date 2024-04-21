@@ -15,7 +15,7 @@
         hide_scroll=true;
         show="dmenu";
         width="25%";
-        lines=7;
+        height="19%";
         line_wrap="word";
         term="alacritty";
         allow_markup=true;
@@ -28,7 +28,7 @@
         sort_order="default";
         gtk_dark=true;
         prompt="";
-        image_size=24;
+        image_size=22;
         display_generic=false;
         location="center";
         key_expand="Tab";
@@ -85,7 +85,7 @@
      # to speed this up we would just have to get the path for all of the icons instead of searching
     (writeShellScriptBin "omnipicker" ''
         # I did try to make this dynamic - it was just too slow ):
-        printed_items="img:/home/senyc/.nix-profile/share/icons/hicolor/scalable/apps/Alacritty.svg:text:Alacritty\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/brave-browser.png:text:Brave\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/spotify-client.png:text:Spotify\nimg:/home/senyc/.nix-profile/share/pixmaps/slack.png:text:Slack\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/nvim.png:text:Nvim\nimg:${./icons/logseq.png}:text:Logseq"
+        printed_items="img:/home/senyc/.nix-profile/share/icons/hicolor/scalable/apps/Alacritty.svg:text:Alacritty\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/brave-browser.png:text:Brave\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/spotify-client.png:text:Spotify\nimg:/home/senyc/.nix-profile/share/pixmaps/slack.png:text:Slack\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/nvim.png:text:Nvim\nimg:${./icons/logseq.png}:text:Logseq\nimg:${./icons/pavucontrol.png}:text:Pavucontrol"
 
         case "$(echo -e $printed_items | ${wofi}/bin/wofi)" in
             *"Alacritty"*)
@@ -110,6 +110,9 @@
                 ;;
             *"Brave"*)
                 brave &
+                ;;
+            *"Pavucontrol"*)
+                pavucontrol &
                 ;;
             *"Logseq"*)
                 if pgrep -f logseq; then

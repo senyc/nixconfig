@@ -4,8 +4,8 @@
   lib,
   ...
 }: let 
-tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-session = "${pkgs.hyprland}/bin/Hyprland";
+  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  session = "${pkgs.hyprland}/bin/Hyprland";
 in {
   options = {
     greeter.enable = lib.mkEnableOption "Enable the greeter";

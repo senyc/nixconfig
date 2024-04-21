@@ -2,11 +2,17 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.gBar.homeManagerModules.x86_64-linux.default 
+  ];
+
   options = {
     gbar.enable = lib.mkEnableOption "Enable gbar";
   };
+
   config = lib.mkIf config.gbar.enable {
     programs.gBar = {
       enable = true;

@@ -1,13 +1,10 @@
 { 
   config, 
   pkgs, 
-  inputs,
+  lib,
   ... 
 }: {
   imports = [ 
-    inputs.gBar.homeManagerModules.x86_64-linux.default 
-    inputs.hyprlock.homeManagerModules.default 
-    inputs.hypridle.homeManagerModules.default 
     ./tmux
     ./alacritty
     ./zsh
@@ -23,6 +20,12 @@
 
   home.username = "senyc";
  
+  # Allow certain unfree user-level packages
+  nixpkgs.config.allowUnfreePredicate = pkg: lib.elem (lib.getName pkg) [ 
+    "spotify" 
+    "slack"
+  ];
+
   alacritty.enable = true;
   tmux.enable = true;
   zsh.enable = true;
@@ -37,9 +40,13 @@
 
   home.homeDirectory = "/home/senyc";
 
-  home.stateVersion = "23.11"; # Probably don't change this
-
-  nixpkgs.config.allowUnfree = true;
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+    gtk.enable = true;
+    x11.enable = true;
+  };
 
   home.packages = with pkgs; [
     brave
@@ -62,32 +69,10 @@
         ${docker}/bin/docker rm $i
       done
      '')
-    (writeShellScriptBin "togglewindows" ''
-      stack_file="/tmp/hide_window_pid_stack.txt"
-
-      function hide_window(){
-        pid=$(hyprctl activewindow -j | jq '.pid')
-        hyprctl dispatch movetoworkspacesilent 88,pid:$pid
-        echo $pid > $stack_file
-      }
-
-      function show_window(){
-        pid=$(tail -1 $stack_file && sed -i '$d' $stack_file)
-        [ -z $pid ] && exit
-
-        current_workspace=$(hyprctl activeworkspace -j | jq '.id')	
-        hyprctl dispatch movetoworkspacesilent $current_workspace,pid:$pid
-      }
-
-      if [ -f "$stack_file" ]; then
-        show_window > /dev/null
-        rm "$stack_file"
-      else
-        hide_window > /dev/null
-      fi
-     '')
   ];
 
-# Let Home Manager install and manage itself.
+  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  home.stateVersion = "23.11"; # Probably don't change this
 }

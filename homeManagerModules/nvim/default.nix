@@ -13,6 +13,7 @@
       defaultEditor = true;
       vimAlias = true;
     };
+    # Link all of the lua config
     xdg.configFile.nvim = {
       source = ./config;
       recursive = true;

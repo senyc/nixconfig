@@ -7,7 +7,9 @@
   options = {
     hyprland.enable = lib.mkEnableOption "Enable hyprland";
   };
-  config = lib.mkIf config.hyprland.enable {
+  config = let
+    pointer = config.home.pointerCursor;
+  in lib.mkIf config.hyprland.enable {
     home.packages = with pkgs; [
       (writeShellScriptBin "showdesktop" ''
         stack_file="/tmp/hide_window_pid_stack.txt"
@@ -65,6 +67,8 @@
             rounding = 5;
             drop_shadow = true;
             shadow_range = 30;
+            active_opacity = 0.85;
+            inactive_opacity = 0.90;
             shadow_render_power = 3;
             "col.shadow" = "rgba(1a1a1aee)";
           };
@@ -99,6 +103,7 @@
             "$mod SHIFT, M, exit,"
             "$mod, F, fullscreen, 1"
             "$mod SHIFT, F, fullscreen, 0"
+            "$mod SHIFT, O, toggleopaque"
             # "$mod, G, togglegroup,"
             "$mod, bracketleft, changegroupactive, b"
             "$mod, bracketright, changegroupactive, f"
@@ -142,6 +147,10 @@
             "SUPER, mouse:272, movewindow"
             "SUPER, mouse:273, resizewindow"
           ];
+          env = [
+            # "HYPRCURSOR_THEME,Bibata-Modern-Classic"
+            # "HYPRCURSOR_SIZE,24"
+          ];
           debug = {
             enable_stdout_logs = true;
             disable_logs = false;
@@ -174,8 +183,9 @@
             "[workspace 4 silent] slack"                              
             "alacritty -e tmux new -s main"                           
             "${swww}/bin/swww-daemon"                                               
-            "${swww}/bin/swww img ${ ../backgrounds/primary_background.png }" 
+            "${swww}/bin/swww img ${ ../../../backgrounds/primary_background.png }" 
             "${hypridle}/bin/hypridle"
+            "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
             "gBar bar 0"                                           
           ];
         };

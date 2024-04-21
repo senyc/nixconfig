@@ -3,10 +3,11 @@
   config,
   lib,
   ...
-}@inputs: {
+}: {
   options = {
     tmux.enable = lib.mkEnableOption "Enable tmux";
   };
+
   config = lib.mkIf config.tmux.enable {
     programs.tmux = {
       enable = true;
@@ -68,10 +69,8 @@
       if [[ -z $selected ]]; then
           exit 0
       fi
-
       # If there is a period in the name, remove it
       selected_name=$(basename "$selected" | tr -d .)
-
 
       if [[ -z $TMUX ]] && [[ -z $(pgrep tmux) ]]; then
           tmux new-session -s "$selected_name" -c "$selected"
