@@ -109,7 +109,7 @@
   };
 
   networking.hosts = {
-    "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" ];
+    "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" "www.youtube.com" "youtube.com" "www.reddit.com" "reddit.com"   ];
   };
 
   # Hopefully fix issues with wayland and cursors
