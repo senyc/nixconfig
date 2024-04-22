@@ -121,7 +121,7 @@
   # Show '⇡' if local branch is ahead of remote.
   typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='⇡'
   # Don't show the number of commits next to the ahead/behind arrows.
-  typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=1
+  typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=99
   typeset -g POWERLEVEL9K_VCS_{UNSTAGED,UNTRACKED}_MAX_NUM=99
   typeset -g POWERLEVEL9K_VCS_STAGED_MAX_NUM=99
 
