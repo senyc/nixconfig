@@ -19,10 +19,10 @@
       config = {
           Location = "L";
           EnableSNI = true;
-          WorkspaceSymbols = [ "" "" "" "󰭹" "" ];
+          WorkspaceSymbols = [ "" "" "" "󰭹" "" "" ];
           ExitCommand = "loginctl terminate-user $USER";
           DateTimeStyle = "%H\\n%M";
-          NumWorkspaces = 5;
+          NumWorkspaces = 6;
           AudioRevealer = true;
           LockCommand = "hyprlock";
           CPUThermalZone = "/sys/class/thermal/thermal_zone0/temp";

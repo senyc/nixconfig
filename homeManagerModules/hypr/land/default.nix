@@ -176,6 +176,7 @@
             "workspace 3, title:^(Spotify( Premium)?)$" 
             "workspace 4, class:^(Slack)$"              
             "workspace 5, class:^(Logseq)$"              
+            "workspace 6, class:^(org.keepassxc.KeePassXC)$"              
           ];
           exec-once = with pkgs; [
             "[workspace 3 silent] spotify"                            
