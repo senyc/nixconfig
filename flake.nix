@@ -15,6 +15,10 @@
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hypridle = {
       url = "github:hyprwm/hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,12 +29,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: 
-    let 
-      system = "x64_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
+  outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [

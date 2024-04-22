@@ -182,8 +182,6 @@
             "[workspace 2 silent] brave"                              
             "[workspace 4 silent] slack"                              
             "alacritty -e tmux new -s main"                           
-            "${swww}/bin/swww-daemon"                                               
-            "${swww}/bin/swww img ${ ../../../backgrounds/primary_background.png }" 
             "${hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
             "gBar bar 0"                                           
