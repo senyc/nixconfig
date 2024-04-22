@@ -28,6 +28,7 @@
       enabledExtensions = with spicePkgs.extensions; [
         hidePodcasts
         shuffle
+        seekSong
         adblock
         playlistIcons
         historyShortcut
