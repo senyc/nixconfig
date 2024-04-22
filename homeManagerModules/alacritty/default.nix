@@ -16,7 +16,7 @@
         font = {
           size = 12;
         };
-        window.opacity = 0.60;
+        window.opacity = 0.50;
         window.padding.x = 5;
         window.padding.y = 5;
         scrolling.history = 5000;
