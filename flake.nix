@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gBar = {
-      url = "github:scorpion-26/gBar";
+      url = "github:senyc/gBar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprlock = {

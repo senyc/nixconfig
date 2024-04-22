@@ -31,12 +31,13 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Allow certain unfree packages
-  nixpkgs.config.allowUnfreePredicate = pkg: lib.elem (lib.getName pkg) [ "corefonts" ];
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "FiraCode" ]; })
-    corefonts
   ];
+
+  # This is a requirement for various gtk related services
+  programs.dconf.enable = true; 
 
   fonts.enableDefaultPackages = true;
   fonts.fontconfig = {
@@ -108,13 +109,17 @@
   };
 
   networking.hosts = {
-    "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" "www.youtube.com" "youtube.com" "reddit.com" "www.reddit.com" ];
+    "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" ];
   };
 
   # Hopefully fix issues with wayland and cursors
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
+    QT_SCALE_FACTOR=1;
+    ELM_SCALE=1;
+    GDK_SCALE=1;
+    XCURSOR_SIZE=16;
   };
 
   hardware = {

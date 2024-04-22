@@ -40,6 +40,9 @@
 
   home.homeDirectory = "/home/senyc";
 
+  # This is a requirement for mouse cursor configuration
+  gtk.enable = true;
+
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
@@ -59,7 +62,29 @@
     wl-clipboard
     pavucontrol
     (writeShellScriptBin "rebuild" ''
-      sudo nixos-rebuild switch --flake $HOME/nixconfig#default
+      set -e
+      pushd ~/nixconfig/
+
+      if git diff --quiet; then
+          echo "No changes detected, exiting."
+          popd
+          exit 0
+      fi
+
+      # Show changes 
+      git diff -U0 
+
+      echo "NixOS Rebuilding..."
+
+      sudo nixos-rebuild switch --flake ~/nixconfig#default &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+      echo "NixOS Rebuilt, commiting changes"
+
+      # Get current generation metadata
+      current=$(nixos-rebuild list-generations --flake ~/nixconfig#default | grep current)
+
+      # Add the generation number to the commit message and add all changes to the commit
+      git commit -am "feat: update nix generation to $current"
+      popd
     '')
     (writeShellScriptBin "screenshot" ''
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp -w 0)" - | wl-copy
