@@ -26,6 +26,7 @@
           AudioRevealer = true;
           LockCommand = "hyprlock";
           CPUThermalZone = "/sys/class/thermal/thermal_zone0/temp";
+          GPUThermalZone = "/sys/class/drm/card1/device/hwmon/hwmon0/temp1_input";
       };
       extraConfig = ''
           WidgetsLeft: [Workspaces]
