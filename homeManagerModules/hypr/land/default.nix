@@ -182,6 +182,7 @@
             "[workspace 3 silent] spotify"                            
             "[workspace 2 silent] brave"                              
             "[workspace 4 silent] slack"                              
+            "[workspace 6 silent] keepassxc"                              
             "alacritty -e tmux new -s main"                           
             "${hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
