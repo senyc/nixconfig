@@ -177,7 +177,7 @@
             "workspace 4, class:^(Slack)$"              
             "workspace 5, class:^(Logseq)$"              
             "workspace 6, class:^(org.keepassxc.KeePassXC)$"              
-            "opacity 1.0 1.0, class:^(Alacritty)$"
+            "opacity 1.0 override 1.0 override, class:^(Alacritty)$"
           ];
           exec-once = with pkgs; [
             "[workspace 3 silent] spotify"                            
