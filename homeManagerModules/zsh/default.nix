@@ -25,6 +25,7 @@
       };
       defaultKeymap = "emacs";
       shellAliases = {
+        k = "kubectl";
         ls = "ls --color=auto";
         la = "ls -a";
         gd = "git diff";
