@@ -15,6 +15,10 @@
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # kx = {
+    #   url = "github:senyc/kx";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
       inputs.nixpkgs.follows = "nixpkgs";

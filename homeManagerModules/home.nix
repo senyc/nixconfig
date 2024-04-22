@@ -60,6 +60,8 @@
     slack
     neofetch
     logseq
+    doctl
+    kubectl
     pamixer
     playerctl
     aspell
