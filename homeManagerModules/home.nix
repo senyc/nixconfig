@@ -14,6 +14,7 @@
     ./hypr/land
     ./hypr/lock
     ./hypr/idle
+    ./hypr/paper
     ./nvim
     ./spicetify
   ]; 
@@ -34,6 +35,7 @@
   hyprlock.enable = true;
   hypridle.enable = true;
   hyprland.enable = true;
+  hyprpaper.enable = true;
   gbar.enable = true;
   nvim.enable = true;
   spicetify.enable = true;
@@ -65,11 +67,11 @@
       set -e
       pushd ~/nixconfig/
 
-      if git diff --quiet; then
-          echo "No changes detected, exiting."
-          popd
-          exit 0
-      fi
+      # if git diff --quiet; then
+      #     echo "No changes detected, exiting."
+      #     popd
+      #     exit 0
+      # fi
 
       # Show changes 
       git diff -U0 
