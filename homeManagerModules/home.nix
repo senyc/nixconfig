@@ -62,6 +62,7 @@
     playerctl
     aspell
     wl-clipboard
+    keepassxc
     pavucontrol
     (writeShellScriptBin "rebuild" ''
       set -e
