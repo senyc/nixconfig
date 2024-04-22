@@ -44,11 +44,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713749844,
-        "narHash": "sha256-l4eeK+sFeCc4ECG+pJxZA3htJApe9oz140erpWBtFNY=",
+        "lastModified": 1713750813,
+        "narHash": "sha256-6sLSUal7qtGkff6+yaaPIM8bnBYH1xw01a8qJiNQV+I=",
         "owner": "senyc",
         "repo": "gBar",
-        "rev": "8c64dafefc68ee49b725c06b56f46ef413198901",
+        "rev": "f3fb187fd0a70b281a1b045df43135d7ea756434",
         "type": "github"
       },
       "original": {
