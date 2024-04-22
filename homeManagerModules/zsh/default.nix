@@ -87,9 +87,9 @@
             # This would be fixed by better regex
             project_path="$HOME/projects/$project_name"
             work_path="$HOME/work/$project_name"
-            if [ -n "$project_path" ]; then
+            if [ -d "$project_path" ]; then
                 cd "$project_path" || return
-            elif [ -n "$work_path" ]; then
+            elif [ -d "$work_path" ]; then
                 cd "$work_path" || return
             else
                 echo "Can't find base project path, are you sure one exists?"
