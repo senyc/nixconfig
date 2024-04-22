@@ -11,6 +11,7 @@
     ./git
     ./wofi
     ./gbar
+    ./zoxide
     ./hypr/land
     ./hypr/lock
     ./hypr/idle
@@ -38,6 +39,7 @@
   hyprpaper.enable = true;
   gbar.enable = true;
   nvim.enable = true;
+  zoxide.enable = true;
   spicetify.enable = true;
 
   home.homeDirectory = "/home/senyc";
