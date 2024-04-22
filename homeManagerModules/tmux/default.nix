@@ -50,7 +50,7 @@
 
     home.packages = with pkgs;[
     (writeShellScriptBin "tmux-sessionizer" ''
-      fuzzy_find_projects() { echo -e "$(find ~/projects -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig\nmain" | ${fzf}/bin/fzf --cycle; }
+      fuzzy_find_projects() { echo -e "$(find ~/projects ~/work -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig\nmain" | ${fzf}/bin/fzf --cycle; }
       if [[ $# -eq 1 ]]; then
           if [[ "$1" == "-" ]]; then
               if [[ -n $TMUX ]]; then
