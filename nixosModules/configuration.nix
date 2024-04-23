@@ -90,6 +90,7 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
+    
     wget
     curl
     zip
@@ -106,7 +107,10 @@
     cargo
     lm_sensors # run sudo sensors-detect initially then sensors to get results
     docker-compose
-  ];
+  ]
+ ++ [
+  inputs.kx
+ ];
 
   virtualisation.docker = {
     enable = true;
