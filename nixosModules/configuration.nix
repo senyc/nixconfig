@@ -89,28 +89,28 @@
   };
 
   # System packages
-  environment.systemPackages = with pkgs; [
-    
-    wget
-    curl
-    zip
-    unzip
-    which
-    ripgrep
-    jq
-    lua
-    python3
-    go
-    luarocks
-    nodejs
-    rustc
-    cargo
-    lm_sensors # run sudo sensors-detect initially then sensors to get results
-    docker-compose
-  ]
- ++ [
-  inputs.kx
- ];
+  environment.systemPackages = with pkgs;
+    [
+      wget
+      curl
+      zip
+      unzip
+      which
+      ripgrep
+      jq
+      lua
+      python3
+      go
+      luarocks
+      nodejs
+      rustc
+      cargo
+      lm_sensors # run sudo sensors-detect initially then sensors to get results
+      docker-compose
+    ]
+    ++ [
+      inputs.kx.packages.${"x86_64-linux"}.default
+    ];
 
   virtualisation.docker = {
     enable = true;
