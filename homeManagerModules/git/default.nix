@@ -24,7 +24,7 @@
         sw = "switch";
         a = "add";
         ap = "add -p";
-        aa = "add --all" ;
+        aa = "add --all";
         c = "commit";
         cm = "commit -m";
         d = "diff";

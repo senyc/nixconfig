@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    inputs.gBar.homeManagerModules.x86_64-linux.default 
+    inputs.gBar.homeManagerModules.x86_64-linux.default
   ];
 
   options = {
@@ -17,24 +17,24 @@
     programs.gBar = {
       enable = true;
       config = {
-          Location = "L";
-          EnableSNI = true;
-          WorkspaceSymbols = [ "" "" "" "󰭹" "" "" ];
-          ExitCommand = "loginctl terminate-user $USER";
-          DateTimeStyle = "%H\\n%M";
-          NumWorkspaces = 6;
-          AudioRevealer = true;
-          LockCommand = "hyprlock";
-          CPUThermalZone = "/sys/class/thermal/thermal_zone0/temp";
-          GPUThermalZone = "/sys/class/drm/card1/device/hwmon/hwmon0/temp1_input";
+        Location = "L";
+        EnableSNI = true;
+        WorkspaceSymbols = ["" "" "" "󰭹" "" ""];
+        ExitCommand = "loginctl terminate-user $USER";
+        DateTimeStyle = "%H\\n%M";
+        NumWorkspaces = 6;
+        AudioRevealer = true;
+        LockCommand = "hyprlock";
+        CPUThermalZone = "/sys/class/thermal/thermal_zone0/temp";
+        GPUThermalZone = "/sys/class/drm/card1/device/hwmon/hwmon0/temp1_input";
       };
       extraConfig = ''
-          WidgetsLeft: [Workspaces]
-          WidgetsCenter: [Time]
-          WidgetsRight: [Audio, Tray, GPU, CPU, RAM, Disk, Power]
-          IconsAlwaysUp: true
-          SensorTooltips: true
-          DrmAmdCard: card1
+        WidgetsLeft: [Workspaces]
+        WidgetsCenter: [Time]
+        WidgetsRight: [Audio, Tray, GPU, CPU, RAM, Disk, Power]
+        IconsAlwaysUp: true
+        SensorTooltips: true
+        DrmAmdCard: card1
       '';
       # This is only this long because I had to convert from scss to css
       extraCSS = ''

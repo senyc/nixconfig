@@ -4,7 +4,6 @@
   lib,
   ...
 }: {
-
   options = {
     wofi.enable = lib.mkEnableOption "Enable wofi";
   };
@@ -12,27 +11,27 @@
     programs.wofi = {
       enable = true;
       settings = {
-        hide_scroll=true;
-        show="dmenu";
-        width="25%";
-        height="19%";
-        line_wrap="word";
-        term="alacritty";
-        allow_markup=true;
-        always_parse_args=false;
-        show_all=true;
+        hide_scroll = true;
+        show = "dmenu";
+        width = "25%";
+        height = "19%";
+        line_wrap = "word";
+        term = "alacritty";
+        allow_markup = true;
+        always_parse_args = false;
+        show_all = true;
         parse_search = true;
-        print_command=true;
-        layer="overlay";
-        allow_images=true;
-        sort_order="default";
-        gtk_dark=true;
-        prompt="";
-        image_size=22;
-        display_generic=false;
-        location="center";
-        key_expand="Tab";
-        insensitive=true;
+        print_command = true;
+        layer = "overlay";
+        allow_images = true;
+        sort_order = "default";
+        gtk_dark = true;
+        prompt = "";
+        image_size = 22;
+        display_generic = false;
+        location = "center";
+        key_expand = "Tab";
+        insensitive = true;
       };
       style = ''
         * {
@@ -81,9 +80,9 @@
         }
       '';
     };
-    home.packages =  with pkgs; [
-     # to speed this up we would just have to get the path for all of the icons instead of searching
-    (writeShellScriptBin "omnipicker" ''
+    home.packages = with pkgs; [
+      # to speed this up we would just have to get the path for all of the icons instead of searching
+      (writeShellScriptBin "omnipicker" ''
         # I did try to make this dynamic - it was just too slow ):
         printed_items="img:/home/senyc/.nix-profile/share/icons/hicolor/scalable/apps/Alacritty.svg:text:Alacritty\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/brave-browser.png:text:Brave\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/spotify-client.png:text:Spotify\nimg:/home/senyc/.nix-profile/share/pixmaps/slack.png:text:Slack\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/nvim.png:text:Nvim\nimg:${./icons/logseq.png}:text:Logseq\nimg:${./icons/pavucontrol.png}:text:Pavucontrol\nimg:/home/senyc/.nix-profile/share/icons/hicolor/scalable/apps/keepassxc.svg:text:Keepassxc"
 
@@ -93,8 +92,8 @@
                 ;;
             *"Slack"*)
                 if pgrep slack; then
-                    hyprctl dispatch workspace 4 
-                else 
+                    hyprctl dispatch workspace 4
+                else
                     slack &
                 fi
                 ;;
@@ -103,8 +102,8 @@
                 ;;
             *"Spotify"*)
                 if pgrep spotify; then
-                    hyprctl dispatch workspace 3 
-                else 
+                    hyprctl dispatch workspace 3
+                else
                     spotify &
                 fi
                 ;;
@@ -116,22 +115,22 @@
                 ;;
             *"Logseq"*)
                 if pgrep -f logseq; then
-                    hyprctl dispatch workspace 5 
-                else 
+                    hyprctl dispatch workspace 5
+                else
                     logseq &
                 fi
                 ;;
             *"Keepassxc"*)
                 if pgrep -f keepassxc; then
-                    hyprctl dispatch workspace 6 
-                else 
+                    hyprctl dispatch workspace 6
+                else
                     keepassxc &
                 fi
                 ;;
             default)
             ;;
         esac
-    '')
+      '')
     ];
   };
 }

@@ -4,9 +4,9 @@
   lib,
   inputs,
   ...
-} : {
+}: {
   imports = [
-    inputs.hypridle.homeManagerModules.default 
+    inputs.hypridle.homeManagerModules.default
   ];
 
   options = {

@@ -1,18 +1,19 @@
-{ 
-  config, 
-  lib, 
-  pkgs, 
+{
+  config,
+  lib,
+  pkgs,
   inputs,
-  ... 
+  ...
 }: {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
     ./hardware-configuration.nix
     ./greetd
   ];
 
-  # Nix configurations 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Nix configurations
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   # Setting this to true causes issues with some packages (namely orc 0.4.38)
   nixpkgs.config = {
     enableParallelBuildingByDefault = false;
@@ -24,7 +25,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # AMD drivers
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = ["amdgpu"];
 
   # Networking
   networking.hostName = "nixos";
@@ -37,11 +38,11 @@
   # Allow certain unfree packages
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "FiraCode" ]; })
+    (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
   ];
 
   # This is a requirement for various gtk related services
-  programs.dconf.enable = true; 
+  programs.dconf.enable = true;
 
   fonts.enableDefaultPackages = true;
   fonts.fontconfig = {
@@ -75,13 +76,13 @@
     uid = 1000;
     home = "/home/senyc";
     createHome = true;
-    extraGroups = [ "wheel" "networkmanager" "docker"];
+    extraGroups = ["wheel" "networkmanager" "docker"];
     initialPassword = "password";
     shell = pkgs.zsh;
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     users = {
       "senyc" = import ../homeManagerModules/home.nix;
     };
@@ -105,7 +106,7 @@
     cargo
     lm_sensors # run sudo sensors-detect initially then sensors to get results
     docker-compose
-   ];
+  ];
 
   virtualisation.docker = {
     enable = true;
@@ -113,17 +114,17 @@
   };
 
   networking.hosts = {
-    "127.0.0.1" = [ "https://youtube.com" "https://www.youtube.com" "www.youtube.com" "youtube.com" "www.reddit.com" "reddit.com"   ];
+    "127.0.0.1" = ["https://youtube.com" "https://www.youtube.com" "www.youtube.com" "youtube.com" "www.reddit.com" "reddit.com"];
   };
 
   # Hopefully fix issues with wayland and cursors
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
-    QT_SCALE_FACTOR=1;
-    ELM_SCALE=1;
-    GDK_SCALE=1;
-    XCURSOR_SIZE=16;
+    QT_SCALE_FACTOR = 1;
+    ELM_SCALE = 1;
+    GDK_SCALE = 1;
+    XCURSOR_SIZE = 16;
   };
 
   hardware = {

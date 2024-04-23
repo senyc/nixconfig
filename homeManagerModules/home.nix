@@ -1,10 +1,10 @@
-{ 
-  config, 
-  pkgs, 
+{
+  config,
+  pkgs,
   lib,
-  ... 
+  ...
 }: {
-  imports = [ 
+  imports = [
     ./tmux
     ./alacritty
     ./zsh
@@ -18,15 +18,16 @@
     ./hypr/paper
     ./nvim
     ./spicetify
-  ]; 
+  ];
 
   home.username = "senyc";
- 
+
   # Allow certain unfree user-level packages
-  nixpkgs.config.allowUnfreePredicate = pkg: lib.elem (lib.getName pkg) [ 
-    "spotify" 
-    "slack"
-  ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    lib.elem (lib.getName pkg) [
+      "spotify"
+      "slack"
+    ];
 
   alacritty.enable = true;
   tmux.enable = true;
@@ -78,8 +79,8 @@
       #     exit 0
       # fi
 
-      # Show changes 
-      git diff -U0 
+      # Show changes
+      git diff -U0
 
       echo "NixOS Rebuilding..."
 
@@ -95,12 +96,12 @@
     '')
     (writeShellScriptBin "screenshot" ''
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp -w 0)" - | wl-copy
-     '')
+    '')
     (writeShellScriptBin "rmdockercontainers" ''
       for i in $(${docker}/bin/docker ps --all | awk '{print $1}' | tail -n +2); do
         ${docker}/bin/docker rm $i
       done
-     '')
+    '')
   ];
 
   # Let Home Manager install and manage itself.

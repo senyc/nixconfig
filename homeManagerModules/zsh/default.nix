@@ -11,7 +11,7 @@
   config = lib.mkIf config.zsh.enable {
     home.file = {
       ".p10k.zsh" = {
-        source = ./.p10k.zsh; 
+        source = ./.p10k.zsh;
       };
     };
     programs.zsh = {
@@ -45,10 +45,10 @@
         ts = "tmux-sessionizer";
       };
       shellGlobalAliases = {
-        "..."="../..";            
-        "...."="../../..";         
-        "....."="../../../..";     
-        "......"="../../../../.."; 
+        "..." = "../..";
+        "...." = "../../..";
+        "....." = "../../../..";
+        "......" = "../../../../..";
       };
       plugins = [
         {
@@ -95,7 +95,7 @@
                 echo "Can't find base project path, are you sure one exists?"
             fi
         }
-        '';
+      '';
     };
   };
 }
