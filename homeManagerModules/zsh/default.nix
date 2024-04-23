@@ -17,6 +17,9 @@
     programs.zsh = {
       enable = true;
       enableCompletion = true;
+      syntaxHighlighting = {
+        enable = true;
+      };
       history = {
         extended = true;
         save = 50000;
@@ -58,43 +61,60 @@
         }
       ];
       initExtra = ''
-        source ~/.p10k.zsh
+          source ~/.p10k.zsh
 
-        cdp() {
-            if [ -n "$1" ]; then
-                case $1 in
-                    "--help")
-                        echo "Gets current tmux project and sets current directory to the project directory"
-                        return
-                        ;;
-                    -*)
-                        echo "Gets current tmux project and sets current directory to the project directory"
-                        return
-                        ;;
-                esac
-                return
-            fi
+          cdp() {
+              if [ -n "$1" ]; then
+                  case $1 in
+                      "--help")
+                          echo "Gets current tmux project and sets current directory to the project directory"
+                          return
+                          ;;
+                      -*)
+                          echo "Gets current tmux project and sets current directory to the project directory"
+                          return
+                          ;;
+                  esac
+                  return
+              fi
 
-            project_name=$(tmux display-message -p '#S')
-            if [[ "$project_name" == "main" ]]; then
-                cd $HOME
+              project_name=$(tmux display-message -p '#S')
+              if [[ "$project_name" == "main" ]]; then
+                  cd $HOME
+                  return
+              elif [[ "$project_name" == "nixconfig" ]]; then
+                cd "$HOME/nixconfig/"
                 return
-            elif [[ "$project_name" == "nixconfig" ]]; then
-              cd "$HOME/nixconfig/"
-              return
-            fi
-            # This may cause issues where the order of similar named projects will impact outcome
-            # This would be fixed by better regex
-            project_path="$HOME/projects/$project_name"
-            work_path="$HOME/work/$project_name"
-            if [ -d "$project_path" ]; then
-                cd "$project_path" || return
-            elif [ -d "$work_path" ]; then
-                cd "$work_path" || return
-            else
-                echo "Can't find base project path, are you sure one exists?"
-            fi
-        }
+              fi
+              # This may cause issues where the order of similar named projects will impact outcome
+              # This would be fixed by better regex
+              project_path="$HOME/projects/$project_name"
+              work_path="$HOME/work/$project_name"
+              if [ -d "$project_path" ]; then
+                  cd "$project_path" || return
+              elif [ -d "$work_path" ]; then
+                  cd "$work_path" || return
+              else
+                  echo "Can't find base project path, are you sure one exists?"
+              fi
+          }
+
+        # Key bindings
+        bindkey -s ^f "tmux-sessionizer\n"
+
+         # [Ctrl-Delete] - delete whole forward-word
+         bindkey -M emacs '^[[3;5~' kill-word
+         bindkey -M viins '^[[3;5~' kill-word
+         bindkey -M vicmd '^[[3;5~' kill-word
+
+        # [Ctrl-RightArrow] - move forward one word
+        bindkey -M emacs '^[[1;5C' forward-word
+        bindkey -M viins '^[[1;5C' forward-word
+        bindkey -M vicmd '^[[1;5C' forward-word
+        # [Ctrl-LeftArrow] - move backward one word
+        bindkey -M emacs '^[[1;5D' backward-word
+        bindkey -M viins '^[[1;5D' backward-word
+        bindkey -M vicmd '^[[1;5D' backward-word
       '';
     };
   };
