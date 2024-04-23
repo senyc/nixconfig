@@ -13,6 +13,10 @@
 
   # Nix configurations 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Setting this to true causes issues with some packages (namely orc 0.4.38)
+  nixpkgs.config = {
+    enableParallelBuildingByDefault = false;
+  };
 
   greeter.enable = true;
 

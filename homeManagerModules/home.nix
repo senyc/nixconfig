@@ -87,7 +87,7 @@
       echo "NixOS Rebuilt, commiting changes"
 
       # Get current generation metadata
-      current=$(nixos-rebuild list-generations --flake ~/nixconfig#default | grep current | awk '{print $1, $3}')
+      current=$(nixos-rebuild list-generations --flake ~/nixconfig#default | grep current | awk '{print $1,"- " $3}')
 
       # Add the generation number to the commit message and add all changes to the commit
       git commit -am "feat: update nix generation to $current"
