@@ -109,7 +109,7 @@
       docker-compose
     ]
     ++ [
-      inputs.kx
+      inputs.kx.packages.${"x86_64-linux"}.default
     ];
 
   virtualisation.docker = {
