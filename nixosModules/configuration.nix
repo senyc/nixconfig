@@ -10,6 +10,7 @@
     inputs.home-manager.nixosModules.default
     ./hardware-configuration.nix
     ./greetd
+    ./keepassxc
   ];
 
   # Nix configurations
@@ -20,6 +21,7 @@
   };
 
   greeter.enable = true;
+  keepassxc.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

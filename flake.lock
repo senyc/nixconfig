@@ -44,15 +44,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1713921321,
-        "narHash": "sha256-5Lz6AOmZwKpHItma2eBzKUmKE2DyOoXQI0fHMNJZfic=",
-        "owner": "senyc",
+        "lastModified": 1713972700,
+        "narHash": "sha256-tPJhYx3RkKfNIAtICROySMj+mT/Edm28XdDmoeforBE=",
+        "owner": "scorpion-26",
         "repo": "gBar",
-        "rev": "8ee20287a914ee08a565fffe92526966096acd95",
+        "rev": "b3f037db5b0faa737afd4e3859f337aaa9aefd96",
         "type": "github"
       },
       "original": {
-        "owner": "senyc",
+        "owner": "scorpion-26",
         "repo": "gBar",
         "type": "github"
       }
@@ -171,11 +171,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1713777162,
-        "narHash": "sha256-cF5DfaRfqVcDSqIG+ePLPS9rATElKhWNLS/9MXpMzk8=",
+        "lastModified": 1713978374,
+        "narHash": "sha256-jla5Wo0Qt3NEnD0OjNj85BGw0pR4Zlz5uy8AqHH7tuE=",
         "owner": "hyprwm",
         "repo": "hyprlock",
-        "rev": "8658386f212f29447874fe62fa665c5864cdcc41",
+        "rev": "415262065fff0a04b229cd00165f346a86a0a73a",
         "type": "github"
       },
       "original": {
