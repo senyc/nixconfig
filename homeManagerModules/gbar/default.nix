@@ -26,7 +26,8 @@
         AudioRevealer = true;
         LockCommand = "hyprlock";
         CPUThermalZone = "/sys/class/thermal/thermal_zone0/temp";
-        GPUThermalZone = "/sys/class/drm/card1/device/hwmon/hwmon0/temp1_input";
+        AmdGPUThermalZone = "/device/hwmon/hwmon0/temp1_input";
+        DrmAmdCard = "card1";
       };
       extraConfig = ''
         WidgetsLeft: [Workspaces]
@@ -34,7 +35,6 @@
         WidgetsRight: [Audio, Tray, GPU, CPU, RAM, Disk, Power]
         IconsAlwaysUp: true
         SensorTooltips: true
-        DrmAmdCard: card1
       '';
       # This is only this long because I had to convert from scss to css
       extraCSS = ''
