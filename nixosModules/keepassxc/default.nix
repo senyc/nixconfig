@@ -14,7 +14,9 @@
   environment.systemPackages = with pkgs; [
     keepassxc
   ];
-
+  systemd.user.tmpfiles.rules = [
+    "d /pass - senyc - - -"
+  ];
   fileSystems."/pass" = {
     device = "/dev/disk/by-label/pass";
     fsType = "ext4";
