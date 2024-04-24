@@ -14,6 +14,7 @@
   environment.systemPackages = with pkgs; [
     keepassxc
   ];
+
   systemd.user.tmpfiles.rules = [
     "d /pass - senyc - - -"
   ];

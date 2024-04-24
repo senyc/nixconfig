@@ -181,6 +181,7 @@
             "workspace 5, class:^(Logseq)$"
             "workspace 6, class:^(org.keepassxc.KeePassXC)$"
             "opacity 1.0 override 1.0 override, class:^(Alacritty)$"
+            "opacity 1.0 override 1.0 override, class:^(brave-browser)$"
           ];
           exec-once = with pkgs; [
             "[workspace 3 silent] spotify"
