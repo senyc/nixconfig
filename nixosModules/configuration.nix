@@ -104,6 +104,7 @@
     nodejs
     rustc
     cargo
+    clang
     lm_sensors # run sudo sensors-detect initially then sensors to get results
     docker-compose
     inputs.kx.packages.${"x86_64-linux"}.default
