@@ -25,6 +25,7 @@
       alejandra 
       lua-language-server
       nodePackages.typescript-language-server
+      nodePackages.pyright
       nil
       gopls
       tailwindcss-language-server
