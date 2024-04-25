@@ -1,6 +1,8 @@
 local map = require 'senyc.utils'.default_map
 local no_formatting = {
-  'pyright'
+  'pyright',
+  'nil_ls',
+  'nil'
 }
 
 return function(client, bufnr)

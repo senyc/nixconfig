@@ -19,10 +19,16 @@
       recursive = true;
     };
 
-
+    # Lanuage servers and formatters
     home.packages = with pkgs; [
-      clang-tools # Add clangd to path
+      clang-tools # Clangd
       alejandra 
+      lua-language-server
+      nodePackages.typescript-language-server
+      nil
+      gopls
+      tailwindcss-language-server
+      nodePackages.bash-language-server
     ];
   };
 }
