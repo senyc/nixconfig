@@ -18,5 +18,10 @@
       source = ./config;
       recursive = true;
     };
+
+    # Add clangd to path
+    home.packages = with pkgs; [
+      clang-tools
+    ];
   };
 }
