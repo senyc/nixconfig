@@ -2,7 +2,6 @@ local map = require 'senyc.utils'.default_map
 local no_formatting = {
   'pyright',
   'nil_ls',
-  'nil'
 }
 
 return function(client, bufnr)
@@ -50,8 +49,5 @@ return function(client, bufnr)
       end,
       opts
     )
-  else
-    -- Runs formatting plugin instead of lsp-powered formatting
-    map('n', '<leader>=', vim.cmd.Format)
   end
 end

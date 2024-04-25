@@ -2,10 +2,6 @@ local map = require 'senyc.utils'.default_map
 local utils = require 'senyc.utils'
 local functions = require 'senyc.functions'
 
--- Exit insert mode
--- This allows <C-c> in visual block mode to work as expected
-map("i", "<C-c>", "<Esc>")
--- Buffer deletion and traversal
 map('n', '<leader>l', vim.cmd.bnext)
 map('n', '<leader>h', vim.cmd.bprevious)
 map('n', '<leader>bd', vim.cmd.bdelete)
@@ -82,3 +78,4 @@ map('n', '<leader>cy', function()
   vim.cmd('let @+ = "' .. curr_dir .. '"')
   vim.print("Copied " .. curr_dir .. " to clipboard")
 end)
+
