@@ -31,6 +31,7 @@
 
   alacritty.enable = true;
   tmux.enable = true;
+
   zsh.enable = true;
   git.enable = true;
   wofi.enable = true;
@@ -57,7 +58,7 @@
   };
 
   home.packages = with pkgs; [
-    brave
+    chromium
     slack
     neofetch
     logseq
@@ -68,6 +69,7 @@
     aspell
     wl-clipboard
     keepassxc
+    obs-studio
     pavucontrol
     (writeShellScriptBin "rebuild" ''
       set -e

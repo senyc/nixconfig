@@ -75,7 +75,7 @@ map("n", "<leader>S", "viwp")
 -- Copies buffer directory to system clipboard
 map('n', '<leader>cy', function()
   local curr_dir = utils.get_formatted_path()
-  vim.cmd('let @+ = "' .. curr_dir .. '"')
+  vim.cmd('let @* = "' .. curr_dir .. '"')
   vim.print("Copied " .. curr_dir .. " to clipboard")
 end)
 

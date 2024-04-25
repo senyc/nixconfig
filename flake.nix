@@ -15,6 +15,10 @@
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    xdg-desktop-portal-hyprland = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     kx = {
       url = "github:senyc/kx";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +26,7 @@
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
       inputs.nixpkgs.follows = "nixpkgs";
+
     };
     hypridle = {
       url = "github:hyprwm/hypridle";
@@ -37,12 +42,13 @@
     nixpkgs,
     ...
   } @ inputs: let
+    inherit (self) outputs;
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    overlays = ./overlays.nix {inherit inputs nixpkgs;};
+    overlays = import ./nix/overlays.nix {inherit inputs;};
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs outputs;};
       modules = [
         ./nixosModules/configuration.nix
         inputs.home-manager.nixosModules.default

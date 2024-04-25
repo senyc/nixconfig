@@ -175,19 +175,19 @@
           ];
           windowrulev2 = [
             "workspace 1, class:^(Alacritty)$"
-            "workspace 2, class:^(brave-browser)$"
+            "workspace 2, class:^(chromium-browser)$"
             "workspace 3, title:^(Spotify( Premium)?)$"
             "workspace 4, class:^(Slack)$"
             "workspace 5, class:^(Logseq)$"
             "workspace 6, class:^(org.keepassxc.KeePassXC)$"
             "opacity 1.0 override 1.0 override, class:^(Alacritty)$"
-            "opacity 1.0 override 1.0 override, class:^(brave-browser)$"
+            "opacity 1.0 override 1.0 override, class:^(chromium-browser)$"
           ];
           exec-once = with pkgs; [
             "[workspace 3 silent] spotify"
-            "[workspace 2 silent] brave"
             "[workspace 4 silent] slack"
             "[workspace 6 silent] keepassxc"
+            "[workspace 2 silent] chromium"
             "alacritty -e tmux new -s main"
             "${hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"

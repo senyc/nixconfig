@@ -116,7 +116,7 @@ function M.delete_current_file()
     end
     if input:lower():sub(1, 1) == 'y' then
       vim.cmd.w()
-      vim.cmd('!rm ' .. '"' .. filename .. '"')
+      vim.cmd('silent !rm ' .. '"' .. filename .. '"')
       vim.cmd.bdelete()
     end
   end)

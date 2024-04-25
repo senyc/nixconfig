@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  outputs,
   ...
 }: {
   imports = [
@@ -15,9 +16,15 @@
 
   # Nix configurations
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  # Setting this to true causes issues with some packages (namely orc 0.4.38)
-  nixpkgs.config = {
-    enableParallelBuildingByDefault = false;
+
+  nixpkgs = {
+    overlays = [
+      outputs.overlays.default
+    ];
+    config = {
+      # Setting this to true causes issues with some packages (namely orc 0.4.38)
+      enableParallelBuildingByDefault = false;
+    };
   };
 
   greeter.enable = true;
@@ -55,6 +62,12 @@
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    gtkUsePortal = true;
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -63,6 +76,8 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    # For screen sharing
+    wireplumber.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -92,7 +107,7 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    inputs.kx.packages."x86_64-linux".default
+    myPackages.kx
     wget
     curl
     zip
@@ -114,7 +129,7 @@
   };
 
   networking.hosts = {
-    "127.0.0.1" = ["https://youtube.com" "https://www.youtube.com" "www.youtube.com" "youtube.com" ];
+    "127.0.0.1" = ["https://youtube.com" "https://www.youtube.com" "www.youtube.com" "youtube.com"];
   };
 
   # Hopefully fix issues with wayland and cursors
