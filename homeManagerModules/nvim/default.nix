@@ -19,9 +19,10 @@
       recursive = true;
     };
 
-    # Add clangd to path
+
     home.packages = with pkgs; [
-      clang-tools
+      clang-tools # Add clangd to path
+      alejandra 
     ];
   };
 }

@@ -30,6 +30,13 @@ return {
             require('formatter.filetypes.any').remove_trailing_whitespace
           }
         }
+        nix = {
+          exe = 'alejandra'
+          args = {
+            "-"
+          },
+          stdin = true,
+        }
       }
     }
   end
