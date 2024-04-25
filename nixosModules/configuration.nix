@@ -102,13 +102,9 @@
     lua
     python3
     go
-    luarocks
     nodejs
-    rustc
-    cargo
-    clang
-    lm_sensors # run sudo sensors-detect initially then sensors to get results
     docker-compose
+    lm_sensors # run sudo sensors-detect initially then sensors to get results
     inputs.kx.packages.${"x86_64-linux"}.default
   ];
 
