@@ -92,6 +92,7 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
+    inputs.kx.packages."x86_64-linux".default
     wget
     curl
     zip
@@ -105,7 +106,6 @@
     nodejs
     docker-compose
     lm_sensors # run sudo sensors-detect initially then sensors to get results
-    inputs.kx.packages.${"x86_64-linux"}.default
   ];
 
   virtualisation.docker = {
@@ -114,7 +114,7 @@
   };
 
   networking.hosts = {
-    "127.0.0.1" = ["https://youtube.com" "https://www.youtube.com" "www.youtube.com" "youtube.com" "www.reddit.com" "reddit.com"];
+    "127.0.0.1" = ["https://youtube.com" "https://www.youtube.com" "www.youtube.com" "youtube.com" ];
   };
 
   # Hopefully fix issues with wayland and cursors
