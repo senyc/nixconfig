@@ -125,6 +125,7 @@
               "$mod SHIFT, L, movewindow, r"
               "$mod SHIFT, K, movewindow, u"
               "$mod SHIFT, J, movewindow, d"
+            "$mod, SEMICOLON, exec, pkill wofi || omnipicker"
             ]
             ++ [
               # Scroll through existing workspaces with mod + scroll
@@ -165,7 +166,6 @@
             "$mod CONTROL, J, resizeactive, 0 20"
           ];
           bindr = [
-            "SUPER, SUPER_L, exec, pkill wofi || omnipicker"
           ];
           monitor = [
             ",highrr,auto,1"
