@@ -4,17 +4,22 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
--- This seems to be required because
--- some other plugin is adjusting formatoptions
--- vim.cmd.autocmd 'FileType * set formatoptions-=cro'
+-- Some other plugin is adjusting formatoptions these
+-- They allow for correct formatting of comments for some filetypes (doesn't treat them like
+-- c preprocessor directives)
+vim.cmd.autocmd 'FileType * set formatoptions-=cro'
+vim.cmd.autocmd 'FileType * set cinkeys-=0#'
+vim.cmd.autocmd 'FileType * set indentkeys-=0#'
 -- Default tab sizing
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true -- tabs -> spaces
-vim.opt.autoindent = true
-vim.opt.smartindent = true
+
+-- Smart(est) indentation
+vim.opt.smartindent = false
 vim.opt.cindent = true
+
 vim.opt.termguicolors = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
