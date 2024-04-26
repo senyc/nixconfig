@@ -15,10 +15,6 @@
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    xdg-desktop-portal-hyprland = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     kx = {
       url = "github:senyc/kx";
       inputs.nixpkgs.follows = "nixpkgs";
