@@ -24,7 +24,7 @@
         print_command = true;
         layer = "overlay";
         allow_images = true;
-        sort_order = "default";
+        sort_order = "alphabetical";
         gtk_dark = true;
         prompt = "";
         image_size = 22;
