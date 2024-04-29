@@ -107,8 +107,8 @@
                     spotify &
                 fi
                 ;;
-            *"Chromium"*)
-                chromium &
+            *"Brave"*)
+                brave &
                 ;;
             *"Pavucontrol"*)
                 pavucontrol &
