@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     kx = {
-      url = "github:senyc/kx";
+      url = "github:onatm/kx";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprpaper = {
