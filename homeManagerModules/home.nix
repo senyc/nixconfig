@@ -58,7 +58,7 @@
   };
 
   home.packages = with pkgs; [
-    chromium
+    brave
     slack
     neofetch
     logseq
