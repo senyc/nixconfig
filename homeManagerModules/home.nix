@@ -47,15 +47,6 @@
   home.homeDirectory = "/home/senyc";
 
   # This is a requirement for mouse cursor configuration
-  gtk.enable = true;
-
-  home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 16;
-    gtk.enable = true;
-    x11.enable = true;
-  };
 
   home.packages = with pkgs; [
     brave
