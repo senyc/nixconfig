@@ -22,7 +22,6 @@
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
       inputs.nixpkgs.follows = "nixpkgs";
-
     };
     hypridle = {
       url = "github:hyprwm/hypridle";
@@ -41,15 +40,10 @@
     inherit (self) outputs;
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    utils = import ./nix/utils.nix {inherit inputs outputs pkgs;};
   in {
     overlays = import ./nix/overlays.nix {inherit inputs;};
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs outputs;};
-      modules = [
-        ./nixosModules/configuration.nix
-        inputs.home-manager.nixosModules.default
-      ];
-    };
+    nixosConfigurations = utils.mkHost "desktop" // utils.mkHost "laptop";
     formatter.${system} = pkgs.alejandra;
   };
 }

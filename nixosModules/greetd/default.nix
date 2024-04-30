@@ -8,9 +8,9 @@
   session = "${pkgs.hyprland}/bin/Hyprland";
 in {
   options = {
-    greeter.enable = lib.mkEnableOption "Enable the greeter";
+    greetd.enable = lib.mkEnableOption "Enable the greeter";
   };
-  config = lib.mkIf config.greeter.enable {
+  config = lib.mkIf config.greetd.enable {
     services.greetd = {
       enable = true;
       settings = {
