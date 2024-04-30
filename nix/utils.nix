@@ -21,7 +21,7 @@
     config
     // {
       imports =
-        if builtins.hasAttr "imports" config
+        if config ? "imports"
         then importList ++ config.imports
         else importList;
     }
