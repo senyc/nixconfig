@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; {
@@ -8,8 +9,9 @@ with lib; {
     userConfig.enable = mkEnableOption "Enable default user configurations";
   };
   config = mkIf config.userConfig.enable {
+    programs.zsh.enable = true;
     users = {
-      mutableUser = false;
+      mutableUsers = false;
       users.senyc = {
         isNormalUser = true;
         uid = 1000;

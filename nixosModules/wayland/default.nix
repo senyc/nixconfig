@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    wayland.enable = lib.mkEnableOptions "Enable general wayland configuration";
+    wayland.enable = lib.mkEnableOption "Enable general wayland configuration";
   };
 
   config = lib.mkIf config.wayland.enable {
@@ -21,13 +21,13 @@
       };
       extraPortals = [pkgs.xdg-desktop-portal-hyprland];
     };
-  };
 
-  # This is a requirement for various gtk related services
-  programs.dconf.enable = true;
+    # This is a requirement for various gtk related services
+    programs.dconf.enable = true;
 
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
+    environment.sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = "1";
+      NIXOS_OZONE_WL = "1";
+    };
   };
 }

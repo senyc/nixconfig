@@ -1,37 +1,47 @@
 {
   inputs,
+  config,
+  outputs,
+  pkgs,
   ...
-}: {
-  imports = [
-    inputs.home-manager.nixosModules.default
-    ./hardware-configuration.nix
-    ./greetd
-    ./keepassxc
-  ];
+}: let
+  utils = import ../../nix/utils.nix {inherit inputs outputs pkgs;};
+  nixosModules = ["keepassxc" "greetd" "generalDesktop" "rootPackages" "rootServices" "userConfig" "virtualServices" "wayland" "networkConfig"];
+  homeManagerModules = ["alacritty" "cursor" "gbar" "git" "homePackages" "myScripts" "nvim" "spicetify" "tmux" "wofi" "zsh" "zoxide"] ++ (map (i: "hypr" + i) ["idle" "paper" "lock" "land"]);
+in
+  utils.useModules nixosModules
+  // {
+    imports =
+      [
+        ./hardware-configuration.nix
+        inputs.home-manager.nixosModules.default
+      ]
+      ++ utils.generateNixosImports nixosModules;
 
-  # Nix configurations
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+    # Nix configurations
+    nix.settings.experimental-features = ["nix-command" "flakes"];
+    userConfig.enable = true;
 
-  nixpkgs = {
-    config = {
-      # Setting this to true causes issues with some packages (namely orc 0.4.38)
-      enableParallelBuildingByDefault = false;
+    home-manager = {
+      extraSpecialArgs = {inherit inputs;};
+      users = {
+        "senyc" =
+          utils.useModules homeManagerModules
+          // {
+            imports = utils.generateHomeManagerImports homeManagerModules;
+            home = rec {
+              username = "senyc";
+              homeDirectory = "/home/${username}";
+              stateVersion = "23.11";
+            };
+
+            programs.home-manager.enable = true;
+          };
+      };
     };
-  };
 
-  greeter.enable = true;
-  keepassxc.enable = true;
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "senyc" = import ./home.nix;
+    hardware = {
+      opengl.enable = true;
     };
-  };
-
-
-  hardware = {
-    opengl.enable = true;
-  };
-  system.stateVersion = "23.11"; # Don't delete this
-}
+    system.stateVersion = "23.11";
+  }

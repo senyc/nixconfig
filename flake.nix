@@ -40,7 +40,7 @@
     inherit (self) outputs;
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    utils = import ./nix/helpers.nix {inherit inputs outputs pkgs;};
+    utils = import ./nix/utils.nix {inherit inputs outputs pkgs;};
   in {
     overlays = import ./nix/overlays.nix {inherit inputs;};
     nixosConfigurations = utils.mkHost "desktop" // utils.mkHost "laptop";
