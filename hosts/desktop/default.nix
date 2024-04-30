@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   outputs,
   pkgs,
   ...
@@ -32,7 +31,7 @@
       "zsh"
       "zoxide"
     ]
-    ++ (map (i: "hypr" + i) ["idle" "paper" "lock" "land"]);
+    ++ map (i: "hypr" + i) ["idle" "paper" "lock" "land"];
 in
   utils.addNixosModules nixosModules {
     imports = [
