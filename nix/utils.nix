@@ -10,13 +10,13 @@
     f = modules:
       with builtins;
         if modules != []
-        then {${(head modules)} = {enable = true;};} // (f (tail modules))
+        then {${head modules} = {enable = true;};} // f (tail modules)
         else {};
   in
     f;
 
-  addModulesTo = topLevelName: modules: config: let
-    importList = generateImports topLevelName modules;
+  addModulesTo = moduleType: modules: config: let
+    importList = generateImports moduleType modules;
   in
     config
     // {
