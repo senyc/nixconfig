@@ -20,7 +20,7 @@ with lib; {
          # Show changes
          git diff -U0
 
-         echo "NixOS Rebuilding..."
+         echo "NixOS Rebuilding $1..."
 
          sudo nixos-rebuild switch --flake ~/nixconfig#$1 &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
          echo "NixOS Rebuilt, commiting changes"
