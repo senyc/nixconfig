@@ -7,7 +7,7 @@
   options = {
     nvim.enable = lib.mkEnableOption "Enable nvim";
   };
-  config = lib.mkIf config.tmux.enable {
+  config = lib.mkIf config.nvim.enable {
     programs.neovim = {
       enable = true;
       defaultEditor = true;
