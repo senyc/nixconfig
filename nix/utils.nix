@@ -3,8 +3,8 @@
   outputs,
   ...
 }: let
-  generateImports = dir: modules:
-    map (module: ../${dir}/${module}) modules;
+  generateImports = moduleType: modules:
+    map (module: ../${moduleType}${"Modules"}/${module}) modules;
 
   useModules = let
     f = modules:
@@ -27,8 +27,8 @@
     }
     // useModules modules;
 in {
-  addNixosModules = addModulesTo "nixosModules";
-  addHomeManagerModules = addModulesTo "homeManagerModules";
+  addNixosModules = addModulesTo "nixos";
+  addHomeManagerModules = addModulesTo "homeManager";
 
   mkHosts = let
     mkHost = dev: {
