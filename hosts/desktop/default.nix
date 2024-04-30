@@ -6,8 +6,33 @@
   ...
 }: let
   utils = import ../../nix/utils.nix {inherit inputs outputs pkgs;};
-  nixosModules = ["keepassxc" "greetd" "generalDesktop" "rootPackages" "rootServices" "userConfig" "virtualServices" "wayland" "networkConfig"];
-  homeManagerModules = ["alacritty" "cursor" "gbar" "git" "homePackages" "myScripts" "nvim" "spicetify" "tmux" "wofi" "zsh" "zoxide"] ++ (map (i: "hypr" + i) ["idle" "paper" "lock" "land"]);
+  nixosModules = [
+    "keepassxc"
+    "greetd"
+    "generalDesktop"
+    "rootPackages"
+    "rootServices"
+    "userConfig"
+    "virtualServices"
+    "wayland"
+    "networkConfig"
+  ];
+  homeManagerModules =
+    [
+      "alacritty"
+      "cursor"
+      "gbar"
+      "git"
+      "homePackages"
+      "myScripts"
+      "nvim"
+      "spicetify"
+      "tmux"
+      "wofi"
+      "zsh"
+      "zoxide"
+    ]
+    ++ (map (i: "hypr" + i) ["idle" "paper" "lock" "land"]);
 in
   {
     imports =
@@ -25,8 +50,7 @@ in
       extraSpecialArgs = {inherit inputs;};
       users = {
         "senyc" =
-          utils.useModules homeManagerModules
-          // {
+          {
             imports = utils.generateHomeManagerImports homeManagerModules;
             home = rec {
               username = "senyc";
@@ -35,7 +59,8 @@ in
             };
 
             programs.home-manager.enable = true;
-          };
+          }
+          // utils.useModules homeManagerModules;
       };
     };
 
