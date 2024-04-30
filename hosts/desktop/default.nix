@@ -20,7 +20,6 @@ in
     # Nix configurations
     nix.settings.experimental-features = ["nix-command" "flakes"];
     userConfig.enable = true;
-    generalDesktop.enableAmdCard = true;
 
     home-manager = {
       extraSpecialArgs = {inherit inputs;};

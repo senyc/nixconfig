@@ -41,9 +41,6 @@ with lib; {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
       };
-      initrd = lib.mkIf config.generalDesktop.enableAmdCard {
-        kernelModules = ["amdgpu"];
-      };
     };
   };
 }
