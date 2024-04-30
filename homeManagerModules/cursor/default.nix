@@ -10,12 +10,12 @@ with lib; {
   };
 
   config = {
-    home.sessionVariables = {
-      QT_SCALE_FACTOR = 1;
-      ELM_SCALE = 1;
-      GDK_SCALE = 1;
-      XCURSOR_SIZE = 16;
-    };
+    # home.sessionVariables = {
+    #   QT_SCALE_FACTOR = 1;
+    #   ELM_SCALE = 1;
+    #   GDK_SCALE = 1;
+    #   XCURSOR_SIZE = 16;
+    # };
 
     gtk.enable = true;
 

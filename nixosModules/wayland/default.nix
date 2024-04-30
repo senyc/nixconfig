@@ -26,6 +26,10 @@
     programs.dconf.enable = true;
 
     environment.sessionVariables = {
+      QT_SCALE_FACTOR = 1;
+      ELM_SCALE = 1;
+      GDK_SCALE = 1;
+      XCURSOR_SIZE = 16;
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
     };
