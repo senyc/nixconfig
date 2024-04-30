@@ -3,7 +3,8 @@
   outputs,
   ...
 }: let
-  utils = import ./utils.nix {inherit inputs outputs;};
+  generateImports = dir: modules:
+    map (module: ../${dir}/${module}) modules;
 in {
   mkHost = dev: {
     ${dev} = inputs.nixpkgs.lib.nixosSystem {
@@ -23,12 +24,9 @@ in {
   in
     f;
 
-  generateImports = dir: modules:
-    map (module: ../${dir}/${module}) modules;
-
   generateNixosImports = modules:
-    utils.generateImports "nixosModules" modules;
+    generateImports "nixosModules" modules;
 
   generateHomeManagerImports = modules:
-    utils.generateImports "homeManagerModules" modules;
+    generateImports "homeManagerModules" modules;
 }
