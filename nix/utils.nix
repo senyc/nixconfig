@@ -30,12 +30,20 @@ in {
   addNixosModules = addModulesTo "nixosModules";
   addHomeManagerModules = addModulesTo "homeManagerModules";
 
-  mkHost = dev: {
-    ${dev} = inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs outputs;};
-      modules = [
-        ../hosts/${dev}
-      ];
+  mkHosts = let
+    mkHost = dev: {
+      ${dev} = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ../hosts/${dev}
+        ];
+      };
     };
-  };
+    f = with builtins;
+      devices:
+        if devices != []
+        then mkHost (head devices) // f (tail devices)
+        else {};
+  in
+    f;
 }

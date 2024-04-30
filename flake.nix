@@ -43,7 +43,7 @@
     utils = import ./nix/utils.nix {inherit inputs outputs pkgs;};
   in {
     overlays = import ./nix/overlays.nix {inherit inputs;};
-    nixosConfigurations = utils.mkHost "desktop" // utils.mkHost "laptop";
+    nixosConfigurations = utils.mkHosts ["desktop" "laptop"];
     formatter.${system} = pkgs.alejandra;
   };
 }
