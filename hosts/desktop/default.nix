@@ -9,8 +9,7 @@
   nixosModules = ["keepassxc" "greetd" "generalDesktop" "rootPackages" "rootServices" "userConfig" "virtualServices" "wayland" "networkConfig"];
   homeManagerModules = ["alacritty" "cursor" "gbar" "git" "homePackages" "myScripts" "nvim" "spicetify" "tmux" "wofi" "zsh" "zoxide"] ++ (map (i: "hypr" + i) ["idle" "paper" "lock" "land"]);
 in
-  utils.useModules nixosModules
-  // {
+  {
     imports =
       [
         ./hardware-configuration.nix
@@ -21,6 +20,7 @@ in
     # Nix configurations
     nix.settings.experimental-features = ["nix-command" "flakes"];
     userConfig.enable = true;
+    generalDesktop.enableAmdCard = true;
 
     home-manager = {
       extraSpecialArgs = {inherit inputs;};
@@ -43,5 +43,7 @@ in
     hardware = {
       opengl.enable = true;
     };
+
     system.stateVersion = "23.11";
   }
+  // utils.useModules nixosModules
