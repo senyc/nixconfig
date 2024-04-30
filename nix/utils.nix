@@ -5,15 +5,6 @@
 }: let
   generateImports = dir: modules:
     map (module: ../${dir}/${module}) modules;
-in {
-  mkHost = dev: {
-    ${dev} = inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs outputs;};
-      modules = [
-        ../hosts/${dev}
-      ];
-    };
-  };
 
   useModules = let
     f = modules:
@@ -24,9 +15,27 @@ in {
   in
     f;
 
-  generateNixosImports = modules:
-    generateImports "nixosModules" modules;
+  addModulesTo = topLevelName: modules: config: let
+    importList = generateImports topLevelName modules;
+  in
+    config
+    // {
+      imports =
+        if builtins.hasAttr "imports" config
+        then importList ++ config.imports
+        else importList;
+    }
+    // useModules modules;
+in {
+  addNixosModules = addModulesTo "nixosModules";
+  addHomeManagerModules = addModulesTo "homeManagerModules";
 
-  generateHomeManagerImports = modules:
-    generateImports "homeManagerModules" modules;
+  mkHost = dev: {
+    ${dev} = inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs outputs;};
+      modules = [
+        ../hosts/${dev}
+      ];
+    };
+  };
 }

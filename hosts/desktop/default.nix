@@ -34,13 +34,11 @@
     ]
     ++ (map (i: "hypr" + i) ["idle" "paper" "lock" "land"]);
 in
-  {
-    imports =
-      [
-        ./hardware-configuration.nix
-        inputs.home-manager.nixosModules.default
-      ]
-      ++ utils.generateNixosImports nixosModules;
+  utils.addNixosModules nixosModules {
+    imports = [
+      ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.default
+    ];
 
     # Nix configurations
     nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -49,25 +47,17 @@ in
     home-manager = {
       extraSpecialArgs = {inherit inputs;};
       users = {
-        "senyc" =
-          {
-            imports = utils.generateHomeManagerImports homeManagerModules;
-            home = rec {
-              username = "senyc";
-              homeDirectory = "/home/${username}";
-              stateVersion = "23.11";
-            };
+        "senyc" = utils.addHomeManagerModules homeManagerModules {
+          home = rec {
+            username = "senyc";
+            homeDirectory = "/home/${username}";
+            stateVersion = "23.11";
+          };
 
-            programs.home-manager.enable = true;
-          }
-          // utils.useModules homeManagerModules;
+          programs.home-manager.enable = true;
+        };
       };
-    };
-
-    hardware = {
-      opengl.enable = true;
     };
 
     system.stateVersion = "23.11";
   }
-  // utils.useModules nixosModules

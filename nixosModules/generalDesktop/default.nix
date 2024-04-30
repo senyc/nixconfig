@@ -11,6 +11,9 @@ with lib; {
   };
 
   config = mkIf config.generalDesktop.enable {
+    hardware = {
+      opengl.enable = true;
+    };
     sound.enable = true;
     security.rtkit.enable = true;
     services.pipewire = {
