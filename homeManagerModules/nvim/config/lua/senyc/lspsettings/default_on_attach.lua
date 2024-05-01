@@ -1,8 +1,8 @@
 local map = require 'senyc.utils'.default_map
--- local no_formatting = {
---   'pyright',
---   'nil_ls',
--- }
+local no_formatting = {
+  'pyright',
+  'nil_ls',
+}
 
 return function(client, bufnr)
   local opts = { buffer = bufnr, remap = false, silent = true }
@@ -31,16 +31,18 @@ return function(client, bufnr)
   -- Get implementation
   map('n', '<leader>gi', vim.lsp.buf.implementation, opts)
 
-  map('n', '<leader>=', vim.lsp.buf.format, opts)
   -- Format
-  -- if (function()
-  --       for _, val in pairs(no_formatting) do
-  --         if val == client.name then
-  --           return false
-  --         end
-  --       end
-  --       return true
-  --     end)()
+  if (function()
+        for _, val in pairs(no_formatting) do
+          if val == client.name then
+            return false
+          end
+        end
+        return true
+      end)() then
+    map('n', '<leader>=', vim.lsp.buf.format, opts)
+  end
+
   -- then
   --   map('v', '<leader>=', function()
   --       vim.lsp.buf.format()
