@@ -15,10 +15,11 @@ with lib; {
 
     # System packages
     environment.systemPackages = with pkgs; [
-      myPackages.kx
+      # myPackages.kx
       wget
       curl
       zip
+      sops
       unzip
       which
       ripgrep
@@ -28,6 +29,7 @@ with lib; {
       go
       nodejs
       docker-compose
+      tree
       lm_sensors # run sudo sensors-detect initially then sensors to get results
     ];
 

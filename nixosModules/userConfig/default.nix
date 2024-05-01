@@ -12,6 +12,10 @@ with lib; {
     programs.zsh.enable = true;
     users = {
       mutableUsers = false;
+      users.root = {
+        home = "/root";
+        initialPassword = "password";
+      };
       users.senyc = {
         isNormalUser = true;
         uid = 1000;

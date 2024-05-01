@@ -9,6 +9,9 @@
     };
     gBar = {
       url = "github:scorpion-26/gBar";
+    };
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprlock = {
@@ -18,6 +21,13 @@
     kx = {
       url = "github:onatm/kx";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    impermanence = {
+      url = "github:nix-community/impermanence";
     };
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";

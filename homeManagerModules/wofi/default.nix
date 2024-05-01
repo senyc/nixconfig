@@ -104,7 +104,7 @@
                 if pgrep spotify; then
                     hyprctl dispatch workspace 3
                 else
-                    spotify &
+                    authspotify &
                 fi
                 ;;
             *"Brave"*)
@@ -124,7 +124,8 @@
                 fi
                 ;;
             *"Keepassxc"*)
-                if pgrep -f keepassxc; then
+                # This will find the extension that is running
+                if pgrep keepassxc; then
                     hyprctl dispatch workspace 6
                 else
                     keepassxc &
