@@ -4,6 +4,14 @@ local no_formatting = {
   'nil_ls',
 }
 
+local function is_in_table(value, table)
+  for _, val in pairs(table) do
+    if val == value then
+      return true
+    end
+  end
+  return false
+end
 return function(client, bufnr)
   local opts = { buffer = bufnr, remap = false, silent = true }
   -- Inspect cursor token
@@ -32,24 +40,7 @@ return function(client, bufnr)
   map('n', '<leader>gi', vim.lsp.buf.implementation, opts)
 
   -- Format
-  if (function()
-        for _, val in pairs(no_formatting) do
-          if val == client.name then
-            return false
-          end
-        end
-        return true
-      end)() then
+  if (not is_in_table(client.name, no_formatting)) then
     map('n', '<leader>=', vim.lsp.buf.format, opts)
   end
-
-  -- then
-  --   map('v', '<leader>=', function()
-  --       vim.lsp.buf.format()
-  --       -- Escape visual mode
-  --       vim.api.nvim_input('<esc>')
-  --     end,
-  --     opts
-  --   )
-  -- end
 end
