@@ -4,7 +4,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
--- Some other plugin is adjusting formatoptions these
 -- They allow for correct formatting of comments for some filetypes (doesn't treat them like
 -- c preprocessor directives)
 vim.cmd.autocmd 'FileType * set formatoptions-=cro'
