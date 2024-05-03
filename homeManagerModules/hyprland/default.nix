@@ -184,7 +184,7 @@
             "opacity 1.0 override 1.0 override, class:^(brave-browser)$"
           ];
           exec-once = with pkgs; [
-            "[workspace 3 silent] spotify"
+            "[workspace 3 silent] authspotify"
             "[workspace 4 silent] slack"
             "[workspace 6 silent] keepassxc"
             "[workspace 2 silent] brave"
