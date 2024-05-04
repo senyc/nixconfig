@@ -13,7 +13,6 @@ with lib; {
     # Add packages that are external to nixpkgs
     nixpkgs.overlays = [outputs.overlays.addPackages];
 
-    # System packages
     environment.systemPackages = with pkgs; [
       # myPackages.kx
       wget

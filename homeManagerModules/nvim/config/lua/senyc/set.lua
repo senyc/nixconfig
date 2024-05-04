@@ -1,20 +1,31 @@
+local utils = require 'senyc.utils'
 vim.g.mapleader = ' '
 
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
+
 -- They allow for correct formatting of comments for some filetypes (doesn't treat them like
 -- c preprocessor directives)
 vim.cmd.autocmd 'FileType * set formatoptions-=cro'
 vim.cmd.autocmd 'FileType * set cinkeys-=0#'
 vim.cmd.autocmd 'FileType * set indentkeys-=0#'
+
+vim.cmd.autocmd('VimEnter * echo "Welcome to ' .. utils.get_project_name() .. '!"')
+
+-- This will trim the starting message
+vim.opt.shortmess = vim.opt.shortmess + 'I'
+-- This will replace the default eob (end of buffer) character to ' ' (from ~)
+vim.opt.fillchars = { eob = ' ' }
 -- Default tab sizing
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true -- tabs -> spaces
 
+-- Auto change the current directory
+vim.opt.autochdir = true
 -- Smart(est) indentation
 vim.opt.smartindent = false
 vim.opt.cindent = true

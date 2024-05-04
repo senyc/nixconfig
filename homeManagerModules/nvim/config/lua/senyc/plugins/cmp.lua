@@ -1,18 +1,17 @@
 return {
   'hrsh7th/nvim-cmp',
-  dependencies = { 'hrsh7th/cmp-buffer',
+  dependencies = {
+    'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-nvim-lua',
     'hrsh7th/cmp-path',
-    'rafamadriz/friendly-snippets',
+    -- The actual snip engine (Cannot be removed)
     'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
   },
   lazy = false,
   config = function()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
-    require 'luasnip.loaders.from_vscode'.lazy_load()
 
     -- `/` cmdline setup.
     cmp.setup.cmdline('/', {
@@ -42,7 +41,7 @@ return {
         ['<tab>'] = cmp.mapping.confirm {
           select = true,
         },
-        ['<C-j>'] = cmp.mapping(function(fallback)
+        ['<C-p>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
           elseif luasnip.expand_or_jumpable() then
@@ -51,7 +50,7 @@ return {
             fallback()
           end
         end, { 'i', 's' }),
-        ['<C-k>'] = cmp.mapping(function(fallback)
+        ['<C-n>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
           elseif luasnip.jumpable(-1) then

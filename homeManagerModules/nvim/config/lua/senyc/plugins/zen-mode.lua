@@ -12,8 +12,6 @@ return {
       require 'gitsigns'.toggle_current_line_blame()
       -- Toggles gitsigns
       require 'gitsigns'.toggle_signs()
-      -- Toggles top bar
-      require 'senyc.functions'.toggle_top_bar()
       -- Clears bottom messages
       vim.cmd 'echo ""'
 

@@ -15,6 +15,8 @@ with lib; {
         "work"
         "nixconfig"
         ".ssh"
+        # General notes
+        "Notes"
         # nvim extensions
         ".local/share/nvim"
         # Brave extensions

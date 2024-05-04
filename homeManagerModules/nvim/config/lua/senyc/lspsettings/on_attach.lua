@@ -1,7 +1,6 @@
 local map = require 'senyc.utils'.default_map
 local no_formatting = {
   'pyright',
-  'nil_ls',
 }
 
 local function is_in_table(value, table)

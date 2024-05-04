@@ -20,6 +20,7 @@ with lib; {
       brave
       slack
       neofetch
+      stern
       logseq
       doctl
       kubectl

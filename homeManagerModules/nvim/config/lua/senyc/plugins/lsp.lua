@@ -1,4 +1,4 @@
-local default_on_attach = require 'senyc.lspsettings.default_on_attach'
+local on_attach = require 'senyc.lspsettings.on_attach'
 return {
   'neovim/nvim-lspconfig',
   dependencies = { 'hrsh7th/cmp-nvim-lsp' },
@@ -13,13 +13,11 @@ return {
       'clangd',
       'lua_ls',
       'pyright',
-      'taplo',
       'tsserver',
-      'jsonls',
       'yamlls',
       'gopls',
       'cssls',
-      'solargraph',
+      -- 'solargraph',
       -- 'ruby_ls',
       'nil_ls'
     }
@@ -27,7 +25,7 @@ return {
     for _, server in ipairs(servers) do
       local config = {
         -- on_attach contains all lsp-specific key mappings
-        on_attach = default_on_attach,
+        on_attach = on_attach,
         capabilities = cmp.default_capabilities(),
       }
 

@@ -18,10 +18,6 @@
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    kx = {
-      url = "github:onatm/kx";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,10 +27,6 @@
     };
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hypridle = {
-      url = "github:hyprwm/hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -48,12 +40,9 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    utils = import ./nix/utils.nix {inherit inputs outputs pkgs;};
+    utils = import ./nix/utils.nix {inherit inputs outputs; };
   in {
     overlays = import ./nix/overlays.nix {inherit inputs;};
     nixosConfigurations = utils.mkHosts ["desktop" "laptop"];
-    formatter.${system} = pkgs.alejandra;
   };
 }
