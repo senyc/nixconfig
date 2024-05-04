@@ -22,6 +22,7 @@
     # Lanuage servers and formatters
     home.packages = with pkgs; [
       clang-tools # Clangd
+      yaml-language-server
       alejandra
       lua-language-server
       nodePackages.typescript-language-server
