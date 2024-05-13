@@ -21,8 +21,8 @@ with lib; {
           "www.news.google.com"
           "https://youtube.com"
           "www.reddit.com"
-          "www.yotube.com"
-          "youtube.com"
+          # "www.yotube.com"
+          # "youtube.com"
         ];
       };
     };
