@@ -13,8 +13,6 @@ with lib; {
     # Add packages that are external to nixpkgs
     nixpkgs.overlays = [outputs.overlays.addPackages];
 
-    nixpkgs.config.allowUnfree = true;
-    programs.steam.enable = true;
     environment.systemPackages = with pkgs; [
       # myPackages.kx
       wget

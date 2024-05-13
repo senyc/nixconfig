@@ -22,7 +22,6 @@
       };
       backgrounds = [
         {
-          monitor = "DP-2";
           path = "${../../backgrounds/primary_background.png}";
           blur_passes = 2;
           contrast = 0.8916;
@@ -33,7 +32,6 @@
       ];
       input-fields = [
         {
-          monitor = "DP-2";
           size = {
             width = 290;
             height = 65;
@@ -54,7 +52,6 @@
       ];
       labels = [
         {
-          monitor = "DP-2";
           text = ''cmd[update:1000] echo "$(date +"%R")"'';
           color = "rgba(255, 255, 255, .7)";
           font_size = 135;
@@ -65,7 +62,6 @@
           halign = "center";
         }
         {
-          monitor = "DP-2";
           text = "Hi there, $USER";
           color = "rgba(255, 255, 255, .7)";
           font_size = 25;
@@ -74,13 +70,12 @@
           position.y = -40;
         }
         {
-          monitor = "DP-2";
           text = ''cmd[update:1000] echo "$(playerctl metadata --format '{{title}}  {{artist}}')"'';
           color = "rgba(255, 255, 255, .7)";
           font_size = 18;
           font_family = "JetBrainsMono, Font Awesome 6 Free Solid";
           position.x = 0;
-          position.y = -15;
+          position.y = 20;
           halign = "center";
           valign = "bottom";
         }
