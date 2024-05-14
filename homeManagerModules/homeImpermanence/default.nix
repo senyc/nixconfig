@@ -31,6 +31,10 @@ with lib; {
         ".config/BraveSoftware/Brave-Browser/Default/Cookies"
         ".config/BraveSoftware/Brave-Browser/Default/Preferences"
         ".config/keepassxc/keepassxc.ini"
+        # Slack
+        ".config/Slack/Cookies"
+        # ".config/Slack/'Trust Tokens'"
+        ".config/Slack/Preferences"
       ];
       allowOther = true;
     };
