@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
-  tag = '0.1.4',
+  tag = '0.1.6',
   dependencies = { 'nvim-lua/plenary.nvim' },
   lazy = false,
   config = function()
@@ -28,13 +28,6 @@ return {
         },
         mappings = {
           i = {
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
-            -- For now I would like to keep the default binding for this
-            -- however, this does lead to it being impossible to scroll the preview
-            -- up or down
-            -- ["<C-n>"] = actions.preview_scrolling_up,
-            -- ["<C-p>"] = actions.preview_scrolling_down,
             ['ZZ'] = actions.close,
             -- This only works because the default function of esc is to exit insert mode
             ["<C-c>"] = { "<esc>", type = "command" },
@@ -88,7 +81,7 @@ return {
     end
 
     -- Find file
-    map('n', { '<leader>ff', '<c-g>' }, defaut_search)
+    map('n', '<leader>ff', defaut_search)
     -- Find vim help
     map('n', '<leader>fh', builtin.help_tags)
     -- Find live git grep

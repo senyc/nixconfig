@@ -15,7 +15,7 @@ in {
       enable = true;
       settings = {
         default_session = {
-          command = "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time --cmd ${session}";
+          command = "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --time --cmd ${session}";
           user = "greeter";
         };
       };

@@ -12,7 +12,18 @@ vim.cmd.autocmd 'FileType * set formatoptions-=cro'
 vim.cmd.autocmd 'FileType * set cinkeys-=0#'
 vim.cmd.autocmd 'FileType * set indentkeys-=0#'
 
-vim.cmd.autocmd('VimEnter * echo "Welcome to ' .. utils.get_project_name() .. '!"')
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    local project_name = utils.get_project_name()
+    if project_name ~= '~' then
+      vim.cmd('echo "Welcome to ' .. project_name .. '!"')
+    end
+    -- Will run telescope if nvim is run without any arguments
+    if vim.fn.expand '%' == "" then
+      vim.cmd.Search()
+    end
+  end,
+})
 
 -- This will trim the starting message
 vim.opt.shortmess = vim.opt.shortmess + 'I'

@@ -32,6 +32,28 @@ with lib; {
          git commit -am "feat: update $1 host generation to $current"
          popd
       '')
+      (writeShellScriptBin "rebldoot" ''
+        if [[ -z $1 ]]; then
+          echo "Please enter the host you would like to rebuild"  >&2
+          return
+        fi
+         set -e
+         pushd ~/nixconfig/
+         # Show changes
+         git diff -U0
+
+         echo "NixOS Rebuilding $1..."
+
+         sudo nixos-rebuild boot --flake ~/nixconfig#$1 &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+         echo "NixOS Rebuilt, commiting changes"
+
+         # Get current generation metadata
+         current=$(nixos-rebuild list-generations --flake ~/nixconfig#default | grep current | awk '{print $1,"on " $3}')
+
+         # Add the generation number to the commit message and add all changes to the commit
+         git commit -am "feat: update $1 host generation to $current"
+         popd
+      '')
       (writeShellScriptBin "screenshot" ''
         ${grim}/bin/grim -g "$(${slurp}/bin/slurp -w 0)" - | ${wl-clipboard}/bin/wl-copy
       '')

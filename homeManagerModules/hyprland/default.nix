@@ -187,7 +187,7 @@
             "[workspace 3 silent] authspotify"
             "[workspace 4 silent] slack"
             "[workspace 6 silent] keepassxc"
-            "[workspace 2 silent] brave"
+            "[workspace 2 silent] brave 'app.slack.com/signin'"
             "alacritty -e tmux new -s main"
             "${hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"

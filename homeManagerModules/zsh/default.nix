@@ -101,6 +101,7 @@
 
         # Key bindings
         bindkey -s ^f "tmux-sessionizer\n"
+        bindkey -s ^g "nvim\n"
 
          # [Ctrl-Delete] - delete whole forward-word
          bindkey -M emacs '^[[3;5~' kill-word
