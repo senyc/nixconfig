@@ -34,7 +34,7 @@ with lib; {
       '')
       (writeShellScriptBin "rebldoot" ''
         if [[ -z $1 ]]; then
-          echo "Please enter the host you would like to rebuild"  >&2
+          echo "Please enter the host you would like to rebuild" >&2
           return
         fi
          set -e

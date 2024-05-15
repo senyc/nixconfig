@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   ...
@@ -35,6 +34,9 @@
       extraConfig = {
         core = {
           pager = "less";
+        };
+        init = {
+          defaultBranch = "main";
         };
         url = {
           "ssh://git@github.com/" = {
