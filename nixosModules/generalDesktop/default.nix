@@ -16,6 +16,9 @@ with lib; {
         efi.canTouchEfiVariables = true;
       };
     };
+    hardware.bluetooth.enable = true; # enables support for Bluetooth
+    hardware.bluetooth.powerOnBoot = true;
+    services.blueman.enable = true;
     time.timeZone = "America/New_York";
     i18n.defaultLocale = "en_US.UTF-8";
     sound.enable = true;
