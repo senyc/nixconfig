@@ -2,6 +2,7 @@ return {
   'laytan/tailwind-sorter.nvim',
   lazy = true,
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
+  -- this is broken, could be a nix thing
   build = 'cd formatter && npm i && npm run build',
   ft = { 'html', 'js', 'javascriptreact', 'typescriptreact', 'astro', 'ts' },
   config = function()

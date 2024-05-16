@@ -29,6 +29,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
 vim.opt.shortmess = vim.opt.shortmess + 'I'
 -- This will replace the default eob (end of buffer) character to ' ' (from ~)
 vim.opt.fillchars = { eob = ' ' }
+
 -- Default tab sizing
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2

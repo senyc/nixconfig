@@ -2,7 +2,7 @@ return {
   'kylechui/nvim-surround',
   lazy = false,
   config = function()
-    require('nvim-surround').setup()
+    require 'nvim-surround'.setup()
 
     --     Old text                    Command         New text
     -- --------------------------------------------------------------------------------

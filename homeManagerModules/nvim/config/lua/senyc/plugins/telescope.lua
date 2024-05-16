@@ -59,18 +59,6 @@ return {
       end
     end
 
-    local function git_commits()
-      if not pcall(builtin.git_commits) then
-        vim.print 'Not in a git repository'
-      end
-    end
-
-    local function git_buffer_commit_diff()
-      if not pcall(builtin.git_bcommits) then
-        vim.print 'Not in a git repository'
-      end
-    end
-
     local function grep_string()
       local err, gitdir = get_git_dir()
       if err then
@@ -82,16 +70,10 @@ return {
 
     -- Find file
     map('n', '<leader>ff', defaut_search)
-    -- Find vim help
-    map('n', '<leader>fh', builtin.help_tags)
     -- Find live git grep
     map('n', '<leader>fg', live_git_grep)
-    -- Find commits in repo
-    map('n', '<leader>fc', git_commits)
-    -- Find man page entries
-    map('n', '<leader>fm', builtin.man_pages)
-    -- Find git buffer commit diff
-    map('n', '<leader>fd', git_buffer_commit_diff)
+    -- Find vim help
+    map('n', '<leader>fh', builtin.help_tags)
     -- Find references
     map('n', '<leader>fr', builtin.lsp_references)
     -- Find buffer
@@ -100,8 +82,6 @@ return {
     map('n', '<leader>tr', builtin.resume)
     -- Find word
     map('n', '<leader>fw', grep_string)
-    -- Find keymaps
-    map('n', '<leader>fk', builtin.keymaps)
     -- Old files
     map('n', { '<leader>fo', '<leader>of' }, builtin.oldfiles)
 

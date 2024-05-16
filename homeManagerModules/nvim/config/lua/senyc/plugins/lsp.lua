@@ -17,8 +17,6 @@ return {
       'yamlls',
       'gopls',
       'cssls',
-      -- 'solargraph',
-      -- 'ruby_ls',
       'nil_ls'
     }
 
@@ -37,13 +35,25 @@ return {
       lspconfig[server].setup(config)
     end
 
-    local ok, settings = pcall(require, 'senyc.lspsettings.diagnostic_config')
-    if ok then
-      vim.diagnostic.config(settings)
-    else
-      -- Sets with the defaults
-      vim.diagnostic.config()
-    end
+    vim.diagnostic.config {
+      virtual_text = {
+        spacing = 2,
+      },
+      virtual_lines = true,
+      signs = true,
+      update_in_insert = true,
+      underline = false,
+      severity_sort = true,
+      float = {
+        focusable = true,
+        style = 'minimal',
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+        suffix = '',
+      },
+    }
 
     vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
     vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })

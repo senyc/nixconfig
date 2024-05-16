@@ -44,6 +44,7 @@ with lib; {
       directories = [
         "/etc/nixos"
         "/var/log"
+        "/var/bluetooth"
         "/var/lib/systemd/coredump"
         "/etc/NetworkManager/system-connections"
       ];

@@ -3,11 +3,7 @@ local utils = require 'senyc.utils'
 local functions = require 'senyc.functions'
 
 -- These are up to be on the chopping block
-map('n', '<leader>l', vim.cmd.bnext)
-map('n', '<leader>h', vim.cmd.bprevious)
 map('n', '<leader>bd', vim.cmd.bdelete)
-map('n', '<leader>$', vim.cmd.blast)
-map('n', '<leader>0', vim.cmd.bfirst)
 
 -- Centralized navigation for search and <c-d/u>
 map('n', '<C-d>', '<c-d>zz')
@@ -31,19 +27,17 @@ map('n', '<C-j>', 'a<cr><Esc>')
 map('n', 'J', 'mzJ`z')
 
 -- System clipboard adjustments
-map({ 'n', 'v' }, '<leader>Y', [["+y%]])
+map({ 'n', 'v' }, '<leader>Y', [["+y$]])
 map({ 'n', 'v' }, '<leader>y', [["+y]])
 map({ 'n', 'v' }, '<leader>P', [["+P]])
 map({ 'n', 'v' }, '<leader>p', [["+p]])
-
--- Deletion to system clipboard
 map({ 'n', 'v' }, '<leader>d', [["+d]])
 
 -- Deletion to the null buffer
 map({ 'n', 'v' }, '<leader>x', [["_d]])
 
 -- Rename word, performs local word replacement
-map('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- map('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Similar to ZZ but saves all open buffers
 map('n', 'ZA', vim.cmd.wqall)
@@ -64,17 +58,8 @@ map('n', '<leader>fe', functions.toggle_netrw)
 -- word replace
 map({ 'n', 'v' }, '<leader>wr', functions.replace_word_in_project)
 
--- Number toggle (toggles relative line numbers
-map('n', '<leader>nt', function() vim.cmd "set invrelativenumber" end)
-
 -- Renames the current file
 map('n', '<leader>rn', functions.rename_current_file)
-
--- Tmux-sessionizer
-map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
--- Show current directory in popup
-map("n", "<leader>cd", function() vim.cmd "pwd" end)
 
 -- "Replaces" with delete (removes file)
 map("n", "<leader>rd", functions.delete_current_file)

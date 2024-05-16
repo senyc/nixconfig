@@ -14,23 +14,6 @@
       hooks = {
         commit-msg = ./commit-msg;
       };
-      aliases = {
-        br = "branch";
-        ca = "commit --amend";
-        cae = "commit --amend --no-edit";
-        rb = "rebase";
-        s = "status";
-        sw = "switch";
-        a = "add";
-        ap = "add -p";
-        aa = "add --all";
-        c = "commit";
-        cm = "commit -m";
-        d = "diff";
-        ds = "diff --staged";
-        p = "push";
-        ri = "rebase -i";
-      };
       extraConfig = {
         core = {
           pager = "less";
