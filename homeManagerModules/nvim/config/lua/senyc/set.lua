@@ -1,4 +1,3 @@
-local utils = require 'senyc.utils'
 vim.g.mapleader = ' '
 
 vim.opt.number = true
@@ -11,19 +10,6 @@ vim.opt.spell = true
 vim.cmd.autocmd 'FileType * set formatoptions-=cro'
 vim.cmd.autocmd 'FileType * set cinkeys-=0#'
 vim.cmd.autocmd 'FileType * set indentkeys-=0#'
-
-vim.api.nvim_create_autocmd('VimEnter', {
-  callback = function()
-    local project_name = utils.get_project_name()
-    if project_name ~= '~' then
-      vim.cmd('echo "Welcome to ' .. project_name .. '!"')
-    end
-    -- Will run telescope if nvim is run without any arguments
-    if vim.fn.expand '%' == "" then
-      vim.cmd.Search()
-    end
-  end,
-})
 
 -- This will trim the starting message
 vim.opt.shortmess = vim.opt.shortmess + 'I'
@@ -54,10 +40,6 @@ vim.opt.autochdir = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.showmode = false -- No reason to show -- INSERT --
--- Extending the amount of access that undotree has
-vim.opt.history = 10000
-vim.opt.undofile = true
-vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
 -- This allows for the color of the current line number to be different from others
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
@@ -86,8 +68,4 @@ vim.g.netrw_preview = 1
 -- Human-readable file sizes
 vim.g.netrw_sizestyle = "H"
 -- Percent of new window size
-vim.g.netrw_winsize = 15
--- When windowed will split on the right
-vim.g.netrw_altv = '1'
--- Default to tree view
 vim.g.netrw_liststyle = '3'
