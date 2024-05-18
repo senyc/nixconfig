@@ -3,9 +3,6 @@
   lib,
   ...
 }: {
-  imports = [
-  ];
-
   options = {
     hypridle.enable = lib.mkEnableOption "Enable hypridle";
   };
