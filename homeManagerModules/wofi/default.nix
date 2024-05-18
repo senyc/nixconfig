@@ -117,7 +117,7 @@
                 obs &
                 ;;
             *"Blueman"*)
-                blueman-applet &
+                blueman-manager &
                 ;;
             *"Logseq"*)
                 if pgrep -f logseq; then
