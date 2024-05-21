@@ -14,7 +14,7 @@ with lib; {
       hostName = "nixos";
       networkmanager.enable = true;
       hosts = {
-        "127.0.0.1" = ["instagram.com" "youtube.com" "www.youtube.com" "www.instagram.com" "https://www.youtube.com" "reddit.com" "www.reddit.com" "news.google.com" "www.news.google.com" "finance.google.com" "www.finance.google.com" "https://youtube.com" "twitch.tv" "www.twitch.tv"];
+        "127.0.0.1" = ["instagram.com" "www.instagram.com" "https://www.youtube.com" "news.google.com" "reddit.com" "www.news.google.com" "www.yotube.com" "youtube.com" "finance.google.com" "www.finance.google.com" "https://youtube.com" "www.reddit.com"];
       };
     };
   };
