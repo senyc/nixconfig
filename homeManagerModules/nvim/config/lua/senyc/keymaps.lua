@@ -2,9 +2,6 @@ local map = require 'senyc.utils'.default_map
 local utils = require 'senyc.utils'
 local functions = require 'senyc.functions'
 
--- These are up to be on the chopping block
-map('n', '<leader>bd', vim.cmd.bdelete)
-
 -- Centralized navigation for search and <c-d/u>
 map('n', '<C-d>', '<c-d>zz')
 map('n', '<C-u>', '<c-u>zz')
@@ -31,20 +28,18 @@ map({ 'n', 'v' }, '<leader>Y', [["+y$]])
 map({ 'n', 'v' }, '<leader>y', [["+y]])
 map({ 'n', 'v' }, '<leader>P', [["+P]])
 map({ 'n', 'v' }, '<leader>p', [["+p]])
+map({ 'n', 'v' }, '<leader>p', [["+p]])
 map({ 'n', 'v' }, '<leader>d', [["+d]])
 
 -- Deletion to the null buffer
 map({ 'n', 'v' }, '<leader>x', [["_d]])
 
--- Rename word, performs local word replacement
--- map('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
 -- Similar to ZZ but saves all open buffers
 map('n', 'ZA', vim.cmd.wqall)
 
 -- QuickFix navigation
-map('n', '<leader>,', ':cnext<cr>zz')
-map('n', '<leader>;', ':cprev<cr>zz')
+map('n', '<leader>;', ':cnext<cr>zz')
+map('n', '<leader>,', ':cprev<cr>zz')
 
 -- QuickFix close
 map('n', '<leader>cc', vim.cmd.cclose)
