@@ -28,7 +28,6 @@
       "myScripts"
       "homeImpermanence"
       "nvim"
-      "spicetify"
       "tmux"
       "wofi"
       "zsh"
@@ -51,9 +50,9 @@ in
       extraSpecialArgs = {inherit inputs;};
       users = {
         "senyc" = utils.addHomeManagerModules homeManagerModules {
-	  imports = [
-      inputs.impermanence.nixosModules.home-manager.impermanence
-	  ];
+          imports = [
+            inputs.impermanence.nixosModules.home-manager.impermanence
+          ];
           home = rec {
             username = "senyc";
             homeDirectory = "/home/${username}";

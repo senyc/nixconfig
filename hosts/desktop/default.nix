@@ -29,7 +29,6 @@
       "git"
       "homeImpermanence"
       "nvim"
-      "spicetify"
       "tmux"
       "wofi"
       "zsh"

@@ -17,6 +17,7 @@ with lib; {
         "slack"
       ];
     home.packages = with pkgs; [
+      spotify
       brave
       slack
       neofetch
