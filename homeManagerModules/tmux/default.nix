@@ -15,7 +15,7 @@
       clock24 = true;
       keyMode = "vi";
       mouse = true;
-      prefix = "C-o";
+      prefix = "C-b";
       shell = "${pkgs.zsh}/bin/zsh";
       escapeTime = 10;
       disableConfirmationPrompt = true;
