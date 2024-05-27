@@ -19,6 +19,7 @@ with lib; {
         "Notes"
         # nvim extensions
         ".local/share/nvim"
+        ".vim"
         # Brave extensions
         ".config/BraveSoftware/Brave-Browser/Default/Extensions"
         ".config/BraveSoftware/Brave-Browser/Default/'Extension State'"
@@ -30,8 +31,6 @@ with lib; {
         # Brave preferences and cookies (to stay logged in to sites)
         ".config/BraveSoftware/Brave-Browser/Default/Cookies"
         ".config/BraveSoftware/Brave-Browser/Default/Preferences"
-        ".config/keepassxc/keepassxc.ini"
-        # Slack
       ];
       allowOther = true;
     };

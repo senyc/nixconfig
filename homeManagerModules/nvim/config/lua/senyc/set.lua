@@ -14,7 +14,7 @@ vim.cmd.autocmd 'FileType * set indentkeys-=0#'
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     -- Will run telescope if nvim is run without any arguments
-    if vim.fn.expand '%' == "" then
+    if vim.fn.expand '%' == '' and vim.fn.wordcount().words == 0 then
       vim.cmd.Search()
     end
   end,
@@ -47,6 +47,12 @@ vim.opt.updatetime = 50
 vim.opt.autochdir = true
 vim.opt.swapfile = false
 vim.opt.backup = false
+
+-- Use undo file for persistent state
+vim.opt.history = 10000
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
+
 vim.opt.showmode = false -- No reason to show -- INSERT --
 -- This allows for the color of the current line number to be different from others
 vim.opt.cursorline = true
