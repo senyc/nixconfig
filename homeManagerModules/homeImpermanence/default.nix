@@ -20,6 +20,7 @@ with lib; {
         # nvim extensions
         ".local/share/nvim"
         ".vim"
+        ".kube"
         # Brave extensions
         ".config/BraveSoftware/Brave-Browser/Default/Extensions"
         ".config/BraveSoftware/Brave-Browser/Default/'Extension State'"
