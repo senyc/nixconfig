@@ -17,21 +17,22 @@ with lib; {
         "slack"
       ];
     home.packages = with pkgs; [
-      spotify
-      brave
-      slack
-      neofetch
-      stern
-      logseq
-      doctl
-      kubectl
-      pamixer
-      playerctl
+      arduino
       aspell
-      wl-clipboard
+      brave
+      doctl
       keepassxc
+      kubectl
+      logseq
+      neofetch
       obs-studio
+      pamixer
       pavucontrol
+      playerctl
+      slack
+      spotify
+      stern
+      wl-clipboard
     ];
   };
 }

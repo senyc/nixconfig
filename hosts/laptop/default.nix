@@ -17,8 +17,7 @@
     "wayland"
     "networkConfig"
   ];
-  homeManagerModules =
-    [
+  homeManagerModules = [
       "alacritty"
       "cursor"
       "gbar"
@@ -35,7 +34,6 @@ in
   utils.addNixosModules nixosModules {
     imports = [
       ./hardware-configuration.nix
-      inputs.impermanence.nixosModules.impermanence
       inputs.disko.nixosModules.default
       inputs.home-manager.nixosModules.default
     ];
@@ -48,9 +46,6 @@ in
       extraSpecialArgs = {inherit inputs;};
       users = {
         "senyc" = utils.addHomeManagerModules homeManagerModules {
-          imports = [
-            inputs.impermanence.nixosModules.home-manager.impermanence
-          ];
           home = rec {
             username = "senyc";
             homeDirectory = "/home/${username}";
