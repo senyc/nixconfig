@@ -15,7 +15,6 @@
     "primaryDiskPartitions"
     "virtualServices"
     "wayland"
-    "rootImpermanence"
     "networkConfig"
   ];
   homeManagerModules =
@@ -26,7 +25,6 @@
       "git"
       "homePackages"
       "myScripts"
-      "homeImpermanence"
       "nvim"
       "tmux"
       "wofi"
