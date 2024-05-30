@@ -1,5 +1,5 @@
 return {
-  'laytan/tailwind-sorter.nvim',
+  'senyc/tailwind-sorter.nvim',
   lazy = true,
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
   -- this is broken, could be a nix thing

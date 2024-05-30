@@ -18,6 +18,7 @@ with lib; {
       wget
       curl
       zip
+      gcc
       sops
       unzip
       which
