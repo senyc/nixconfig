@@ -45,10 +45,11 @@
             gaps_out = 8;
             border_size = 1;
             layout = "master";
+            cursor_inactive_timeout = 10;
           };
-          cursor = {
-            inactive_timeout = 10;
-          };
+          # cursor = {
+          #   inactive_timeout = 10;
+          # };
           input = {
             follow_mouse = 1;
             touchpad = {
