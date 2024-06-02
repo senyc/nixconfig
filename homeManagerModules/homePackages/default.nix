@@ -24,7 +24,6 @@ with lib; {
       keepassxc
       kubectl
       logseq
-      neofetch
       obs-studio
       pamixer
       pavucontrol

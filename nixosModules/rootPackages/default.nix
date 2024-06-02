@@ -18,12 +18,10 @@ with lib; {
       wget
       curl
       zip
-      gcc
       sops
       unzip
       which
       ripgrep
-      jq
       lua
       python3
       go

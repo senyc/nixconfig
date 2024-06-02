@@ -15,7 +15,7 @@ with lib; {
   config = mkIf config.sopsConfig.enable {
     sops.defaultSopsFile = ../../secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
-    sops.age.keyFile = "/persist/home/senyc/.config/sops/age/keys.txt";
+    sops.age.keyFile = "/home/senyc/.config/sops/age/keys.txt";
 
     sops.age.generateKey = false;
     # This is the actual specification of the secrets.
