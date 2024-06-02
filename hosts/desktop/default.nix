@@ -23,6 +23,7 @@
       "cursor"
       "gbar"
       "git"
+      "chromium"
       "nvim"
       "packages"
       "scripts"
