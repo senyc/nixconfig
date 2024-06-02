@@ -4,13 +4,16 @@
   ...
 }: let
   generateImports = moduleType: modules:
-    map (module: ../${moduleType}${"Modules"}/${module}) modules;
-
+    map (module: ../${moduleType}Modules/${module}) modules;
   useModules = let
-    f = moduleType: modules:
+    f = modules:
       with builtins;
         if modules != []
-        then {modules.${moduleType}.${head modules} = {enable = true;};} // f moduleType (tail modules)
+        then
+          {
+            ${head modules}.enable = true;
+          }
+          // f (tail modules)
         else {};
   in
     f;
@@ -25,7 +28,7 @@
         then importList ++ config.imports
         else importList;
     }
-    // useModules moduleType modules;
+    // {modules.${moduleType} = useModules modules;};
 in {
   addSystemModules = addModulesTo "system";
   addUserModules = addModulesTo "user";

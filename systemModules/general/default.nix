@@ -10,6 +10,8 @@ with lib; {
   };
 
   config = mkIf config.modules.system.general.enable {
+    nix.settings.experimental-features = ["nix-command" "flakes"];
+
     boot = {
       loader = {
         systemd-boot.enable = true;

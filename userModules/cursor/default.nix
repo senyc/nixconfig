@@ -9,7 +9,7 @@ with lib; {
     modules.user.cursor.enable = mkEnableOption "Enable cursor customizations";
   };
 
-  config = lib.mkIf config.modules.user.cusor.enable {
+  config = lib.mkIf config.modules.user.cursor.enable {
     gtk.enable = true;
 
     home.pointerCursor = {
