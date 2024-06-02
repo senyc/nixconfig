@@ -7,10 +7,10 @@
     map (module: ../${moduleType}${"Modules"}/${module}) modules;
 
   useModules = let
-    f = modules:
+    f = moduleType: modules:
       with builtins;
         if modules != []
-        then {${head modules} = {enable = true;};} // f (tail modules)
+        then {modules.${moduleType}.${head modules} = {enable = true;};} // f moduleType (tail modules)
         else {};
   in
     f;
@@ -25,10 +25,10 @@
         then importList ++ config.imports
         else importList;
     }
-    // useModules modules;
+    // useModules moduleType modules;
 in {
-  addNixosModules = addModulesTo "nixos";
-  addHomeManagerModules = addModulesTo "homeManager";
+  addSystemModules = addModulesTo "system";
+  addUserModules = addModulesTo "user";
 
   mkHosts = let
     mkHost = dev: {

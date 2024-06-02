@@ -8,19 +8,19 @@
   nixosModules = [
     "keepassxc"
     "greetd"
-    "generalDesktop"
-    "rootPackages"
-    "rootServices"
-    "userConfig"
-    "primaryDiskPartitions"
-    "virtualServices"
+    "general"
+    "packages"
+    "services"
+    "users"
+    "disk"
+    "virtual"
     "wayland"
-    "networkConfig"
-    "sopsConfig"
+    "network"
+    "sops"
   ];
   homeManagerModules = [
-      "homePackages"
-      "myScripts"
+      "packages"
+      "scripts"
       "alacritty"
       "cursor"
       "gbar"
@@ -32,7 +32,7 @@
     ]
     ++ map (i: "hypr${i}") ["idle" "paper" "lock" "land"];
 in
-  utils.addNixosModules nixosModules {
+  utils.addSystemModules nixosModules {
     imports = [
       ./hardware-configuration.nix
       inputs.disko.nixosModules.default
@@ -46,7 +46,7 @@ in
     home-manager = {
       extraSpecialArgs = {inherit inputs;};
       users = {
-        "senyc" = utils.addHomeManagerModules homeManagerModules {
+        "senyc" = utils.addUserModules homeManagerModules {
           home = rec {
             username = "senyc";
             homeDirectory = "/home/${username}";
