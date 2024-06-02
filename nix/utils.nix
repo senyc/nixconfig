@@ -4,13 +4,16 @@
   ...
 }: let
   generateImports = moduleType: modules:
-    map (module: ../${moduleType}${"Modules"}/${module}) modules;
-
+    map (module: ../${moduleType}Modules/${module}) modules;
   useModules = let
     f = modules:
       with builtins;
         if modules != []
-        then {${head modules} = {enable = true;};} // f (tail modules)
+        then
+          {
+            ${head modules}.enable = true;
+          }
+          // f (tail modules)
         else {};
   in
     f;
@@ -25,10 +28,10 @@
         then importList ++ config.imports
         else importList;
     }
-    // useModules modules;
+    // {modules.${moduleType} = useModules modules;};
 in {
-  addNixosModules = addModulesTo "nixos";
-  addHomeManagerModules = addModulesTo "homeManager";
+  addSystemModules = addModulesTo "system";
+  addUserModules = addModulesTo "user";
 
   mkHosts = let
     mkHost = dev: {

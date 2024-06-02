@@ -6,25 +6,27 @@
 }: let
   utils = import ../../nix/utils.nix {inherit inputs outputs pkgs;};
   nixosModules = [
-    "keepassxc"
+    "disk"
+    "general"
     "greetd"
-    "generalDesktop"
-    "rootPackages"
-    "rootServices"
-    "userConfig"
-    "primaryDiskPartitions"
-    "virtualServices"
+    "keepassxc"
+    "network"
+    "packages"
+    "services"
+    "sops"
+    "users"
+    "virtual"
     "wayland"
-    "networkConfig"
   ];
-  homeManagerModules = [
+  homeManagerModules =
+    [
       "alacritty"
       "cursor"
       "gbar"
       "git"
-      "homePackages"
-      "myScripts"
       "nvim"
+      "packages"
+      "scripts"
       "tmux"
       "wofi"
       "zsh"
@@ -37,10 +39,6 @@ in
       inputs.disko.nixosModules.default
       inputs.home-manager.nixosModules.default
     ];
-
-    # Nix configurations
-    nix.settings.experimental-features = ["nix-command" "flakes"];
-    userConfig.enable = true;
 
     home-manager = {
       extraSpecialArgs = {inherit inputs;};
@@ -56,6 +54,5 @@ in
         };
       };
     };
-
     system.stateVersion = "23.11";
   }
