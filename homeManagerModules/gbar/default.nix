@@ -26,8 +26,8 @@
         AudioRevealer = true;
         LockCommand = "hyprlock";
         CPUThermalZone = "/sys/class/thermal/thermal_zone0/temp";
-        AmdGPUThermalZone = "/device/hwmon/hwmon0/temp1_input";
-        DrmAmdCard = "card1";
+        AmdGPUThermalZone = "/device/hwmon/hwmon4/temp1_input";
+        DrmAmdCard = "card2";
       };
       extraConfig = ''
         WidgetsLeft: [Workspaces]
