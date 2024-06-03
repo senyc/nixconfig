@@ -112,7 +112,6 @@
               # "$mod, G, togglegroup,"
               "$mod, bracketleft, changegroupactive, b"
               "$mod, bracketright, changegroupactive, f"
-              "$mod, P, pin, active"
 
               "$mod, left, movefocus, l"
               "$mod, right, movefocus, r"
@@ -128,18 +127,25 @@
               "$mod SHIFT, L, movewindow, r"
               "$mod SHIFT, K, movewindow, u"
               "$mod SHIFT, J, movewindow, d"
-              "$mod, SEMICOLON, exec, pkill wofi || omnipicker"
+              "$mod, SEMICOLON, exec, pkill wofi || wofi --show=run --lines 2"
             ]
             ++ [
               # Scroll through existing workspaces with mod + scroll
               "$mod, mouse_down, workspace, e+1"
               "$mod, mouse_up, workspace, e-1"
 
-              "$mod, I, workspace, 1"
+              # Terminal
+              "$mod, E, workspace, 1"
+              # Browser
               "$mod, R, workspace, 2"
-              "$mod, V, workspace, 3"
+              # Music
+              "$mod, M, workspace, 3"
+              # Other
               "$mod, O, workspace, 4"
+              # Notes
               "$mod, N, workspace, 5"
+              # Passwords
+              "$mod, P, workspace, 6"
             ]
             ++ [
               ",XF86AudioRaiseVolume, exec, pamixer -i 2"
@@ -154,21 +160,15 @@
             "SUPER, mouse:272, movewindow"
             "SUPER, mouse:273, resizewindow"
           ];
-          env = [
-            # "HYPRCURSOR_THEME,Bibata-Modern-Classic"
-            # "HYPRCURSOR_SIZE,24"
-          ];
           debug = {
-            enable_stdout_logs = true;
-            disable_logs = false;
+            enable_stdout_logs = false;
+            disable_logs = true;
           };
           binde = [
             "$mod CONTROL, L, resizeactive, 20 0"
             "$mod CONTROL, H, resizeactive, -20 0"
             "$mod CONTROL, K, resizeactive, 0 -20"
             "$mod CONTROL, J, resizeactive, 0 20"
-          ];
-          bindr = [
           ];
           monitor = [
             ",highrr,auto,1"
@@ -178,19 +178,20 @@
           ];
           windowrulev2 = [
             "workspace 1, class:^(Alacritty)$"
-            "workspace 2, class:^(brave-browser)$"
+            "workspace 2, class:^(chromium-browser)$"
             "workspace 3, title:^(Spotify( Premium)?)$"
             "workspace 4, class:^(Slack)$"
             "workspace 5, class:^(Logseq)$"
             "workspace 6, class:^(org.keepassxc.KeePassXC)$"
             "opacity 1.0 override 1.0 override, class:^(Alacritty)$"
-            "opacity 1.0 override 1.0 override, class:^(brave-browser)$"
+            "opacity 1.0 override 1.0 override, class:^(chromium-browser)$"
           ];
           exec-once = with pkgs; [
-            "[workspace 3 silent] authspotify"
+            "[workspace 3 silent] spotify"
             "[workspace 4 silent] slack"
             "[workspace 6 silent] keepassxc"
-            "[workspace 2 silent] brave 'app.slack.com/signin'"
+            "[workspace 2 silent] chromium"
+            "[workspace 5 silent] logseq"
             "alacritty -e tmux new -s main"
             "${hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"

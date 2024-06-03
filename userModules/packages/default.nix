@@ -19,7 +19,6 @@ with lib; {
     home.packages = with pkgs; [
       arduino
       aspell
-      brave
       doctl
       keepassxc
       kubectl

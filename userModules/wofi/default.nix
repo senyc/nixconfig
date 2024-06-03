@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   ...
@@ -80,64 +79,5 @@
         }
       '';
     };
-    home.packages = with pkgs; [
-      # to speed this up we would just have to get the path for all of the icons instead of searching
-      (writeShellScriptBin "omnipicker" ''
-        # I did try to make this dynamic - it was just too slow ):
-        printed_items="img:/home/senyc/.nix-profile/share/icons/hicolor/scalable/apps/Alacritty.svg:text:Alacritty\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/brave-browser.png:text:Brave\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/spotify-client.png:text:Spotify\nimg:/home/senyc/.nix-profile/share/pixmaps/slack.png:text:Slack\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/nvim.png:text:Nvim\nimg:${./icons/logseq.png}:text:Logseq\nimg:${./icons/pavucontrol.png}:text:Pavucontrol\nimg:/home/senyc/.nix-profile/share/icons/hicolor/scalable/apps/keepassxc.svg:text:Keepassxc\nimg:/home/senyc/.nix-profile/share/icons/hicolor/128x128/apps/com.obsproject.Studio.png:text:Obs\nimg:${./icons/bluetooth-svgrepo-com.svg}:text:Blueman"
-
-        case "$(echo -e $printed_items | ${wofi}/bin/wofi)" in
-            *"Alacritty"*)
-                alacritty &
-                ;;
-            *"Slack"*)
-                if pgrep slack; then
-                    hyprctl dispatch workspace 4
-                else
-                    slack &
-                fi
-                ;;
-            *"Nvim"*)
-                hyprctl dispatch workspace 1
-                ;;
-            *"Spotify"*)
-                if pgrep spotify; then
-                    hyprctl dispatch workspace 3
-                else
-                    authspotify &
-                fi
-                ;;
-            *"Brave"*)
-                brave &
-                ;;
-            *"Pavucontrol"*)
-                pavucontrol &
-                ;;
-            *"Obs"*)
-                obs &
-                ;;
-            *"Blueman"*)
-                blueman-manager &
-                ;;
-            *"Logseq"*)
-                if pgrep -f logseq; then
-                    hyprctl dispatch workspace 5
-                else
-                    logseq &
-                fi
-                ;;
-            *"Keepassxc"*)
-                # This will find the extension that is running
-                if pgrep keepassxc; then
-                    hyprctl dispatch workspace 6
-                else
-                    keepassxc &
-                fi
-                ;;
-            default)
-            ;;
-        esac
-      '')
-    ];
   };
 }
