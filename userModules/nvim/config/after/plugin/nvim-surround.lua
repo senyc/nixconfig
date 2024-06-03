@@ -1,8 +1,4 @@
-return {
-  'kylechui/nvim-surround',
-  lazy = false,
-  config = function()
-    require 'nvim-surround'.setup()
+ require 'nvim-surround'.setup()
 
     --     Old text                    Command         New text
     -- --------------------------------------------------------------------------------
@@ -13,5 +9,3 @@ return {
     --     'change quot*es'            cs'"            "change quotes"
     --     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
     --     delete(function calls)     dsf             function calls
-  end
-}

@@ -56,7 +56,7 @@
               natural_scroll = false;
             };
             repeat_rate = 40;
-            repeat_delay = 300;
+            repeat_delay = 250;
             force_no_accel = true;
             sensitivity = 0.8; # -1.0 - 1.0, 0 means no modification.
           };

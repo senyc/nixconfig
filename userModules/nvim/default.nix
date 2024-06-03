@@ -24,6 +24,24 @@
         tailwindcss-language-server
         nodePackages.bash-language-server
       ];
+      plugins = with pkgs.vimPlugins; [
+        catppuccin-nvim
+        cmp-buffer
+        cmp-cmdline
+        cmp-nvim-lsp
+        cmp-nvim-lua
+        cmp-path
+        comment-nvim
+        gitsigns-nvim
+        luasnip
+        nvim-cmp
+        nvim-lspconfig
+        nvim-surround
+        nvim-treesitter
+        telescope-nvim
+        vim-illuminate
+        zen-mode-nvim
+      ];
     };
     # Link all of the lua config
     xdg.configFile.nvim = {
