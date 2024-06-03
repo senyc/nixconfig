@@ -30,7 +30,7 @@ return function(client, bufnr)
   -- Diagnostic next
   map('n', '<leader>dn', vim.diagnostic.goto_next, opts)
   -- Code action
-  map('n', '<leader>.', vim.lsp.buf.code_action, opts)
+  map('n', '<leader>a', vim.lsp.buf.code_action, opts)
   -- Rename symbol
   map('n', '<leader>rs', vim.lsp.buf.rename, opts)
   -- Get references
@@ -40,6 +40,6 @@ return function(client, bufnr)
 
   -- Format
   if (not is_in_table(client.name, no_formatting)) then
-    map('n', '<leader>=', vim.lsp.buf.format, opts)
+    map('n', '<leader>e', vim.lsp.buf.format, opts)
   end
 end

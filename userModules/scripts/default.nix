@@ -50,6 +50,12 @@ with lib; {
       (writeShellScriptBin "getsecret" ''
         cat "/var/run/secrets/$1"
       '')
+      (writeShellScriptBin "vimg" ''
+       vim fg
+      '')
+      (writeShellScriptBin "vimo" ''
+       vim fo
+      '')
     ];
   };
 }

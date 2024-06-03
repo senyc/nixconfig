@@ -16,6 +16,10 @@ vim.api.nvim_create_autocmd('VimEnter', {
     -- Will run telescope if nvim is run without any arguments
     if vim.fn.expand '%' == '' and vim.fn.wordcount().words == 0 then
       vim.cmd.Search()
+    elseif vim.fn.expand '%' == 'fg' and vim.fn.wordcount().words == 0 then
+      vim.cmd.GrepSearch()
+    elseif vim.fn.expand '%' == 'fo' and vim.fn.wordcount().words == 0 then
+      vim.cmd.OldSearch()
     end
   end,
 })

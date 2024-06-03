@@ -62,8 +62,8 @@ local function grep_string()
   end
 end
 
--- Find file
-map('n', '<leader>ff', defaut_search)
+-- Search
+map('n', '<leader>s', defaut_search)
 -- Find live git grep
 map('n', '<leader>fg', live_git_grep)
 -- Find vim help
@@ -82,4 +82,11 @@ map('n', { '<leader>fo', '<leader>of' }, builtin.oldfiles)
 -- Adding default search lua command, user commands must start with capital letter
 vim.api.nvim_create_user_command('Search', function()
   pcall(defaut_search)
+end, {})
+
+vim.api.nvim_create_user_command('GrepSearch', function()
+  pcall(live_git_grep)
+end, {})
+vim.api.nvim_create_user_command('OldSearch', function()
+  pcall(builtin.oldfiles)
 end, {})
