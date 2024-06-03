@@ -37,10 +37,38 @@
         nvim-cmp
         nvim-lspconfig
         nvim-surround
-        nvim-treesitter
         telescope-nvim
         vim-illuminate
         zen-mode-nvim
+        (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+          p.bash
+          p.c
+          p.cpp
+          p.css
+          p.csv
+          p.git_config
+          p.git_rebase
+          p.gitattributes
+          p.gitcommit
+          p.gitignore
+          p.go
+          p.helm
+          p.html
+          p.javascript
+          p.json
+          p.lua
+          p.luadoc
+          p.make
+          p.nix
+          p.python
+          p.ruby
+          p.toml
+          p.tsx
+          p.typescript
+          p.vim
+          p.vimdoc
+          p.yaml
+        ]))
       ];
     };
     # Link all of the lua config
