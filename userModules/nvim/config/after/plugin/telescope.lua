@@ -62,18 +62,21 @@ local function grep_string()
   end
 end
 
+local function quickfix_find()
+  vim.cmd.cclose()
+  builtin.quickfix()
+end
+
 -- Search
 map('n', '<leader>s', defaut_search)
 -- Find live git grep
 map('n', '<leader>g', live_git_grep)
--- Find vim help
-map('n', '<leader>fh', builtin.help_tags)
--- Find buffer
-map('n', '<leader>fb', builtin.buffers)
 -- telescope resume
 map('n', '<leader>tr', builtin.resume)
+-- quickfix find
+map('n', '<leader>cf', quickfix_find)
 -- Find word
-map('n', '<leader>fw', grep_string)
+map('n', '<leader>fg', grep_string)
 -- Old files
 map('n', '<leader>of', builtin.oldfiles)
 

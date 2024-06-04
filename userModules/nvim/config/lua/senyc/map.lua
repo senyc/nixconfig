@@ -34,9 +34,6 @@ map({ 'n', 'v' }, '<leader>d', [["+d]])
 -- Deletion to the null buffer
 map({ 'n', 'v' }, '<leader>x', [["_d]])
 
--- Similar to ZZ but saves all open buffers
-map('n', 'ZA', vim.cmd.wqall)
-
 -- QuickFix navigation
 map('n', '<leader>;', ':cnext<cr>zz')
 map('n', '<leader>,', ':cprev<cr>zz')
@@ -47,8 +44,8 @@ map('n', '<leader>cc', vim.cmd.cclose)
 -- QuickFix open
 map('n', '<leader>co', vim.cmd.copen)
 
--- Netrw toggle (file explorer)
-map('n', '<leader>fe', functions.toggle_netrw)
+-- Netrw toggle Explorer
+map('n', '<leader>e', functions.toggle_netrw)
 
 -- word replace
 map({ 'n', 'v' }, '<leader>wr', functions.replace_word_in_project)

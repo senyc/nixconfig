@@ -40,6 +40,6 @@ return function(client, bufnr)
 
   -- Format
   if (not is_in_table(client.name, no_formatting)) then
-    map('n', '<leader>e', vim.lsp.buf.format, opts)
+    map('n', '<leader>=', vim.lsp.buf.format, opts)
   end
 end
