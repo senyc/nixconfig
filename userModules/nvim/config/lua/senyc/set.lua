@@ -11,20 +11,6 @@ vim.cmd.autocmd 'FileType * set formatoptions-=cro'
 vim.cmd.autocmd 'FileType * set cinkeys-=0#'
 vim.cmd.autocmd 'FileType * set indentkeys-=0#'
 
-vim.api.nvim_create_autocmd('VimEnter', {
-  callback = function()
-    -- Will run telescope if nvim is run without any arguments
-    if vim.fn.expand '%' == '' and vim.fn.wordcount().words == 0 then
-      vim.cmd.Search()
-    elseif vim.fn.expand '%' == 'fg' and vim.fn.wordcount().words == 0 then
-      vim.cmd.GrepSearch()
-    elseif vim.fn.expand '%' == 'fo' and vim.fn.wordcount().words == 0 then
-      vim.cmd.OldSearch()
-    end
-  end,
-})
--- This will trim the starting message
-vim.opt.shortmess = vim.opt.shortmess + 'I'
 -- This will replace the default eob (end of buffer) character to ' ' (from ~)
 vim.opt.fillchars = { eob = ' ' }
 
@@ -36,6 +22,7 @@ vim.opt.expandtab = true -- tabs -> spaces
 
 -- Auto change the current directory
 vim.opt.autochdir = true
+
 -- Smart(est) indentation
 vim.opt.smartindent = false
 vim.opt.cindent = true
@@ -58,7 +45,7 @@ vim.opt.undofile = true
 vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
 
 vim.opt.showmode = false -- No reason to show -- INSERT --
--- This allows for the color of the current line number to be different from others
+-- This allows for the gutter line number to be a different color
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 vim.opt.wrap = false     -- Display lines as one long line

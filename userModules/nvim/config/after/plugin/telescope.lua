@@ -65,11 +65,9 @@ end
 -- Search
 map('n', '<leader>s', defaut_search)
 -- Find live git grep
-map('n', '<leader>fg', live_git_grep)
+map('n', '<leader>g', live_git_grep)
 -- Find vim help
 map('n', '<leader>fh', builtin.help_tags)
--- Find references
-map('n', '<leader>fr', builtin.lsp_references)
 -- Find buffer
 map('n', '<leader>fb', builtin.buffers)
 -- telescope resume
@@ -77,16 +75,9 @@ map('n', '<leader>tr', builtin.resume)
 -- Find word
 map('n', '<leader>fw', grep_string)
 -- Old files
-map('n', { '<leader>fo', '<leader>of' }, builtin.oldfiles)
+map('n', '<leader>of', builtin.oldfiles)
 
 -- Adding default search lua command, user commands must start with capital letter
 vim.api.nvim_create_user_command('Search', function()
   pcall(defaut_search)
-end, {})
-
-vim.api.nvim_create_user_command('GrepSearch', function()
-  pcall(live_git_grep)
-end, {})
-vim.api.nvim_create_user_command('OldSearch', function()
-  pcall(builtin.oldfiles)
 end, {})

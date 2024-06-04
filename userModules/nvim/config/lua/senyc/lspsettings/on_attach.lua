@@ -19,8 +19,8 @@ return function(client, bufnr)
   map('n', 'gd', vim.lsp.buf.definition, opts)
   -- Get declaration
   map('n', 'gD', vim.lsp.buf.declaration, opts)
-  -- Get symbol
-  map('n', '<leader>gs', vim.lsp.buf.workspace_symbol, opts)
+  -- find symbol
+  map('n', '<leader>fs', vim.lsp.buf.workspace_symbol, opts)
   -- Diagnostic QuickFix
   map('n', '<leader>dq', vim.diagnostic.setqflist, opts)
   -- Diagnostic open
@@ -34,9 +34,9 @@ return function(client, bufnr)
   -- Rename symbol
   map('n', '<leader>rs', vim.lsp.buf.rename, opts)
   -- Get references
-  map('n', 'gr', vim.lsp.buf.references, opts)
-  -- Get implementation
-  map('n', '<leader>gi', vim.lsp.buf.implementation, opts)
+  map('n', 'fr', vim.lsp.buf.references, opts)
+  -- find implementation
+  map('n', '<leader>fi', vim.lsp.buf.implementation, opts)
 
   -- Format
   if (not is_in_table(client.name, no_formatting)) then
