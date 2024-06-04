@@ -1,11 +1,10 @@
 {
   inputs,
   outputs,
-  pkgs,
   ...
 }: let
-  utils = import ../../nix/utils.nix {inherit inputs outputs pkgs;};
-  nixosModules = [
+  utils = import ../../nix/utils.nix {inherit inputs outputs;};
+  systemModules = [
     "disk"
     "general"
     "greetd"
@@ -18,7 +17,7 @@
     "virtual"
     "wayland"
   ];
-  homeManagerModules =
+  userModules =
     [
       "alacritty"
       "cursor"
@@ -33,7 +32,7 @@
     ]
     ++ map (i: "hypr${i}") ["idle" "paper" "lock" "land"];
 in
-  utils.addNixosModules nixosModules {
+  utils.addSystemModules systemModules {
     imports = [
       ./hardware-configuration.nix
       inputs.disko.nixosModules.default
@@ -43,7 +42,7 @@ in
     home-manager = {
       extraSpecialArgs = {inherit inputs;};
       users = {
-        "senyc" = utils.addHomeManagerModules homeManagerModules {
+        "senyc" = utils.addUserModules userModules {
           home = rec {
             username = "senyc";
             homeDirectory = "/home/${username}";
