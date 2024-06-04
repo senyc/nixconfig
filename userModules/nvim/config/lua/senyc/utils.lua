@@ -19,6 +19,19 @@ function M.get_git_dir()
   return 'No valid return file', nil
 end
 
+function M.get_git_branch()
+  local handler = io.popen 'git branch --show-current 2>/dev/null'
+  if not handler then
+    return "n/a"
+  end
+  local result = handler:read('*l')
+  -- Because stderr redirected to null assumes any stdout response due to validity of call
+  if result then
+    return result
+  end
+  return "n/a"
+end
+
 --- Returns the project name, based on the directory
 ---
 --- Essentially just the git directory name without the path that precedes it

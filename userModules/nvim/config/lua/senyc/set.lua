@@ -74,3 +74,6 @@ vim.g.netrw_preview = 1
 vim.g.netrw_sizestyle = "H"
 -- Percent of new window size
 vim.g.netrw_liststyle = '3'
+
+GitBranch = require 'senyc.utils'.get_git_branch
+vim.opt.statusline = [[%<%f %{v:lua.GitBranch()} %h%m%r%=%-14.(%l,%c%V%) %P]]
