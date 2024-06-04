@@ -43,6 +43,7 @@
         (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
           p.bash
           p.c
+          p.embedded_template
           p.cpp
           p.css
           p.csv
