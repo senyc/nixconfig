@@ -20,6 +20,7 @@
   userModules =
     [
       "alacritty"
+      "chromium"
       "cursor"
       "gbar"
       "git"
