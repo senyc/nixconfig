@@ -2,7 +2,7 @@ local utils = require 'senyc.utils'
 
 local M = {}
 function M.toggle_netrw()
-  if vim.api.nvim_buf_get_option(0, 'filetype') ~= 'netrw' then
+  if vim.bo.filetype ~= 'netrw' then
     vim.cmd.Ex()
   else
     vim.cmd.bdelete()
