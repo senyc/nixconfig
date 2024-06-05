@@ -32,35 +32,6 @@ function M.get_git_branch()
   return "n/a"
 end
 
---- Returns the project name, based on the directory
----
---- Essentially just the git directory name without the path that precedes it
---- If there is a failure (not currently in a git repo, it will display the current directory)
----
----@return string? git_dir
--- function M.get_project_name()
---   local handler = io.popen 'git rev-parse --show-toplevel 2>/dev/null'
---   local current_directory = vim.fn.getcwd()
---   local home_dir = M.get_home_dir()
---
---   if not handler then
---     return current_directory:gsub(home_dir, "~")
---   end
---
---   local result = handler:read('*l')
---   -- Because stderr redirected to null assumes any stdout response due to validity of call
---   if not result then
---     return current_directory:gsub(home_dir, "~")
---   end
---
---   local basename = result:match("^.+/(.+)$")
---   if not basename then
---     return current_directory:gsub(home_dir, "~")
---   end
---
---   return basename:gsub(home_dir, "~")
--- end
-
 --- If no `options` are given, then precedes with default (noreamp and silent) for the given keymaps/actions.
 ---
 --- If given a table of `lhs` then the `rhs` will be applied to all possible inputs

@@ -18,6 +18,9 @@
         core = {
           pager = "less";
         };
+        pull = {
+          rebase = true;
+        };
         init = {
           defaultBranch = "main";
         };
