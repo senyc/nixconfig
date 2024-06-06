@@ -23,8 +23,8 @@ with lib; {
       nodejs
       python3
       ripgrep
-      sops
       ruby
+      sops
       tree
       unzip
       wget

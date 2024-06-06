@@ -13,17 +13,17 @@
       defaultEditor = true;
       vimAlias = true;
       extraPackages = with pkgs; [
-        clang-tools # Clangd
-        yaml-language-server
         alejandra
-        rubyfmt
-        lua-language-server
-        nodePackages.typescript-language-server
-        nodePackages.pyright
-        nil
+        clang-tools # Clangd
         gopls
-        tailwindcss-language-server
+        lua-language-server
+        nil
         nodePackages.bash-language-server
+        nodePackages.pyright
+        nodePackages.typescript-language-server
+        rubyfmt
+        tailwindcss-language-server
+        yaml-language-server
       ];
       plugins = with pkgs.vimPlugins; [
         catppuccin-nvim
@@ -44,10 +44,10 @@
         (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
           p.bash
           p.c
-          p.embedded_template
           p.cpp
           p.css
           p.csv
+          p.embedded_template
           p.git_config
           p.git_rebase
           p.gitattributes
