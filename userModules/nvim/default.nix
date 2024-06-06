@@ -16,6 +16,7 @@
         clang-tools # Clangd
         yaml-language-server
         alejandra
+        rubyfmt
         lua-language-server
         nodePackages.typescript-language-server
         nodePackages.pyright

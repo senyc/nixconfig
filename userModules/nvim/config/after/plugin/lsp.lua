@@ -42,7 +42,6 @@ vim.diagnostic.config {
     focusable = true,
     style = 'minimal',
     border = 'rounded',
-    source = 'always',
     header = '',
     prefix = '',
     suffix = '',

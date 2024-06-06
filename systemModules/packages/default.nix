@@ -24,6 +24,7 @@ with lib; {
       python3
       ripgrep
       sops
+      ruby
       tree
       unzip
       wget
