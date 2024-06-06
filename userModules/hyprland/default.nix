@@ -127,7 +127,7 @@
               "$mod SHIFT, L, movewindow, r"
               "$mod SHIFT, K, movewindow, u"
               "$mod SHIFT, J, movewindow, d"
-              "$mod, SEMICOLON, exec, pkill wofi || wofi --show=run --lines 2"
+              "$mod, SEMICOLON, exec, pkill wofi || wofi --show=run"
             ]
             ++ [
               # Scroll through existing workspaces with mod + scroll
@@ -177,8 +177,8 @@
             "1 default:true, monitor:DP-2"
           ];
           windowrulev2 = [
-            "workspace 1, class:^(Alacritty)$"
-            "workspace 2, class:^(chromium-browser)$"
+            # "workspace 1, class:^(Alacritty)$"
+            # "workspace 2, class:^(chromium-browser)$"
             "workspace 3, title:^(Spotify( Premium)?)$"
             "workspace 4, class:^(Slack)$"
             "workspace 5, class:^(Logseq)$"
