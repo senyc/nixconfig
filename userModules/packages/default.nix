@@ -22,6 +22,7 @@ with lib; {
       doctl
       keepassxc
       kubectl
+      kubernetes-helm
       logseq
       obs-studio
       pamixer

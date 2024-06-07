@@ -24,6 +24,7 @@
         rubyfmt
         tailwindcss-language-server
         yaml-language-server
+        nodePackages.prettier
       ];
       plugins = with pkgs.vimPlugins; [
         catppuccin-nvim
