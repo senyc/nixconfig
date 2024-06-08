@@ -1,7 +1,8 @@
 local map = require 'senyc.utils'.default_map
 local no_formatting = {
   'pyright',
-  'tsserver'
+  'tsserver',
+  'tailwindcss'
 }
 
 local function is_in_table(value, table)
@@ -17,8 +18,8 @@ return function(client, bufnr)
   -- Inspect cursor token
   map('n', 'K', vim.lsp.buf.hover, opts)
   -- Get definition
-  map('n', 'gd', vim.lsp.buf.definition, opts)
-  -- Get declaration
+  map('n', 'gd', vim.lsp.buf.implementation, opts)
+  -- Get implementation
   map('n', 'gD', vim.lsp.buf.declaration, opts)
   -- find symbol
   map('n', '<leader>fs', vim.lsp.buf.workspace_symbol, opts)
@@ -35,9 +36,7 @@ return function(client, bufnr)
   -- Rename symbol
   map('n', '<leader>rs', vim.lsp.buf.rename, opts)
   -- Get references
-  map('n', 'fr', vim.lsp.buf.references, opts)
-  -- find implementation
-  map('n', '<leader>fi', vim.lsp.buf.implementation, opts)
+  map('n', 'gr', vim.lsp.buf.references, opts)
 
   -- Format
   if (not is_in_table(client.name, no_formatting)) then

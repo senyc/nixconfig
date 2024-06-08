@@ -1,23 +1,19 @@
 require 'catppuccin'.setup {
-  flavour = 'mocha',     -- latte, frappe, macchiato, mocha
-  background = {         -- :h background
-    light = 'latte',
-    dark = 'mocha',
-  },
-  transparent_background = true,
-  show_end_of_buffer = false,     -- Don't show the '~' characters after the end of buffers
+  flavour = 'macchiato',      -- latte, frappe, macchiato, mocha
+  transparent_background = false,
+  show_end_of_buffer = false, -- Don't show the '~' characters after the end of buffers
   term_colors = true,
   dim_inactive = {
     enabled = false,
     shade = 'dark',
     percentage = 0.15,
   },
-  no_italic = true,        -- Force no italic
-  no_bold = false,         -- Force no bold
-  no_underline = true,     -- Force no underline
+  no_italic = true,    -- Force no italic
+  no_bold = false,     -- Force no bold
+  no_underline = true, -- Force no underline
   styles = {
-    comments = { 'italic' },
-    conditionals = { 'italic' },
+    comments = {},
+    conditionals = {},
     loops = {},
     functions = {},
     keywords = {},
@@ -33,38 +29,38 @@ require 'catppuccin'.setup {
   custom_highlights = {},
   integrations = {
     cmp = true,
-    gitsigns = true,
-    nvimtree = true,
     telescope = true,
-    notify = false,
-    mini = false,
+    gitsigns = true,
     illuminate = true,
     treesitter = true,
-    mason = true,
+    nvimtree = false,
+    notify = false,
+    mini = false,
+    mason = false,
     native_lsp = {
       enabled = true,
       virtual_text = {
-        errors = { 'italic' },
-        hints = { 'italic' },
-        warnings = { 'italic' },
-        information = { 'italic' },
+        errors = {},
+        hints = {},
+        warnings = {},
+        information = {},
       },
       underlines = {
-        errors = { 'underline' },
-        hints = { 'underline' },
-        warnings = { 'underline' },
-        information = { 'underline' },
+        errors = {},
+        hints = {},
+        warnings = {},
+        information = {},
       },
       inlay_hints = {
-        background = true,
+        background = false,
       },
     },
   },
 }
 vim.cmd.colorscheme 'catppuccin'
 -- These make the numbers much easier to see they use the colors here:
--- https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/palettes/mocha.lua
-vim.cmd 'hi CursorLineNr guifg=#a6e3a1'
-vim.cmd 'hi LineNr guifg=#a6adc8'
--- -- Change the virtual text color for git blame
-vim.cmd 'hi GitSignsCurrentLineBlame guifg=#6c7086'
+-- https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/palettes/macchiato.lua
+-- vim.cmd 'hi CursorLineNr guifg=#a6da95'
+-- vim.cmd 'hi LineNr guifg=#a5adcb'
+-- -- Change the virtual text color for git blame to make it a little easier to read
+-- vim.cmd 'hi GitSignsCurrentLineBlame guifg=#6c7086'

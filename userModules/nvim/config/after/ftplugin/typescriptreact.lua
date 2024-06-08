@@ -1,1 +1,1 @@
-vim.keymap.set('n', '<leader>=', ":w<cr>:silent !prettier --write %<cr>")
+vim.keymap.set('n', '<leader>=', ":w<cr>:silent !prettier --single-quote --jsx-single-quote --write %<cr>")

@@ -47,16 +47,13 @@
             layout = "master";
             cursor_inactive_timeout = 10;
           };
-          # cursor = {
-          #   inactive_timeout = 10;
-          # };
           input = {
             follow_mouse = 1;
             touchpad = {
               natural_scroll = false;
             };
             repeat_rate = 40;
-            repeat_delay = 250;
+            repeat_delay = 230;
             force_no_accel = true;
             sensitivity = 0.8; # -1.0 - 1.0, 0 means no modification.
           };

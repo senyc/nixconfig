@@ -24,6 +24,8 @@
         tmuxPlugins.yank
       ];
       extraConfig = ''
+        set -g default-terminal "xterm-256color"
+        set-option -ga terminal-overrides ",xterm-256color:Tc"
         # vim like pane switching
         bind h select-pane -L
         bind j select-pane -D
