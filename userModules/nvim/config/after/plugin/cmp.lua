@@ -1,7 +1,7 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
--- `/` cmdline setup.
+-- TODO allow for control n/p to cycle the results
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {

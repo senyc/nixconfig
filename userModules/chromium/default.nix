@@ -19,6 +19,9 @@
         {
           id = "oboonakemofpalcgghocfoadofidjkkk";
         }
+        {
+          id = "aljlkinhomaaahfdojalfmimeidofpih";
+        }
       ];
     };
   };

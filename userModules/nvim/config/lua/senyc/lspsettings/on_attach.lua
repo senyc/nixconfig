@@ -18,9 +18,9 @@ return function(client, bufnr)
   -- Inspect cursor token
   map('n', 'K', vim.lsp.buf.hover, opts)
   -- Get definition
-  map('n', 'gd', vim.lsp.buf.implementation, opts)
+  map('n', 'gd', vim.lsp.buf.definition, opts)
   -- Get implementation
-  map('n', 'gD', vim.lsp.buf.declaration, opts)
+  map('n', 'gD', vim.lsp.buf.implementation, opts)
   -- find symbol
   map('n', '<leader>fs', vim.lsp.buf.workspace_symbol, opts)
   -- Diagnostic QuickFix
