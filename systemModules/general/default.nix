@@ -27,15 +27,6 @@ with lib; {
     sound.enable = true;
     security.rtkit.enable = true;
 
-    services.pipewire = {
-      enable = true;
-      # For screen sharing
-      wireplumber.enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
-    };
 
     fonts.packages = with pkgs; [
       (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
@@ -52,6 +43,11 @@ with lib; {
 
     hardware = {
       opengl.enable = true;
+    };
+
+    environment.sessionVariables = {
+      XCURSOR_SIZE = 16;
+      TERM = "xterm-256color";
     };
   };
 }
