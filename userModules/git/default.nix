@@ -26,11 +26,11 @@
         };
         url = {
           "git@github.com-personal:" = {
-            insteadOf = "gp:";
+            insteadOf = "gh:";
           };
-          "git@github.com-work:" = {
-            insteadOf = "gw:";
-          };
+        };
+        "git@github.com-work:" = {
+          insteadOf = "gw:";
         };
       };
     };
