@@ -9,7 +9,7 @@
   config = lib.mkIf config.modules.user.git.enable {
     programs.git = {
       enable = true;
-      userName = "senyc";
+      userName = "kyler";
       userEmail = "95313103+senyc@users.noreply.github.com";
       hooks = {
         commit-msg = ./commit-msg;
@@ -25,11 +25,11 @@
           defaultBranch = "main";
         };
         url = {
-          "ssh://git@github.com/" = {
-            insteadOf = "https://github.com/";
+          "git@github.com-personal:" = {
+            insteadOf = "gp:";
           };
-          "git@github.com:" = {
-            insteadOf = "gh:";
+          "git@github.com-work:" = {
+            insteadOf = "gw:";
           };
         };
       };
