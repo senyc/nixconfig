@@ -15,9 +15,13 @@ with lib; {
       lib.elem (lib.getName pkg) [
         "spotify"
         "slack"
+        "zoom"
+        "upwork"
       ];
     home.packages = with pkgs; [
       arduino
+      upwork
+      zoom-us
       aspell
       doctl
       keepassxc

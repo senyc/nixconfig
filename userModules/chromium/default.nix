@@ -22,6 +22,9 @@
         {
           id = "aljlkinhomaaahfdojalfmimeidofpih";
         }
+        {
+          id = "elifhakcjgalahccnjkneoccemfahfoa";
+        }
       ];
     };
   };

@@ -61,6 +61,7 @@ vim.cmd.colorscheme 'catppuccin'
 -- These make the numbers much easier to see they use the colors here:
 -- https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/palettes/macchiato.lua
 -- vim.cmd 'hi CursorLineNr guifg=#a6da95'
--- vim.cmd 'hi LineNr guifg=#a5adcb'
+-- make line numbers a little easier to read
+vim.cmd 'hi LineNr guifg=#a5adcb'
 -- -- Change the virtual text color for git blame to make it a little easier to read
--- vim.cmd 'hi GitSignsCurrentLineBlame guifg=#6c7086'
+vim.cmd 'hi GitSignsCurrentLineBlame guifg=#6c7086'
