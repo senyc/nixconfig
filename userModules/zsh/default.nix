@@ -64,6 +64,8 @@
       initExtra = ''
         # This will auto select the first item on tab
         setopt menu_complete
+
+        # Add powerlevel10k configuration
         source ~/.p10k.zsh
 
         cdp() {
@@ -101,18 +103,6 @@
                   echo "Can't find base project path, are you sure one exists?"
                     fi
         }
-
-        # Key bindings
-        bindkey -s ^f "tmux-sessionizer\n"
-
-        # [Ctrl-Delete] - delete whole forward-word
-        bindkey -M emacs '^[[3;5~' kill-word
-
-        # [Ctrl-RightArrow] - move forward one word
-        bindkey -M emacs '^[[1;5C' forward-word
-
-        # [Ctrl-LeftArrow] - move backward one word
-        bindkey -M emacs '^[[1;5D' backward-word
       '';
     };
   };
