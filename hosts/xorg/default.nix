@@ -16,19 +16,18 @@
     "virtual"
     "xorg"
   ];
-  userModules =
-    [
-      "alacritty"
-      "chromium"
-      "cursor"
-      "git"
-      "nvim"
-      "packages"
-      "scripts"
-      "tmux"
-      "wofi"
-      "zsh"
-    ];
+  userModules = [
+    "alacritty"
+    "chromium"
+    "cursor"
+    "git"
+    "nvim"
+    "packages"
+    "scripts"
+    "tmux"
+    "wofi"
+    "zsh"
+  ];
 in
   utils.addSystemModules systemModules {
     imports = [

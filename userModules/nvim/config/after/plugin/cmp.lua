@@ -1,14 +1,6 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
--- TODO allow for control n/p to cycle the results
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -16,15 +8,8 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-space>'] = cmp.mapping.confirm {
-      -- behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
     ['<CR>'] = cmp.mapping.confirm {
       select = false, -- On new line doesn't prefill first item
-    },
-    ['<S-CR>'] = cmp.mapping.confirm {
-      select = true,
     },
     ['<tab>'] = cmp.mapping.confirm {
       select = true,
@@ -56,3 +41,25 @@ cmp.setup {
     { name = 'buffer' } -- Only for current buffer
   },
 }
+
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources {
+    { name = 'path' }
+  },
+  {
+    {
+      name = 'cmdline',
+      option = {
+        ignore_cmds = { 'Man', '!' }
+      }
+    }
+  }
+})
