@@ -27,6 +27,7 @@
     "tmux"
     "wofi"
     "zsh"
+    "work"
   ];
 in
   utils.addSystemModules systemModules {
