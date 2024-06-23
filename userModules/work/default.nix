@@ -9,11 +9,7 @@
   };
   config = lib.mkIf config.modules.user.work.enable {
     # Enable work unfree packages
-    nixpkgs.config.allowUnfreePredicate = pkg:
-      lib.elem (lib.getName pkg) [
-        "upwork"
-        "zoom"
-      ];
+    nixpkgs.config.allowUnfree = true;
     home.packages = with pkgs; [
       upwork
       zoom-us

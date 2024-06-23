@@ -25,6 +25,9 @@
         {
           id = "elifhakcjgalahccnjkneoccemfahfoa";
         }
+        {
+          id = "khncfooichmfjbepaaaebmommgaepoid";
+        }
       ];
     };
   };

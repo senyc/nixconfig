@@ -16,7 +16,6 @@
     "users"
     "virtual"
     "wayland"
-    "tailscale"
   ];
   userModules =
     [
