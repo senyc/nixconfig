@@ -31,6 +31,9 @@
           "git@github.com-work:" = {
             insteadOf = "gw:";
           };
+          "ssh://git@github.com-work/" = {
+            insteadOf = "https://github.com/";
+          };
         };
       };
     };

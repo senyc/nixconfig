@@ -30,6 +30,7 @@ with lib; {
       wget
       which
       zip
+      gnumake
     ];
 
     # Required to add nix related functionality to path?
