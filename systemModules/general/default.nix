@@ -19,14 +19,21 @@ with lib; {
       };
     };
 
-    hardware.bluetooth.enable = true; # enables support for Bluetooth
-    hardware.bluetooth.powerOnBoot = true;
+    hardware.bluetooth = {
+      enable = true; # enables support for Bluetooth
+      powerOnBoot = true;
+      settings = {
+        General = {
+          Experimental = true;
+        };
+      };
+    };
     services.blueman.enable = true;
+
     time.timeZone = "America/New_York";
     i18n.defaultLocale = "en_US.UTF-8";
     sound.enable = true;
     security.rtkit.enable = true;
-
 
     fonts.packages = with pkgs; [
       (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})

@@ -30,6 +30,7 @@
       "tmux"
       "wofi"
       "zsh"
+      "gh"
     ]
     ++ map (i: "hypr${i}") ["idle" "paper" "lock" "land"];
 in

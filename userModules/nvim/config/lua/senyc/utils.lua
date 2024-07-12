@@ -19,6 +19,19 @@ function M.get_git_dir()
   return 'No valid return file', nil
 end
 
+function M.get_git_project()
+  local _, gitdir = M.get_git_dir()
+  if not gitdir then
+    return ""
+  end
+  local i = gitdir:find("/", 1, true)
+  if i then
+    return path:sub(1, i - 1)
+  else
+    return path -- if no "/" found, return the whole path
+  end
+end
+
 function M.get_git_branch()
   local handler = io.popen 'git branch --show-current 2>/dev/null'
   if not handler then
