@@ -18,6 +18,10 @@ with lib; {
         "slack"
       ];
 
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-27.3.11"
+    ];
+
     nixpkgs.overlays = [outputs.overlays.addPackages];
 
     home.packages = with pkgs; [

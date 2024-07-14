@@ -29,6 +29,7 @@
       defaultKeymap = "emacs";
       shellAliases = {
         v = "nvim";
+        vim = "nvim";
         k = "kubectl";
         g = "git";
         ls = "ls --color=auto";

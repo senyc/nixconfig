@@ -49,7 +49,7 @@ with lib; {
     };
 
     hardware = {
-      opengl.enable = true;
+      graphics.enable = true;
     };
 
     environment.sessionVariables = {
