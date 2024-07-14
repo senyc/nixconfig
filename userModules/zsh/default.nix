@@ -11,7 +11,7 @@
   config = lib.mkIf config.modules.user.zsh.enable {
     home.file = {
       ".p10k.zsh" = {
-        text = ''
+        text = /*bash*/''
           'builtin' 'local' '-a' 'p10k_config_opts'
           [[ ! -o 'aliases'         ]] || p10k_config_opts+=('aliases')
           [[ ! -o 'sh_glob'         ]] || p10k_config_opts+=('sh_glob')

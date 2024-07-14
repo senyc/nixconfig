@@ -64,14 +64,11 @@
             disable_hyprland_logo = true;
             disable_splash_rendering = true;
             vrr = 1;
-            # swallow_regex = "^(Alacritty|wezterm)$";
           };
           decoration = {
             rounding = 5;
             drop_shadow = true;
             shadow_range = 30;
-            active_opacity = 0.85;
-            inactive_opacity = 0.90;
             shadow_render_power = 3;
             "col.shadow" = "rgba(1a1a1aee)";
           };
@@ -102,13 +99,13 @@
           "$mod" = "SUPER";
           bind =
             [
+              "$mod, Q, exec, kitty"
               "$mod, X, killactive,"
               "$mod, D, exec, showdesktop"
               "$mod SHIFT, M, exit,"
               "$mod, F, fullscreen, 1"
               "$mod SHIFT, F, fullscreen, 0"
               "$mod SHIFT, O, toggleopaque"
-              # "$mod, G, togglegroup,"
               "$mod, bracketleft, changegroupactive, b"
               "$mod, bracketright, changegroupactive, f"
 
@@ -182,8 +179,6 @@
             "workspace 4, class:^(Slack)$"
             "workspace 5, class:^(Logseq)$"
             "workspace 6, class:^(org.keepassxc.KeePassXC)$"
-            "opacity 1.0 override 1.0 override, class:^(Alacritty)$"
-            "opacity 1.0 override 1.0 override, class:^(chromium-browser)$"
           ];
           exec-once = with pkgs; [
             "[workspace 3 silent] spotify"

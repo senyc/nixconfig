@@ -20,6 +20,7 @@ with lib; {
       nodejs
       python3
       ripgrep
+      fd
       ruby
       sops
       tree

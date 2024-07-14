@@ -21,6 +21,7 @@
     [
       "alacritty"
       "cursor"
+      "kitty"
       "gbar"
       "git"
       "chromium"
