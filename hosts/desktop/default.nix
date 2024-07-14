@@ -24,12 +24,12 @@
       "gbar"
       "git"
       "chromium"
-      "nvim"
       "packages"
       "scripts"
       "tmux"
       "wofi"
       "zsh"
+      "gh"
     ]
     ++ map (i: "hypr${i}") ["idle" "paper" "lock" "land"];
 in
@@ -41,7 +41,7 @@ in
     ];
 
     home-manager = {
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {inherit inputs outputs;};
       users = {
         "senyc" = utils.addUserModules userModules {
           home = rec {

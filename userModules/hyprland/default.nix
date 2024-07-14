@@ -45,7 +45,9 @@
             gaps_out = 8;
             border_size = 1;
             layout = "master";
-            cursor_inactive_timeout = 10;
+          };
+          cursor = {
+            inactive_timeout = 10;
           };
           input = {
             follow_mouse = 1;
@@ -89,10 +91,10 @@
             pseudotile = true; # master switch for pseudotiling. Enabling is bound to mod + P in the keybinds section below
             preserve_split = true; # you probably want this
           };
-          master = {
-            new_is_master = true;
-            # orientation = "center";
-          };
+          # master = {
+          #   new_is_master = true;
+          #   # orientation = "center";
+          # };
           gestures = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
             workspace_swipe = false;
