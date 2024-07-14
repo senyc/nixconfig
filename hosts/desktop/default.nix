@@ -24,7 +24,6 @@
       "gbar"
       "git"
       "chromium"
-      "nvim"
       "packages"
       "scripts"
       "tmux"
@@ -42,7 +41,7 @@ in
     ];
 
     home-manager = {
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {inherit inputs outputs;};
       users = {
         "senyc" = utils.addUserModules userModules {
           home = rec {

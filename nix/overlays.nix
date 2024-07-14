@@ -1,7 +1,6 @@
 {inputs}: {
   addPackages = final: prev: {
-    myPackages = {
-      kx = inputs.kx.packages."x86_64-linux".default;
-    };
+    senyc-nvimconfig = inputs.neovim-config.packages.x86_64-linux.default;
+    kx = inputs.kx.packages."x86_64-linux".default;
   };
 }

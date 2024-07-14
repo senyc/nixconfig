@@ -7,6 +7,9 @@
       url = "github:scorpion-26/gBar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-config = {
+      url = "github:senyc/nvimconfig";
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";

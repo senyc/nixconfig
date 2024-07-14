@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  outputs,
   ...
 }:
 with lib; {
@@ -10,8 +9,6 @@ with lib; {
     modules.system.packages.enable = mkEnableOption "Enable root packages";
   };
   config = mkIf config.modules.system.packages.enable {
-    # Add packages that are external to nixpkgs
-    nixpkgs.overlays = [outputs.overlays.addPackages];
 
     environment.systemPackages = with pkgs; [
       curl

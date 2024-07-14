@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  outputs,
   ...
 }:
 with lib; {
@@ -16,10 +17,14 @@ with lib; {
         "spotify"
         "slack"
       ];
+
+    nixpkgs.overlays = [outputs.overlays.addPackages];
+
     home.packages = with pkgs; [
       arduino
       aspell
       doctl
+      senyc-nvimconfig
       keepassxc
       kubectl
       kubernetes-helm
