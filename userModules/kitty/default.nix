@@ -15,7 +15,6 @@
         size = 13;
       };
       settings = {
-        shell = "zsh";
         scrollback_lines = 10000;
         enable_audio_bell = false;
         cursor_shape = "block";
@@ -28,7 +27,6 @@
         tab_title_max_length = 50;
         tab_bar_edge = "top";
         enabled_layouts = "Tall,Fat,Grid";
-        tab_bar_min_tabs = 2;
       };
       keybindings = {
         "ctrl+shift+n" = "new_window";

@@ -26,6 +26,8 @@
         v = "nvim";
         vim = "nvim";
         k = "kubectl";
+        d = "docker";
+        ssh = "kitten ssh";
         g = "git";
         ls = "ls --color=auto";
         la = "ls -a";
@@ -42,7 +44,9 @@
         gap = "git add -p";
         gaa = "git add --all";
         gcpm = "git cherry-pick -e -x -m 1";
-        ts = "tmux-sessionizer";
+      };
+      sessionVariables  = {
+        EDITOR = "nvim";
       };
       shellGlobalAliases = {
         "..." = "../..";
@@ -64,8 +68,8 @@
         # Add powerlevel10k configuration
         source ~/.p10k.zsh
         getprojects() {
-          fuzzy_find_projects() { echo -e "$(find ~/projects ~/work -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig" | ${pkgs.fzf}/bin/fzf --cycle; }
-          cd $(fuzzy_find_projects)
+          fuzzy_find_projects() { echo -e "$(find ~/projects ~/work -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig" | sed 's/\/home\/senyc/~/' | ${pkgs.fzf}/bin/fzf --cycle; }
+          cd $(fuzzy_find_projects | sed 's/~/\/home\/senyc/')
         }
       '';
     };

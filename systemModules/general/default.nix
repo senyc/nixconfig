@@ -32,7 +32,6 @@ with lib; {
 
     time.timeZone = "America/New_York";
     i18n.defaultLocale = "en_US.UTF-8";
-    sound.enable = true;
     security.rtkit.enable = true;
 
     fonts.packages = with pkgs; [
@@ -54,7 +53,6 @@ with lib; {
 
     environment.sessionVariables = {
       XCURSOR_SIZE = 16;
-      TERM = "xterm-256color";
     };
   };
 }
