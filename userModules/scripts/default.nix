@@ -10,26 +10,6 @@ with lib; {
   };
   config = mkIf config.modules.user.scripts.enable {
     home.packages = with pkgs; [
-      (writeShellScriptBin "rebuild" ''
-        if [[ -z $1 ]]; then
-          echo "Please enter the host you would like to rebuild"  >&2
-          return
-        fi
-         set -e
-         pushd ~/nixconfig/
-
-         echo "NixOS Rebuilding $1..."
-
-         sudo nixos-rebuild switch --flake ~/nixconfig#$1
-         echo "NixOS Rebuilt, committing changes"
-
-         # Get current generation metadata
-         current=$(nixos-rebuild list-generations --flake ~/nixconfig#default | grep current | awk '{print $1,"on " $3}')
-
-         # Add the generation number to the commit message and add all changes to the commit
-         git commit -am "feat: update $1 host generation to $current"
-         popd
-      '')
       (writeShellScriptBin "screenshot" ''
         if ! [[ -d "$HOME/Pictures/screenshots/" ]]; then
             mkdir -p "$HOME/Pictures/screenshots/"

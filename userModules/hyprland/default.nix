@@ -100,6 +100,8 @@
           bind =
             [
               "$mod, Q, exec, kitty"
+              "$mod, B, exec, chromium"
+
               "$mod, X, killactive,"
               "$mod SHIFT, M, exit,"
               "$mod, F, fullscreen, 1"
@@ -107,11 +109,6 @@
               "$mod SHIFT, O, toggleopaque"
               "$mod, bracketleft, changegroupactive, b"
               "$mod, bracketright, changegroupactive, f"
-
-              "$mod, left, movefocus, l"
-              "$mod, right, movefocus, r"
-              "$mod, up, movefocus, u"
-              "$mod, down, movefocus, d"
 
               "$mod, H, movefocus, l"
               "$mod, L, movefocus, r"
@@ -122,6 +119,7 @@
               "$mod SHIFT, L, movewindow, r"
               "$mod SHIFT, K, movewindow, u"
               "$mod SHIFT, J, movewindow, d"
+
               "$mod, SEMICOLON, exec, pkill wofi || wofi --show=run"
             ]
             ++ [
@@ -177,14 +175,15 @@
             "workspace 5, class:^(Logseq)$"
             "workspace 6, class:^(org.keepassxc.KeePassXC)$"
           ];
-          exec-once = with pkgs; [
+          exec-once = [
             "[workspace 3 silent] spotify"
             "[workspace 4 silent] slack"
             "[workspace 6 silent] keepassxc"
             "[workspace 2 silent] chromium"
             "[workspace 5 silent] logseq"
             "kitty"
-            "${hypridle}/bin/hypridle"
+
+            "${pkgs.hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
             "gBar bar 0"
           ];

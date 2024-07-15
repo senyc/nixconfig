@@ -68,7 +68,7 @@
             color = "rgba(255, 255, 255, .7)";
             font_size = 18;
             font_family = "JetBrainsMono, Font Awesome 6 Free Solid";
-            position = "0, -20";
+            position = "0, 5";
             halign = "center";
             valign = "bottom";
           }

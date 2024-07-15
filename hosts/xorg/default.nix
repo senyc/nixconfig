@@ -17,14 +17,13 @@
     "xorg"
   ];
   userModules = [
-    "alacritty"
+    "kitty"
     "chromium"
     "cursor"
     "git"
     "nvim"
     "packages"
     "scripts"
-    "tmux"
     "wofi"
     "zsh"
     "work"

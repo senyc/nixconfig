@@ -14,9 +14,6 @@
         name = "JetBrainsMono Nerd Font Mono";
         size = 13;
       };
-      environment = {
-        "TERM" = "xterm-256color";
-      };
       settings = {
         shell = "zsh";
         scrollback_lines = 10000;
@@ -24,11 +21,14 @@
         cursor_shape = "block";
         cursor_blink_interval = 0;
         tab_bar_style = "powerline";
+        tab_powerline_style = "slanted";
         force_ltr = "no";
         disable_ligatures = "always";
         window_padding_width = 3;
-        tab_title_max_length = 40;
+        tab_title_max_length = 50;
         tab_bar_edge = "top";
+        enabled_layouts = "Tall,Fat,Grid";
+        tab_bar_min_tabs = 2;
       };
       keybindings = {
         "ctrl+shift+n" = "new_window";

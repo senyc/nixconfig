@@ -9,6 +9,66 @@
   };
 
   config = lib.mkIf config.modules.user.zsh.enable {
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+      syntaxHighlighting = {
+        enable = true;
+      };
+      history = {
+        extended = true;
+        save = 50000;
+        share = true;
+        size = 100000;
+      };
+      defaultKeymap = "emacs";
+      shellAliases = {
+        v = "nvim";
+        vim = "nvim";
+        k = "kubectl";
+        g = "git";
+        ls = "ls --color=auto";
+        la = "ls -a";
+        gd = "git diff";
+        gds = "git diff --staged";
+        gs = "git status";
+        gf = "git fetch";
+        gsw = "git switch";
+        gsw- = "git switch -";
+        gc = "git commit";
+        gca = "git commit --amend";
+        gcae = "git commit --amend --no-edit";
+        gcm = "git commit -m";
+        gap = "git add -p";
+        gaa = "git add --all";
+        gcpm = "git cherry-pick -e -x -m 1";
+        ts = "tmux-sessionizer";
+      };
+      shellGlobalAliases = {
+        "..." = "../..";
+        "...." = "../../..";
+        "....." = "../../../..";
+        "......" = "../../../../..";
+      };
+      plugins = [
+        {
+          name = "powerlevel10k";
+          src = pkgs.zsh-powerlevel10k;
+          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        }
+      ];
+      initExtra = /*bash*/''
+        # This will auto select the first item on tab
+        setopt menu_complete
+
+        # Add powerlevel10k configuration
+        source ~/.p10k.zsh
+        getprojects() {
+          fuzzy_find_projects() { echo -e "$(find ~/projects ~/work -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig" | ${pkgs.fzf}/bin/fzf --cycle; }
+          cd $(fuzzy_find_projects)
+        }
+      '';
+    };
     home.file = {
       ".p10k.zsh" = {
         text = /*bash*/''
@@ -189,66 +249,6 @@
           'builtin' 'unset' 'p10k_config_opts'
         '';
       };
-    };
-    programs.zsh = {
-      enable = true;
-      enableCompletion = true;
-      syntaxHighlighting = {
-        enable = true;
-      };
-      history = {
-        extended = true;
-        save = 50000;
-        share = true;
-        size = 100000;
-      };
-      defaultKeymap = "emacs";
-      shellAliases = {
-        v = "nvim";
-        vim = "nvim";
-        k = "kubectl";
-        g = "git";
-        ls = "ls --color=auto";
-        la = "ls -a";
-        gd = "git diff";
-        gds = "git diff --staged";
-        gs = "git status";
-        gf = "git fetch";
-        gsw = "git switch";
-        gsw- = "git switch -";
-        gc = "git commit";
-        gca = "git commit --amend";
-        gcae = "git commit --amend --no-edit";
-        gcm = "git commit -m";
-        gap = "git add -p";
-        gaa = "git add --all";
-        gcpm = "git cherry-pick -e -x -m 1";
-        ts = "tmux-sessionizer";
-      };
-      shellGlobalAliases = {
-        "..." = "../..";
-        "...." = "../../..";
-        "....." = "../../../..";
-        "......" = "../../../../..";
-      };
-      plugins = [
-        {
-          name = "powerlevel10k";
-          src = pkgs.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-        }
-      ];
-      initExtra = /*bash*/''
-        # This will auto select the first item on tab
-        setopt menu_complete
-
-        # Add powerlevel10k configuration
-        source ~/.p10k.zsh
-        getprojects() {
-          fuzzy_find_projects() { echo -e "$(find ~/projects ~/work -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig" | ${pkgs.fzf}/bin/fzf --cycle; }
-          cd $(fuzzy_find_projects)
-        }
-      '';
     };
   };
 }
