@@ -21,7 +21,7 @@ with lib; {
          echo "NixOS Rebuilding $1..."
 
          sudo nixos-rebuild switch --flake ~/nixconfig#$1
-         echo "NixOS Rebuilt, commiting changes"
+         echo "NixOS Rebuilt, committing changes"
 
          # Get current generation metadata
          current=$(nixos-rebuild list-generations --flake ~/nixconfig#default | grep current | awk '{print $1,"on " $3}')

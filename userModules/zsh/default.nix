@@ -238,47 +238,15 @@
           file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
         }
       ];
-      initExtra = ''
+      initExtra = /*bash*/''
         # This will auto select the first item on tab
         setopt menu_complete
 
         # Add powerlevel10k configuration
         source ~/.p10k.zsh
-
-        cdp() {
-          if [ -n "$1" ]; then
-            case $1 in
-              "--help")
-              echo "Gets current tmux project and sets current directory to the project directory"
-              return
-              ;;
-          -*)
-            echo "Gets current tmux project and sets current directory to the project directory"
-            return
-            ;;
-          esac
-            return
-            fi
-
-            project_name=$(tmux display-message -p '#S')
-            if [[ "$project_name" == "main" ]]; then
-              cd $HOME
-                return
-                elif [[ "$project_name" == "nixconfig" ]]; then
-                cd "$HOME/nixconfig/"
-                return
-                fi
-                # This may cause issues where the order of similar named projects will impact outcome
-                # This would be fixed by better regex
-                project_path="$HOME/projects/$project_name"
-                work_path="$HOME/work/$project_name"
-                if [ -d "$project_path" ]; then
-                  cd "$project_path" || return
-                    elif [ -d "$work_path" ]; then
-                    cd "$work_path" || return
-                else
-                  echo "Can't find base project path, are you sure one exists?"
-                    fi
+        getprojects() {
+          fuzzy_find_projects() { echo -e "$(find ~/projects ~/work -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig" | ${pkgs.fzf}/bin/fzf --cycle; }
+          cd $(fuzzy_find_projects)
         }
       '';
     };

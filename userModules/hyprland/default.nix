@@ -101,7 +101,6 @@
             [
               "$mod, Q, exec, kitty"
               "$mod, X, killactive,"
-              "$mod, D, exec, showdesktop"
               "$mod SHIFT, M, exit,"
               "$mod, F, fullscreen, 1"
               "$mod SHIFT, F, fullscreen, 0"
@@ -173,8 +172,6 @@
             "1 default:true, monitor:DP-2"
           ];
           windowrulev2 = [
-            # "workspace 1, class:^(Alacritty)$"
-            # "workspace 2, class:^(chromium-browser)$"
             "workspace 3, title:^(Spotify( Premium)?)$"
             "workspace 4, class:^(Slack)$"
             "workspace 5, class:^(Logseq)$"
@@ -186,7 +183,7 @@
             "[workspace 6 silent] keepassxc"
             "[workspace 2 silent] chromium"
             "[workspace 5 silent] logseq"
-            "alacritty -e tmux new -s main"
+            "kitty"
             "${hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
             "gBar bar 0"

@@ -19,18 +19,16 @@
   ];
   userModules =
     [
-      "alacritty"
-      "cursor"
-      "kitty"
-      "gbar"
-      "git"
       "chromium"
+      "cursor"
+      "gbar"
+      "gh"
+      "git"
+      "kitty"
       "packages"
       "scripts"
-      "tmux"
       "wofi"
       "zsh"
-      "gh"
     ]
     ++ map (i: "hypr${i}") ["idle" "paper" "lock" "land"];
 in
