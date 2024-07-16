@@ -11,32 +11,6 @@
     pointer = config.home.pointerCursor;
   in
     lib.mkIf config.modules.user.hyprland.enable {
-      home.packages = with pkgs; [
-        (writeShellScriptBin "showdesktop" ''
-          stack_file="/tmp/hide_window_pid_stack.txt"
-
-          function hide_window(){
-            pid=$(hyprctl activewindow -j | jq '.pid')
-            hyprctl dispatch movetoworkspacesilent 88,pid:$pid
-            echo $pid > $stack_file
-          }
-
-          function show_window(){
-            pid=$(tail -1 $stack_file && sed -i '$d' $stack_file)
-            [ -z $pid ] && exit
-
-            current_workspace=$(hyprctl activeworkspace -j | jq '.id')
-            hyprctl dispatch movetoworkspace $current_workspace,pid:$pid
-          }
-
-          if [ -f "$stack_file" ]; then
-            show_window > /dev/null
-            rm "$stack_file"
-          else
-            hide_window > /dev/null
-          fi
-        '')
-      ];
       wayland.windowManager.hyprland = {
         enable = true;
         settings = {
@@ -88,10 +62,6 @@
             pseudotile = true; # master switch for pseudotiling. Enabling is bound to mod + P in the keybinds section below
             preserve_split = true; # you probably want this
           };
-          # master = {
-          #   new_is_master = true;
-          #   # orientation = "center";
-          # };
           gestures = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
             workspace_swipe = false;
