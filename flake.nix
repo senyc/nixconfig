@@ -32,6 +32,6 @@
     utils = import ./nix/utils.nix {inherit inputs outputs;};
   in {
     overlays = import ./nix/overlays.nix {inherit inputs;};
-    nixosConfigurations = utils.mkHosts ["desktop" "laptop" "xorg"];
+    nixosConfigurations = utils.mkHosts ["desktop" "laptop" "work"];
   };
 }

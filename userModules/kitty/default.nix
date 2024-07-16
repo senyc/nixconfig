@@ -29,8 +29,9 @@
         enabled_layouts = "Tall,Fat,Grid";
       };
       keybindings = {
-        "ctrl+shift+n" = "new_window";
-        "ctrl+shift+d" = ''send_text normal,application getprojects\n'';
+        "ctrl+shift+t" = "launch --cwd=current --type=tab";
+        "super+w" = "launch --cwd=current";
+        "super+g" = ''send_text normal,application getprojects\n'';
       };
       shellIntegration = {
         enableZshIntegration = true;

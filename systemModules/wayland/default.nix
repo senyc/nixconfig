@@ -35,6 +35,10 @@
     # This is a requirement for various gtk related services
     programs.dconf.enable = true;
 
+    environment.systemPackages = with pkgs; [
+      wl-clipboard
+    ];
+
     environment.sessionVariables = {
       QT_SCALE_FACTOR = 1;
       ELM_SCALE = 1;

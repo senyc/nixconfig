@@ -11,10 +11,9 @@
     "keepassxc"
     "network"
     "packages"
-    "services"
     "sops"
     "users"
-    "virtual"
+    "containerization"
     "wayland"
   ];
   userModules =
@@ -24,7 +23,6 @@
       "cursor"
       "gbar"
       "git"
-      "nvim"
       "packages"
       "scripts"
       "tmux"

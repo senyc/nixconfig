@@ -28,27 +28,33 @@ with lib; {
         };
       };
     };
-    services.blueman.enable = true;
 
     time.timeZone = "America/New_York";
     i18n.defaultLocale = "en_US.UTF-8";
     security.rtkit.enable = true;
 
-    fonts.packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
-    ];
-
-    fonts.enableDefaultPackages = true;
-    fonts.fontconfig = {
-      defaultFonts = {
-        monospace = ["JetBrainsMono Nerd Font Mono"];
-        sansSerif = ["JetBrainsMono Nerd Font"];
-        serif = ["JetBrainsMono Nerd Font"];
+    fonts = {
+      packages = with pkgs; [
+        (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+      ];
+      enableDefaultPackages = true;
+      fontconfig = {
+        defaultFonts = {
+          monospace = ["JetBrainsMono Nerd Font Mono"];
+          sansSerif = ["JetBrainsMono Nerd Font"];
+          serif = ["JetBrainsMono Nerd Font"];
+        };
       };
     };
 
     hardware = {
       graphics.enable = true;
+    };
+
+    services = {
+      blueman.enable = true;
+      printing.enable = true;
+      openssh.enable = true;
     };
 
     environment.sessionVariables = {

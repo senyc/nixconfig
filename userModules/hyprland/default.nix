@@ -76,7 +76,6 @@
               "$mod SHIFT, M, exit,"
               "$mod, F, fullscreen, 1"
               "$mod SHIFT, F, fullscreen, 0"
-              "$mod SHIFT, O, toggleopaque"
               "$mod, bracketleft, changegroupactive, b"
               "$mod, bracketright, changegroupactive, f"
 

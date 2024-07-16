@@ -12,15 +12,15 @@ with lib; {
 
     environment.systemPackages = with pkgs; [
       curl
-      docker-compose
+      fd
       gcc
+      gnumake
       go
       lm_sensors # run sudo sensors-detect initially then sensors to get results
       lua
       nodejs
       python3
       ripgrep
-      fd
       ruby
       sops
       tree
@@ -28,10 +28,8 @@ with lib; {
       wget
       which
       zip
-      gnumake
     ];
 
-    # Required to add nix related functionality to path?
     programs.zsh.enable = true;
   };
 }

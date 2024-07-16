@@ -11,10 +11,8 @@
     "keepassxc"
     "network"
     "packages"
-    "services"
-    "sops"
     "users"
-    "virtual"
+    "containerization"
     "wayland"
   ];
   userModules =

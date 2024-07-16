@@ -10,10 +10,8 @@
     "keepassxc"
     "network"
     "packages"
-    "services"
-    "sops"
     "users"
-    "virtual"
+    "containerization"
     "xorg"
   ];
   userModules = [
@@ -22,7 +20,6 @@
     "cursor"
     "git"
     "nvim"
-    "packages"
     "scripts"
     "wofi"
     "zsh"

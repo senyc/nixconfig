@@ -25,10 +25,8 @@ with lib; {
     nixpkgs.overlays = [outputs.overlays.addPackages];
 
     home.packages = with pkgs; [
-      arduino
       aspell
       doctl
-      senyc-nvimconfig
       keepassxc
       kubectl
       kubernetes-helm
@@ -37,6 +35,7 @@ with lib; {
       pamixer
       pavucontrol
       playerctl
+      senyc-nvimconfig
       slack
       spotify
       stern
