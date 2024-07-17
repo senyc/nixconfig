@@ -13,6 +13,7 @@
     "packages"
     "users"
     "containerization"
+    "steam"
     "wayland"
   ];
   userModules =
