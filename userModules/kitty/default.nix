@@ -34,7 +34,7 @@
         "ctrl+shift+t" = "launch --cwd=current --type=tab";
         "ctrl+shift+n" = "launch --cwd=current --type=os-window";
         "super+w" = "launch --cwd=current";
-        "super+v" = ''send_text normal,application getprojects\n'';
+        "super+g" = ''send_text normal,application getprojects\n'';
       };
       shellIntegration = {
         enableZshIntegration = true;

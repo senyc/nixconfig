@@ -15,6 +15,7 @@
     "containerization"
     "steam"
     "wayland"
+    "direnv"
   ];
   userModules =
     [
