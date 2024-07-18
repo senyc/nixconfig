@@ -27,11 +27,14 @@
         tab_title_max_length = 50;
         tab_bar_edge = "top";
         enabled_layouts = "Tall,Fat,Grid";
+        # Don't ever phone home for updates
+        update_check_interval = 0;
       };
       keybindings = {
         "ctrl+shift+t" = "launch --cwd=current --type=tab";
+        "ctrl+shift+n" = "launch --cwd=current --type=os-window";
         "super+w" = "launch --cwd=current";
-        "super+g" = ''send_text normal,application getprojects\n'';
+        "super+v" = ''send_text normal,application getprojects\n'';
       };
       shellIntegration = {
         enableZshIntegration = true;

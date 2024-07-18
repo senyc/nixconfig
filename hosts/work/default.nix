@@ -19,7 +19,7 @@
     "chromium"
     "cursor"
     "git"
-    "nvim"
+    "packages"
     "scripts"
     "wofi"
     "zsh"
@@ -34,7 +34,7 @@ in
     ];
 
     home-manager = {
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {inherit inputs outputs;};
       users = {
         "senyc" = utils.addUserModules userModules {
           home = rec {

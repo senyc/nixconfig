@@ -65,6 +65,7 @@
         # This will auto select the first item on tab
         setopt menu_complete
 
+        bindkey \^U backward-kill-line
         # Add powerlevel10k configuration
         source ~/.p10k.zsh
         getprojects() {
