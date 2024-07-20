@@ -31,12 +31,17 @@
         update_check_interval = 0;
       };
       keybindings = {
+        # open new tab and os window with the current directory
         "ctrl+shift+t" = "launch --cwd=current --type=tab";
         "ctrl+shift+n" = "launch --cwd=current --type=os-window";
+
         "super+w" = "launch --cwd=current";
         "super+g" = ''send_text normal,application getprojects\n'';
+
         "ctrl+f2" = "detach_window";
         "ctrl+f3" = "detach_window new-tab";
+        # fixes gesc keybind
+        "super+`" = "send_key `";
       };
       shellIntegration = {
         enableZshIntegration = true;
