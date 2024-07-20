@@ -28,6 +28,8 @@ with lib; {
       wget
       which
       zip
+      jq
+      yq
     ];
 
     programs.zsh.enable = true;
