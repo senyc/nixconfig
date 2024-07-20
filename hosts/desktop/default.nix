@@ -15,12 +15,13 @@
     "containerization"
     "steam"
     "wayland"
-    "direnv"
+    "pipewire"
   ];
   userModules =
     [
       "chromium"
       "cursor"
+      "direnv"
       "gbar"
       "gh"
       "git"

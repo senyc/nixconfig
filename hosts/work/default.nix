@@ -13,17 +13,19 @@
     "users"
     "containerization"
     "xorg"
+    "pipewire"
   ];
   userModules = [
-    "kitty"
     "chromium"
     "cursor"
+    "direnv"
     "git"
+    "kitty"
     "packages"
     "scripts"
     "wofi"
-    "zsh"
     "work"
+    "zsh"
   ];
 in
   utils.addSystemModules systemModules {

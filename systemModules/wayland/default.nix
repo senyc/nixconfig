@@ -22,16 +22,6 @@
       extraPortals = [pkgs.xdg-desktop-portal-hyprland];
     };
 
-    services.pipewire = {
-      enable = true;
-      # For screen sharing
-      wireplumber.enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
-    };
-
     # This is a requirement for various gtk related services
     programs.dconf.enable = true;
 

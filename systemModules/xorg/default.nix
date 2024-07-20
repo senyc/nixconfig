@@ -16,12 +16,16 @@
       };
       desktopManager.gnome.enable = true;
     };
+
     programs.dconf.enable = true;
     environment.systemPackages = with pkgs; [
       adwaita-icon-theme
       gnomeExtensions.appindicator
       xclip
     ];
+
+    hardware.pulseaudio.enable = false;
+
     services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
   };
 }

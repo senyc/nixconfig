@@ -39,7 +39,6 @@ with lib; {
       slack
       spotify
       stern
-      wl-clipboard
     ];
   };
 }
