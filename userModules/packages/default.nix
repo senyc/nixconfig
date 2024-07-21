@@ -30,6 +30,7 @@ with lib; {
       keepassxc
       kubectl
       kubernetes-helm
+      terraform
       logseq
       obs-studio
       pamixer
