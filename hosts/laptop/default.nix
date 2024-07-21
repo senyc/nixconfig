@@ -11,21 +11,23 @@
     "keepassxc"
     "network"
     "packages"
-    "sops"
     "users"
     "containerization"
+    "steam"
     "wayland"
+    "pipewire"
   ];
   userModules =
     [
-      "alacritty"
       "chromium"
       "cursor"
+      "direnv"
       "gbar"
+      "gh"
       "git"
+      "kitty"
       "packages"
       "scripts"
-      "tmux"
       "wofi"
       "zsh"
     ]
