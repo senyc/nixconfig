@@ -16,6 +16,7 @@ with lib; {
       lib.elem (lib.getName pkg) [
         "spotify"
         "slack"
+        "terraform"
       ];
 
     nixpkgs.config.permittedInsecurePackages = [
