@@ -19,11 +19,13 @@
   ];
   userModules =
     [
+      "unfreePackages"
       "chromium"
       "cursor"
       "direnv"
       "gbar"
       "gh"
+      "dev"
       "git"
       "kitty"
       "packages"
@@ -53,5 +55,6 @@ in
         };
       };
     };
+
     system.stateVersion = "23.11";
   }

@@ -16,8 +16,11 @@
     "pipewire"
   ];
   userModules = [
+    "unfreePackages"
     "chromium"
     "cursor"
+    "gh"
+    "dev"
     "direnv"
     "git"
     "kitty"

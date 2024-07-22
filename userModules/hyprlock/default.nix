@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options = {
@@ -27,7 +28,7 @@
         ];
         input-field = [
           {
-            size =  "290, 65";
+            size = "290, 65";
             outline_thickness = 2;
             dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8;
             dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0;
@@ -43,7 +44,7 @@
         ];
         label = [
           {
-            monitor="";
+            monitor = "";
             text = ''cmd[update:1000] echo "$(date +"%R")"'';
             color = "rgba(255, 255, 255, .7)";
             font_size = 135;
@@ -54,7 +55,7 @@
           }
           {
             text = "Hi there, $USER";
-            monitor="";
+            monitor = "";
             color = "rgba(255, 255, 255, .7)";
             font_size = 25;
             font_family = "JetBrains Mono Nerd Font Mono";
@@ -63,8 +64,8 @@
             valign = "center";
           }
           {
-            monitor="";
-            text = ''cmd[update:1000] echo "$(playerctl metadata --format '{{title}}  {{artist}}')"'';
+            monitor = "";
+            text = ''cmd[update:1000] echo "$(${pkgs.playerctl}/bin/playerctl metadata --format '{{title}}  {{artist}}')"'';
             color = "rgba(255, 255, 255, .7)";
             font_size = 18;
             font_family = "JetBrainsMono, Font Awesome 6 Free Solid";

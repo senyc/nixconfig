@@ -19,11 +19,13 @@
   ];
   userModules =
     [
+      "unfreePackages"
       "chromium"
       "cursor"
       "direnv"
       "gbar"
       "gh"
+      "dev"
       "git"
       "kitty"
       "packages"
@@ -41,7 +43,7 @@ in
     ];
 
     home-manager = {
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {inherit inputs outputs;};
       users = {
         "senyc" = utils.addUserModules userModules {
           home = rec {

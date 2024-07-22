@@ -9,7 +9,6 @@ with lib; {
     modules.system.packages.enable = mkEnableOption "Enable root packages";
   };
   config = mkIf config.modules.system.packages.enable {
-
     environment.systemPackages = with pkgs; [
       curl
       fd
@@ -28,8 +27,6 @@ with lib; {
       wget
       which
       zip
-      jq
-      yq
     ];
 
     programs.zsh.enable = true;

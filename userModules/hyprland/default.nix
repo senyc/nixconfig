@@ -110,12 +110,12 @@
               "$mod, P, workspace, 6"
             ]
             ++ [
-              ",XF86AudioRaiseVolume, exec, pamixer -i 2"
-              ",XF86AudioLowerVolume, exec, pamixer -d 2"
-              ",XF86AudioMute, exec, pamixer -t"
-              ",XF86AudioPlay, exec, playerctl play-pause"
-              ",XF86AudioNext, exec, playerctl next"
-              ",XF86AudioPrev, exec, playerctl previous"
+              ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 2"
+              ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 2"
+              ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
+              ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+              ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+              ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
               ",Print,exec, screenshot"
             ];
           bindm = [

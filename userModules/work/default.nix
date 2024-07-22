@@ -9,7 +9,7 @@
   };
   config = lib.mkIf config.modules.user.work.enable {
     # Enable work unfree packages
-    nixpkgs.config.allowUnfree = true;
+    allowedUnfree = ["upwork" "zoom" "vscode"];
     home.packages = with pkgs; [
       upwork
       zoom-us

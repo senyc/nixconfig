@@ -12,12 +12,11 @@ with lib; {
 
   config = mkIf config.modules.user.packages.enable {
     # Allow certain unfree user-level packages
-    nixpkgs.config.allowUnfreePredicate = pkg:
-      lib.elem (lib.getName pkg) [
-        "spotify"
-        "slack"
-        "terraform"
-      ];
+
+    allowedUnfree = [
+      "spotify"
+      "slack"
+    ];
 
     nixpkgs.config.permittedInsecurePackages = [
       "electron-27.3.11"
@@ -27,19 +26,13 @@ with lib; {
 
     home.packages = with pkgs; [
       aspell
-      doctl
       keepassxc
-      kubectl
-      kubernetes-helm
-      terraform
       logseq
       obs-studio
-      pamixer
       pavucontrol
-      playerctl
       senyc-nvimconfig
-      slack
       spotify
+      slack
       stern
     ];
   };
