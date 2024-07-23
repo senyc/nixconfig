@@ -26,6 +26,7 @@ with lib; {
 
     home.packages = with pkgs; [
       aspell
+      aspellDicts.en
       keepassxc
       logseq
       obs-studio
