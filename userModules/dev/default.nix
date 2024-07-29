@@ -11,12 +11,13 @@
     allowedUnfree = ["terraform"];
 
     home.packages = with pkgs; [
-      kubernetes-helm
-      kubectl
-      terraform
-      jq
-      yq
+      act
       doctl
+      jq
+      kubectl
+      kubernetes-helm
+      terraform
+      yq
     ];
   };
 }

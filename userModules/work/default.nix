@@ -14,6 +14,8 @@
       upwork
       zoom-us
       vscode
+      peek
+      flameshot
     ];
   };
 }
