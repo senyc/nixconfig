@@ -66,12 +66,7 @@
         setopt menu_complete
 
         bindkey \^U backward-kill-line
-        # Add powerlevel10k configuration
         source ~/.p10k.zsh
-        getprojects() {
-          fuzzy_find_projects() { echo -e "$(find ~/projects ~/work -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig" | sed 's/\/home\/senyc/~/' | ${pkgs.fzf}/bin/fzf --cycle; }
-          cd $(fuzzy_find_projects | sed 's/~/\/home\/senyc/')
-        }
       '';
     };
     home.file = {
