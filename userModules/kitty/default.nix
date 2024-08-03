@@ -34,7 +34,7 @@
         # open new tab and os window with the current directory
         "ctrl+shift+t" = "launch --cwd=current --type=tab";
         "ctrl+shift+n" = "launch --cwd=current --type=os-window";
-
+        "super+w" = "launch --cwd=current";
         "ctrl+f2" = "detach_window";
         "ctrl+f3" = "detach_window new-tab";
       };
