@@ -18,12 +18,8 @@
         };
         background = [
           {
-            path = "${../../backgrounds/primary_background.png}";
-            blur_passes = 2;
-            contrast = 0.8916;
-            brightness = 0.8172;
-            vibrancy = 0.1696;
-            vibrancy_darkness = 0.0;
+            path = "${../../backgrounds/primary_background.jpg}";
+            blur_passes = 1;
           }
         ];
         input-field = [
