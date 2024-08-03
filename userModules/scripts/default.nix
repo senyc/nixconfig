@@ -32,23 +32,19 @@ with lib; {
       '')
       # Simple reminder for available conventional commits (as based on angular commit convention)
       (writeShellScriptBin "commits" ''
-        print_semantic_commits() {
-            echo "--------------------Conventional commits--------------------"
-            echo "build: Changes that affect the build system"
-            echo "ci: Changes to our CI configuration files and scripts"
-            echo "docs: Documentation only changes"
-            echo "feat: A new feature"
-            echo "fix: A bug fix"
-            echo "perf: A code change that improves performance"
-            echo "refactor: A code change that neither fixes a bug nor adds a feature"
-            echo "style: Changes that do not affect the function at all (white space, etc.)"
-            echo "test: Adding missing tests or correcting existing tests"
-            echo "revert: first include title of commit in the body include sha"
-            echo "chore: grunt tasks; no production code change, e.g. update .gitignore, nothing main user would see"
-            echo "---------------------------------------------------------"
-        }
-
-        print_semantic_commits
+        echo "--------------------Conventional commits--------------------"
+        echo "build: Changes that affect the build system"
+        echo "ci: Changes to our CI configuration files and scripts"
+        echo "docs: Documentation only changes"
+        echo "feat: A new feature"
+        echo "fix: A bug fix"
+        echo "perf: A code change that improves performance"
+        echo "refactor: A code change that neither fixes a bug nor adds a feature"
+        echo "style: Changes that do not affect the function at all (white space, etc.)"
+        echo "test: Adding missing tests or correcting existing tests"
+        echo "revert: first include title of commit in the body include sha"
+        echo "chore: grunt tasks; no production code change, e.g. update .gitignore, nothing main user would see"
+        echo "---------------------------------------------------------"
       '')
     ];
   };
