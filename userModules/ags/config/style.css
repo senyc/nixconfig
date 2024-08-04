@@ -1,0 +1,67 @@
+.bar {
+  border-radius: 18px;
+}
+
+window>box {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+window.bar {
+  background-color: @theme_bg_color;
+  color: @theme_fg_color;
+}
+
+button {
+  padding-top: 0;
+  padding-bottom: 0;
+  background: @theme_bg_color;
+  border: 0;
+  border-radius: 0px;
+  border-bottom: 2px solid @theme_bg_color;
+}
+
+.workspaces button {
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #cad3f5;
+}
+
+.workspaces button.active {
+  border-bottom: 2px solid @theme_selected_bg_color;
+}
+
+label {
+  font-weight: bold;
+}
+
+.notification {
+  color: yellow;
+}
+
+.systray button {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+levelbar block,
+highlight {
+  min-height: 10px;
+}
+
+.volume-section {
+  border-radius: 10px;
+  background: @theme_selected_bg_color;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-width: 46px;
+}
+
+.clock-box {
+  border-radius: 10px;
+  background: @theme_selected_bg_color;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-width: 150px;
+  margin: 0;
+}

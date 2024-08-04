@@ -16,7 +16,7 @@
         settings = {
           general = {
             gaps_in = 4;
-            gaps_out = 8;
+            gaps_out = "4, 8, 8, 8";
             border_size = 1;
             layout = "master";
           };
@@ -154,7 +154,7 @@
 
             "${pkgs.hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
-            "gBar bar 0"
+            "ags"
           ];
         };
       };
