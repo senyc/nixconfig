@@ -8,17 +8,16 @@ window>box {
 }
 
 window.bar {
-  background-color: @theme_bg_color;
-  color: @theme_fg_color;
+  background-color: #181926;
 }
 
 button {
   padding-top: 0;
   padding-bottom: 0;
-  background: @theme_bg_color;
+  background: #181926;
   border: 0;
   border-radius: 0px;
-  border-bottom: 2px solid @theme_bg_color;
+  border-bottom: 2px solid #181926;
 }
 
 .workspaces button {
@@ -51,17 +50,17 @@ highlight {
 
 .volume-section {
   border-radius: 10px;
-  background: @theme_selected_bg_color;
   padding-left: 10px;
   padding-right: 10px;
   min-width: 46px;
+  background: @theme_selected_bg_color;
 }
 
 .clock-box {
   border-radius: 10px;
-  background: @theme_selected_bg_color;
   padding-left: 10px;
   padding-right: 10px;
   min-width: 150px;
   margin: 0;
+  background: @theme_selected_bg_color;
 }
