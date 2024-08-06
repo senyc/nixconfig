@@ -13,7 +13,7 @@ with lib; {
       hostName = "nixos";
       networkmanager.enable = true;
       hosts = {
-        "127.0.0.1" = strings.splitString " " "instagram.com twitch.tv www.twitch.tv www.instagram.com https://www.youtube.com news.google.com www.news.google.com finance.google.com www.finance.google.com https://youtube.com";
+        "127.0.0.1" = strings.splitString " " "reddit.com instagram.com twitch.tv www.twitch.tv www.instagram.com www.reddit.com https://www.youtube.com news.google.com www.news.google.com finance.google.com www.finance.google.com https://youtube.com";
       };
     };
     # TODO figure out why this works
