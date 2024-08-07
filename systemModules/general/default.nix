@@ -7,6 +7,7 @@
 with lib; {
   options = {
     modules.system.general.enable = mkEnableOption "Enable general defaults (fonts, locales, boot)";
+ 
   };
 
   config = mkIf config.modules.system.general.enable {

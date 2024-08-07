@@ -25,6 +25,7 @@
       "cursor"
       "direnv"
       "gh"
+      "gtk"
       "dev"
       "git"
       "kitty"
