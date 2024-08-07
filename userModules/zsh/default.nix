@@ -27,7 +27,6 @@
         vim = "nvim";
         k = "kubectl";
         d = "docker";
-        ssh = "kitten ssh";
         g = "git";
         ls = "ls --color=auto";
         la = "ls -a";

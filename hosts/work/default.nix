@@ -19,6 +19,7 @@
     "unfreePackages"
     "chromium"
     "cursor"
+    "gtk"
     "gh"
     "dev"
     "direnv"
