@@ -37,8 +37,6 @@ const WorkspaceDisplay = () => Widget.Box({
   children: Workspaces()
 })
 
-// we don't need dunst or any other notification daemon
-// because the Notifications module is a notification daemon itself
 function Notification() {
   const popups = notifications.bind("popups")
   return Widget.Box({
@@ -46,7 +44,8 @@ function Notification() {
     visible: popups.as(p => p.length > 0),
     children: [
       Widget.Icon({
-        icon: "preferences-system-notifications-symbolic",
+        size: 18,
+        icon: "preferences-system-notifications-symbolic"
       }),
       Widget.Label({
         label: popups.as(p => p[0]?.summary || ""),
@@ -83,6 +82,7 @@ function Volume() {
   }
 
   const icon = Widget.Icon({
+    size: 18,
     icon: Utils.watch(getIcon(), audio.speaker, getIcon),
   })
 
@@ -102,7 +102,7 @@ function Volume() {
 function SysTray() {
   const items = systemtray.bind("items")
     .as(items => items.map(item => Widget.Button({
-      child: Widget.Icon({ icon: item.bind("icon") }),
+      child: Widget.Icon({ class_name: "widget_icon", icon: item.bind("icon"), size: 18 }),
       on_primary_click: (_, event) => item.activate(event),
       on_secondary_click: (_, event) => item.openMenu(event),
       tooltip_markup: item.bind("tooltip_markup"),

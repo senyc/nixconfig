@@ -1,5 +1,6 @@
 .bar {
   border-radius: 18px;
+  font-size: 15px;
 }
 
 window>box {
@@ -20,10 +21,15 @@ button {
   border-bottom: 2px solid #181926;
 }
 
+.workspaces {
+  color: #363a4f;
+}
+
 .workspaces button {
   padding-left: 6px;
   padding-right: 6px;
   color: #cad3f5;
+  font-size: 16px;
 }
 
 .workspaces button.active {
@@ -54,6 +60,7 @@ highlight {
   padding-right: 10px;
   min-width: 46px;
   background: @theme_selected_bg_color;
+  font-size: 14px;
 }
 
 .clock-box {
@@ -62,5 +69,5 @@ highlight {
   padding-right: 10px;
   min-width: 150px;
   margin: 0;
-  background: @theme_selected_bg_color;
+  background: #363a4f;
 }
