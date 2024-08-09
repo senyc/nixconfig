@@ -30,6 +30,36 @@ with lib; {
       (writeShellScriptBin "getsecret" ''
         cat "/var/run/secrets/$1"
       '')
+      (writeShellScriptBin "ghid" ''
+        print_help() {
+          echo "usage: ghid issue [suffix]"
+          echo
+          echo "Creates and attaches a branch to the issue."
+          echo "Checks out the created branch, if specifed, will"
+          echo "append the suffix in the form of <issue #>-<suffix>"
+          echo "If not specified will default to the format of "
+          echo
+          echo "options"
+          echo "  -h --help          Displays this help and exits"
+        }
+
+        if [[ "$1" =~ ^(-h|--help)$ ]]; then
+          print_help
+          exit 0
+        fi
+
+        if [[ -z $1 ]]; then
+          print_help
+          exit 1
+        fi
+
+        if [[ -n $2 ]]; then
+          gh issue develop "$1" -c -n "$1-$2"
+          exit "$?"
+        fi
+        gh issue develop "$1" -c -n "issue_$1"
+      '')
+
       # Simple reminder for available conventional commits (as based on angular commit convention)
       (writeShellScriptBin "commits" ''
         echo "--------------------Conventional commits--------------------"
