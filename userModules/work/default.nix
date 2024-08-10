@@ -12,6 +12,7 @@
     allowedUnfree = ["upwork" "zoom" "vscode"];
     home.packages = with pkgs; [
       upwork
+      goose
       zoom-us
       vscode
       peek

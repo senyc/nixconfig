@@ -6,7 +6,7 @@ const systemtray = await Service.import("systemtray")
 App.addIcons(`${App.configDir}/assets`)
 
 const date = Variable("", {
-  poll: [1000, 'date "+%H:%M:%S %b%e"'],
+  poll: [1000, 'date "+%H:%M:%S %b %d"'],
 })
 
 
