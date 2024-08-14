@@ -27,6 +27,7 @@
       "gh"
       "gtk"
       "dev"
+      "firefox"
       "git"
       "kitty"
       "packages"
