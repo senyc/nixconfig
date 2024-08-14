@@ -17,19 +17,32 @@ with lib; {
         date_string=$(date +"%Y-%m-%d%H:%M:%S")
         ${grim}/bin/grim -g "$(${slurp}/bin/slurp -w 0)" - | tee "$HOME/Pictures/screenshots/$date_string.png" | ${wl-clipboard}/bin/wl-copy
       '')
+
       (writeShellScriptBin "rmdockercontainers" ''
         for i in $(${docker}/bin/docker ps --all | awk '{print $1}' | tail -n +2); do
           ${docker}/bin/docker rm $i
         done
       '')
+
       (writeShellScriptBin "makekeyfromssh" ''
         mkdir -p ~/.config/sops/age/
         nix run nixpkgs#ssh-to-age -- -private-key -i  ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
         nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
       '')
+
       (writeShellScriptBin "getsecret" ''
         cat "/var/run/secrets/$1"
       '')
+
+      (writeShellScriptBin "gfs" ''
+        fetch_output=$(git fetch 2>&1)
+        branches=$( echo "$fetch_output" | tail -n +2 | awk '{print $NF}' | sed 's|origin/||')
+
+        # we can use wc to count lines if we want to later
+        branch_to_switch_to=$(echo "$branches" | ${fzf}/bin/fzf --cycle )
+        git switch "$branch_to_switch_to"
+      '')
+
       (writeShellScriptBin "ghid" ''
         print_help() {
           echo "usage: ghid issue [suffix]"

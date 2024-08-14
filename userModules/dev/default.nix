@@ -18,6 +18,7 @@
       kubernetes-helm
       terraform
       yq
+      fzf
     ];
   };
 }
