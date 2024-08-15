@@ -26,7 +26,7 @@ with lib; {
 
       (writeShellScriptBin "makekeyfromssh" ''
         mkdir -p ~/.config/sops/age/
-        nix run nixpkgs#ssh-to-age -- -private-key -i  ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
+        nix run nixpkgs#ssh-to-age -- -private-key -i  ~/.ssh/id_personal > ~/.config/sops/age/keys.txt
         nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
       '')
 
@@ -70,7 +70,10 @@ with lib; {
           gh issue develop "$1" -c -n "$1-$2"
           exit "$?"
         fi
-        gh issue develop "$1" -c -n "issue_$1"
+      '')
+      (writeShellScriptBin "goodmorning" ''
+        # This contains financial and banking sites I use, so it is hidden in sops
+        chromium $(getsecret morning-tabs)
       '')
 
       # Simple reminder for available conventional commits (as based on angular commit convention)

@@ -27,5 +27,9 @@ with lib; {
       owner = config.users.users.senyc.name;
       group = config.users.users.senyc.group;
     };
+    sops.secrets.morning-tabs = {
+      owner = config.users.users.senyc.name;
+      group = config.users.users.senyc.group;
+    };
   };
 }

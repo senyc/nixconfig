@@ -12,6 +12,7 @@
     "network"
     "packages"
     "users"
+    "sops"
     "containerization"
     "steam"
     "wayland"
