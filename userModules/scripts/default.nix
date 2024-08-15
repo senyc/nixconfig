@@ -38,8 +38,15 @@ with lib; {
         fetch_output=$(git fetch 2>&1)
         branches=$( echo "$fetch_output" | tail -n +2 | awk '{print $NF}' | sed 's|origin/||')
 
-        # we can use wc to count lines if we want to later
-        branch_to_switch_to=$(echo "$branches" | ${fzf}/bin/fzf --cycle )
+        if [[ $(echo $branches | wc -w) == 0 ]]; then
+          echo "No branches found" >&2
+          exit 1
+        elif [[  $(echo $branches | wc -w) == 1  ]]; then
+          branch_to_switch_to="$branches"
+        else
+          branch_to_switch_to="$(echo "$branches" | ${fzf}/bin/fzf --cycle )"
+        fi
+
         git switch "$branch_to_switch_to"
       '')
 
@@ -68,7 +75,8 @@ with lib; {
 
         if [[ -n $2 ]]; then
           gh issue develop "$1" -c -n "$1-$2"
-          exit "$?"
+        else
+          gh issue develop "$1" -c -n "issue_$1"
         fi
       '')
       (writeShellScriptBin "goodmorning" ''
