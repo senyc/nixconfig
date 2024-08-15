@@ -57,7 +57,8 @@ with lib; {
           echo "Creates and attaches a branch to the issue."
           echo "Checks out the created branch, if specifed, will"
           echo "append the suffix in the form of <issue #>-<suffix>"
-          echo "If not specified will default to the format of "
+          echo "If not specified will default to the format of"
+          echo "issue_<issue #>"
           echo
           echo "options"
           echo "  -h --help          Displays this help and exits"
