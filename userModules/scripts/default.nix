@@ -38,7 +38,7 @@ with lib; {
         fetch_output=$(git fetch 2>&1)
         branches=$( echo "$fetch_output" | tail -n +2 | awk '{print $NF}' | sed 's|origin/||')
 
-        if [[ $(echo $branches | wc -w) == 0 ]]; then
+        if [[ -z $branches ]]; then
           echo "No branches found" >&2
           exit 1
         elif [[  $(echo $branches | wc -w) == 1  ]]; then
@@ -52,11 +52,11 @@ with lib; {
 
       (writeShellScriptBin "ghid" ''
         print_help() {
-          echo "usage: ghid issue [suffix]"
+          echo "usage: ghid issue [prefix]"
           echo
           echo "Creates and attaches a branch to the issue."
           echo "Checks out the created branch, if specifed, will"
-          echo "append the suffix in the form of <issue #>-<suffix>"
+          echo "prepend the prefix in the form of <prefix>-<issue #>"
           echo "If not specified will default to the format of"
           echo "issue_<issue #>"
           echo
@@ -75,7 +75,7 @@ with lib; {
         fi
 
         if [[ -n $2 ]]; then
-          gh issue develop "$1" -c -n "$1-$2"
+          gh issue develop "$1" -c -n "$2-$1"
         else
           gh issue develop "$1" -c -n "issue_$1"
         fi

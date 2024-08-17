@@ -12,6 +12,9 @@
       settings = {
         git_protocol = "ssh";
         editor = "nvim";
+        aliases = {
+          i = "issue";
+        };
       };
     };
   };
