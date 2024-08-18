@@ -27,7 +27,7 @@
       "gh"
       "dev"
       "git"
-      "kitty"
+      "alacritty"
       "packages"
       "scripts"
       "wofi"

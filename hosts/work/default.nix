@@ -24,7 +24,7 @@
     "gh"
     "git"
     "gtk"
-    "kitty"
+    "alacritty"
     "packages"
     "scripts"
     "unfreePackages"

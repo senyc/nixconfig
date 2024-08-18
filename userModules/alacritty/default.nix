@@ -11,26 +11,36 @@
       enable = true;
       settings = {
         env.TERM = "xterm-256color";
-        font = {
-          size = 13;
-          bold = {
-            family = "JetBrainsMono Nerd Font Mono";
-            style = "Bold";
-          };
-          bold_italic = {
-            family = "JetBrainsMono Nerd Font Mono";
-            style = "Bold Italic";
-          };
-          italic = {
-            family = "JetBrainsMono Nerd Font Mono";
-            style = "Italic";
-          };
-          normal = {
-            family = "JetBrainsMono Nerd Font Mono";
-            style = "Regular";
-          };
+        window = {
+          opacity = 1;
+          padding.x = 3;
+          padding.y = 3;
         };
 
+        scrolling = {
+          history = 50000;
+        };
+
+        font = {
+          size = 13;
+        };
+
+        keyboard = {
+          bindings = [
+            # Set <C-B> to toggle vim mode
+            {
+              key = "B";
+              mods = "Control";
+              action = "ToggleViMode";
+            }
+            # On append enter "insert" mode
+            {
+              key = "A";
+              mode = "Vi|~Search";
+              action = "ToggleViMode";
+            }
+          ];
+        };
         colors = {
           primary = {
             background = "#24273a";
@@ -115,10 +125,6 @@
             }
           ];
         };
-        window.opacity = 1;
-        window.padding.x = 3;
-        window.padding.y = 3;
-        scrolling.history = 5000;
       };
     };
   };
