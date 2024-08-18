@@ -19,6 +19,7 @@
       terraform
       yq
       fzf
+      bun
     ];
   };
 }
