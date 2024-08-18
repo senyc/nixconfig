@@ -29,7 +29,7 @@
       "gtk"
       "dev"
       "git"
-      "kitty"
+      "alacritty"
       "packages"
       "scripts"
       "wofi"

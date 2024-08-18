@@ -69,7 +69,7 @@
           "$mod" = "SUPER";
           bind =
             [
-              "$mod, Q, exec, kitty"
+              "$mod, Q, exec, alacritty"
               "$mod, B, exec, chromium"
 
               "$mod, X, killactive,"
@@ -150,7 +150,7 @@
             "[workspace 6 silent] keepassxc"
             "[workspace 2 silent] chromium"
             "[workspace 5 silent] logseq"
-            "kitty"
+            "alacritty"
 
             "${pkgs.hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
