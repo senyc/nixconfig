@@ -17,6 +17,7 @@
       kubectl
       kubernetes-helm
       terraform
+      linode-cli
       yq
       fzf
       bun

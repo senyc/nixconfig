@@ -16,6 +16,7 @@
       zoom-us
       vscode
       peek
+      sqlcmd
       flameshot
     ];
   };
