@@ -34,7 +34,6 @@ with lib; {
       senyc-nvimconfig
       spotify
       slack
-      stern
     ];
   };
 }

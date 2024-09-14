@@ -21,6 +21,7 @@
       yq
       fzf
       bun
+      stern
     ];
   };
 }
