@@ -14,7 +14,6 @@
     "users"
     "sops"
     "containerization"
-    "steam"
     "wayland"
     "pipewire"
   ];
