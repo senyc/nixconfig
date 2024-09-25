@@ -9,26 +9,26 @@ window>box {
 }
 
 window.bar {
-  background-color: #181926;
+  background-color: @theme_bg_color;
 }
 
 button {
   padding-top: 0;
   padding-bottom: 0;
-  background: #181926;
+  background: @theme_bg_color;
   border: 0;
   border-radius: 0px;
-  border-bottom: 2px solid #181926;
+  border-bottom: 2px solid @theme_bg_color;
 }
 
 .workspaces {
-  color: #363a4f;
+  color: @theme_bg_color;
 }
 
 .workspaces button {
   padding-left: 6px;
   padding-right: 6px;
-  color: #cad3f5;
+  color: @theme_fg_color;
   font-size: 16px;
 }
 
@@ -69,5 +69,5 @@ highlight {
   padding-right: 10px;
   min-width: 150px;
   margin: 0;
-  background: #363a4f;
+  background: @theme_selected_bg_color;
 }
