@@ -28,8 +28,6 @@
             touchpad = {
               natural_scroll = false;
             };
-            repeat_rate = 40;
-            repeat_delay = 230;
             force_no_accel = true;
             sensitivity = 0.8; # -1.0 - 1.0, 0 means no modification.
           };
@@ -141,7 +139,6 @@
           windowrulev2 = [
             "workspace 3, title:^(Spotify( Premium)?)$"
             "workspace 4, class:^(Slack)$"
-            "workspace 5, class:^(Logseq)$"
             "workspace 6, class:^(org.keepassxc.KeePassXC)$"
           ];
           exec-once = [
