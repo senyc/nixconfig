@@ -102,10 +102,8 @@
               "$mod, M, workspace, 3"
               # Other
               "$mod, O, workspace, 4"
-              # Notes
-              "$mod, N, workspace, 5"
               # Passwords
-              "$mod, P, workspace, 6"
+              "$mod, P, workspace, 5"
             ]
             ++ [
               ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 2"
@@ -139,14 +137,13 @@
           windowrulev2 = [
             "workspace 3, title:^(Spotify( Premium)?)$"
             "workspace 4, class:^(Slack)$"
-            "workspace 6, class:^(org.keepassxc.KeePassXC)$"
+            "workspace 5, class:^(org.keepassxc.KeePassXC)$"
           ];
           exec-once = [
             "[workspace 3 silent] spotify"
             "[workspace 4 silent] slack"
-            "[workspace 6 silent] keepassxc"
+            "[workspace 5 silent] keepassxc"
             "[workspace 2 silent] chromium"
-            "[workspace 5 silent] logseq"
             "alacritty"
 
             "${pkgs.hypridle}/bin/hypridle"

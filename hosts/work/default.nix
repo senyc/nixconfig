@@ -40,6 +40,11 @@ in
       inputs.home-manager.nixosModules.default
     ];
 
+    # nvimconfig specific environment variable to only show work related projects in project search
+    environment.sessionVariables = {
+      HIDE_PERSONAL_PROJECTS = "true";
+    };
+
     home-manager = {
       extraSpecialArgs = {inherit inputs outputs;};
       users = {
