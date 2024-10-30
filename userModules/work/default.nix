@@ -18,7 +18,6 @@
       peek
       sqlcmd
       flameshot
-      azure-cli
     ];
   };
 }

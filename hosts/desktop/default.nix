@@ -5,6 +5,7 @@
 }: let
   utils = import ../../nix/utils.nix {inherit inputs outputs;};
   systemModules = [
+    "unfreePackages"
     "disk"
     "general"
     "greetd"

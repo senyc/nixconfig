@@ -7,12 +7,12 @@
     modules.system.steam.enable = lib.mkEnableOption "Enable steam";
   };
   config = lib.mkIf config.modules.system.steam.enable {
-    nixpkgs.config.allowUnfreePredicate = pkg:
-      lib.elem (lib.getName pkg) [
-        "steam-original"
-        "steam"
-        "steam-run"
-      ];
+    allowedUnfree = [
+      "steam-original"
+      "steam"
+      "steam-run"
+      "steam-unwrapped"
+    ];
     programs.steam = {
       enable = true;
     };
