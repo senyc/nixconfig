@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  outputs,
   ...
 }: {
   options = {
@@ -9,15 +10,17 @@
   };
   config = lib.mkIf config.modules.user.work.enable {
     # Enable work unfree packages
+    nixpkgs.overlays = [outputs.overlays.addPackages];
     allowedUnfree = ["upwork" "zoom" "vscode"];
     home.packages = with pkgs; [
-      upwork
       goose
       zoom-us
       vscode
       peek
       sqlcmd
       flameshot
+      # upwork-overlay
+      (callPackage ./fixed-upwork.nix {})
     ];
   };
 }

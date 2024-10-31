@@ -19,6 +19,9 @@ with lib; {
     ];
 
     nixpkgs.overlays = [outputs.overlays.addPackages];
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-27.3.11"
+    ];
 
     home.packages = with pkgs; [
       aspell
