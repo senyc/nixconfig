@@ -41,10 +41,10 @@
           text = /* bash */ ''
               title=$(head -1 "$1")
 
-              # Checking that commit follows conventional commit guidelines
-              #   https://www.conventionalcommits.org/en/v1.0.0/
+              # Checking that commit follows commit guidelines
+              #   based on: https://www.conventionalcommits.org/en/v1.0.0/
               if ! (echo "$title" | grep -qE "^Merge"); then
-                  if ! (echo "$title" | grep -qE "^(feat|fix|chore|docs|test|style|refactor|perf|build|ci|revert)(\(.+?\))?!?: .{1,}$"); then
+                  if ! (echo "$title" | grep -qE "^(.+)(\(.+?\))?!?: .{1,}$"); then
                       echo "Aborting commit. Your commit message is invalid. Please follow the conventional commit guidelines" >&2
                       exit 1
                   fi
