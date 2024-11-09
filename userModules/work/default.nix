@@ -19,8 +19,7 @@
       peek
       sqlcmd
       flameshot
-      # upwork-overlay
-      (callPackage ./fixed-upwork.nix {})
+      upwork
     ];
   };
 }
