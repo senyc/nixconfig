@@ -93,27 +93,40 @@
               # Scroll through existing workspaces with mod + scroll
               "$mod, mouse_down, workspace, e+1"
               "$mod, mouse_up, workspace, e-1"
-
               # Terminal
               "$mod, E, workspace, 1"
+              "$mod SHIFT, E, movetoworkspace, 1"
+              "$mod CONTROL, E, movetoworkspacesilent, 1"
               # Browser
               "$mod, R, workspace, 2"
+              "$mod SHIFT, R, movetoworkspace, 2"
+              "$mod CONTROL, R, movetoworkspacesilent, 2"
               # Music
               "$mod, M, workspace, 3"
+              "$mod SHIFT, M, movetoworkspace, 2"
+              "$mod CONTROL, M, movetoworkspacesilent, 3"
               # Other
               "$mod, O, workspace, 4"
+              "$mod SHIFT, O, movetoworkspace, 4"
+              "$mod CONTROL, O, movetoworkspacesilent, 4"
               # Passwords
               "$mod, P, workspace, 5"
+              "$mod SHIFT, P, movetoworkspace, 5"
+              "$mod CONTROL, P, movetoworkspacesilent, 5"
             ]
             ++ [
-              ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 2"
-              ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 2"
-              ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
-              ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-              ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
-              ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
-              ",Print,exec, screenshot"
+              # Screenshot
+              ",Print, exec, screenshot"
             ];
+          # l flag will allow for these to be used while screen is locked
+          bindl = [
+            ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 2"
+            ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 2"
+            ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
+            ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+            ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+            ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+          ];
           bindm = [
             "SUPER, mouse:272, movewindow"
             "SUPER, mouse:273, resizewindow"
