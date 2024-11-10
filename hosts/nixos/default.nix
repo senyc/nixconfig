@@ -24,6 +24,7 @@
       "chromium"
       "ags"
       "cursor"
+      "ssh"
       "direnv"
       "gh"
       "gtk"
