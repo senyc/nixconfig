@@ -87,7 +87,7 @@ with lib; {
 
       # Simple reminder for available conventional commits (as based on angular commit convention)
       (writeShellScriptBin "commits" ''
-        echo "--------------------Conventional commits--------------------"
+        echo "-------------------Conventional commits------------------"
         echo "build: Changes that affect the build system"
         echo "ci: Changes to our CI configuration files and scripts"
         echo "docs: Documentation only changes"
