@@ -71,7 +71,7 @@
               "$mod, B, exec, chromium"
 
               "$mod, X, killactive,"
-              "$mod SHIFT, M, exit,"
+              "$mod SHIFT CONTROL, M, exit,"
               "$mod, F, fullscreen, 1"
               "$mod SHIFT, F, fullscreen, 0"
               "$mod, bracketleft, changegroupactive, b"
@@ -103,7 +103,7 @@
               "$mod CONTROL, R, movetoworkspacesilent, 2"
               # Music
               "$mod, M, workspace, 3"
-              "$mod SHIFT, M, movetoworkspace, 2"
+              "$mod SHIFT, M, movetoworkspace, 3"
               "$mod CONTROL, M, movetoworkspacesilent, 3"
               # Other
               "$mod, O, workspace, 4"
