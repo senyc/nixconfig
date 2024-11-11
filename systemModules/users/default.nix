@@ -11,7 +11,7 @@ with lib; {
   config = mkIf config.modules.system.users.enable {
     programs.zsh.enable = true;
     users = {
-      mutableUsers = false;
+      mutableUsers = true;
       users.root = {
         home = "/root";
         initialPassword = "password";

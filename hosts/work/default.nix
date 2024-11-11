@@ -22,6 +22,7 @@
     "dev"
     "direnv"
     "gh"
+    "ssh"
     "git"
     "gtk"
     "alacritty"
