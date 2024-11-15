@@ -15,7 +15,7 @@ with lib; {
             mkdir -p "$HOME/Pictures/screenshots/"
         fi
         date_string=$(date +"%Y-%m-%d%H:%M:%S")
-        ${grim}/bin/grim -g "$(${slurp}/bin/slurp -w 0)" - | tee "$HOME/Pictures/screenshots/$date_string.png" | ${wl-clipboard}/bin/wl-copy
+        ${grim}/bin/grim -g "$(${slurp}/bin/slurp -w 0 -b 80808044)" - | tee "$HOME/Pictures/screenshots/$date_string.png" | ${wl-clipboard}/bin/wl-copy
       '')
 
       (writeShellScriptBin "rmdockercontainers" ''
