@@ -39,10 +39,10 @@
           };
           decoration = {
             rounding = 5;
-            drop_shadow = true;
-            shadow_range = 30;
-            shadow_render_power = 3;
-            "col.shadow" = "rgba(1a1a1aee)";
+            shadow = {
+              range = 30;
+              render_power = 3;
+            };
           };
           animations = {
             enabled = true;
@@ -120,12 +120,14 @@
             ];
           # l flag will allow for these to be used while screen is locked
           bindl = [
-            ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 2"
-            ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 2"
             ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
             ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
             ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
             ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+          ];
+          bindle = [
+            ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 2"
+            ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 2"
           ];
           bindm = [
             "SUPER, mouse:272, movewindow"

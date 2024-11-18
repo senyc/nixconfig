@@ -3,25 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    gBar = {
-      url = "github:scorpion-26/gBar";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     neovim-config = {
       url = "github:senyc/nvimconfig";
     };
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
-    ags.url = "github:Aylur/ags";
+    ags = {
+      url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = {
