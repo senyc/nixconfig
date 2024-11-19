@@ -101,6 +101,9 @@ with lib; {
         echo "chore: grunt tasks; no production code change, e.g. update .gitignore, nothing main user would see"
         echo "---------------------------------------------------------"
       '')
+      (writeShellScriptBin "likespotifysong" ''
+        spotify_player like
+      '')
     ];
   };
 }

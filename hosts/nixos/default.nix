@@ -22,6 +22,7 @@
     [
       "unfreePackages"
       "chromium"
+      "spotify"
       "ags"
       "cursor"
       "ssh"

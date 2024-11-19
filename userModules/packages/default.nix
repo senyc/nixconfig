@@ -14,7 +14,6 @@ with lib; {
     # Allow certain unfree user-level packages
 
     allowedUnfree = [
-      "spotify"
       "slack"
     ];
 
@@ -31,7 +30,6 @@ with lib; {
       obs-studio
       pavucontrol
       senyc-nvimconfig
-      spotify
       slack
     ];
   };

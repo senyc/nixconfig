@@ -124,6 +124,7 @@
             ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
             ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
             ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+            "$mod SHIFT CONTROL, l, exec, likespotifysong"
           ];
           bindle = [
             ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 2"
@@ -155,7 +156,8 @@
             "workspace 5, class:^(org.keepassxc.KeePassXC)$"
           ];
           exec-once = [
-            "[workspace 3 silent] spotify"
+            "[workspace 3 silent] alacritty -e spotify_player"
+            # "[workspace 3 silent] alacritty -e ${pkgs.cava}/bin/cava"
             "[workspace 4 silent] slack"
             "[workspace 5 silent] keepassxc"
             "[workspace 2 silent] chromium"
