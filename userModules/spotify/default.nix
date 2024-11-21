@@ -11,6 +11,7 @@
       enable = true;
       settings = {
         enable_notify = false;
+        cover_img_scale = 1.8;
         device = {
           volume = 100;
         };

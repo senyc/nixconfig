@@ -19,6 +19,7 @@
   userModules = [
     "chromium"
     "cursor"
+    "spotify"
     "dev"
     "direnv"
     "gh"

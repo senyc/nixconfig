@@ -27,6 +27,11 @@
             "~/.ssh/id_work_two"
           ];
         };
+        "*" = {
+          setEnv = {
+            TERM = "xterm-256color";
+          };
+        };
       };
       extraConfig = ''
         Include ~/.ssh/extra_config

@@ -67,7 +67,7 @@
           "$mod" = "SUPER";
           bind =
             [
-              "$mod, Q, exec, alacritty"
+              "$mod, Q, exec, foot"
               "$mod, B, exec, chromium"
 
               "$mod, X, killactive,"
@@ -156,12 +156,12 @@
             "workspace 5, class:^(org.keepassxc.KeePassXC)$"
           ];
           exec-once = [
-            "[workspace 3 silent] alacritty -e spotify_player"
+            "[workspace 3 silent] foot spotify_player"
             # "[workspace 3 silent] alacritty -e ${pkgs.cava}/bin/cava"
             "[workspace 4 silent] slack"
             "[workspace 5 silent] keepassxc"
             "[workspace 2 silent] chromium"
-            "alacritty"
+            "foot"
 
             "${pkgs.hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"

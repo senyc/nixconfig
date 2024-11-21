@@ -15,6 +15,7 @@ with lib; {
 
     allowedUnfree = [
       "slack"
+      "postman"
     ];
 
     nixpkgs.overlays = [outputs.overlays.addPackages];
@@ -31,6 +32,7 @@ with lib; {
       pavucontrol
       senyc-nvimconfig
       slack
+      postman
     ];
   };
 }

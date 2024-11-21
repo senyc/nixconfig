@@ -22,6 +22,7 @@
     [
       "unfreePackages"
       "chromium"
+      "foot"
       "spotify"
       "ags"
       "cursor"
@@ -31,7 +32,6 @@
       "gtk"
       "dev"
       "git"
-      "alacritty"
       "packages"
       "scripts"
       "wofi"
