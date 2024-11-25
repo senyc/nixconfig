@@ -13,7 +13,6 @@
     "network"
     "packages"
     "users"
-    "sops"
     "containerization"
     "wayland"
     "pipewire"
