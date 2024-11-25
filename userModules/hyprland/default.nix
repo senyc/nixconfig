@@ -109,10 +109,6 @@
               "$mod, O, workspace, 4"
               "$mod SHIFT, O, movetoworkspace, 4"
               "$mod CONTROL, O, movetoworkspacesilent, 4"
-              # Passwords
-              "$mod, P, workspace, 5"
-              "$mod SHIFT, P, movetoworkspace, 5"
-              "$mod CONTROL, P, movetoworkspacesilent, 5"
             ]
             ++ [
               # Screenshot
@@ -153,19 +149,23 @@
           windowrulev2 = [
             "workspace 3, title:^(Spotify( Premium)?)$"
             "workspace 4, class:^(Slack)$"
-            "workspace 5, class:^(org.keepassxc.KeePassXC)$"
+            "float, class:^(org.keepassxc.KeePassXC)$"
+            "size 30% 30%, class:^(org.keepassxc.KeePassXC)$"
+            "float, class:^(.blueman-manager-wrapped)$"
+            "size 30% 30%, class:^(.blueman-manager-wrapped)$"
           ];
           exec-once = [
             "[workspace 3 silent] foot spotify_player"
-            # "[workspace 3 silent] alacritty -e ${pkgs.cava}/bin/cava"
+            # "[workspace 3 silent] foot ${pkgs.cava}/bin/cava"
             "[workspace 4 silent] slack"
-            "[workspace 5 silent] keepassxc"
             "[workspace 2 silent] chromium"
             "foot"
 
             "${pkgs.hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
             "ags"
+            # Adds blueman to the top bar
+            "blueman-applet"
           ];
         };
       };

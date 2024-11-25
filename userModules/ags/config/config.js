@@ -15,14 +15,13 @@ const workSpaceIcons = {
   2: "r",
   3: "m",
   4: "o",
-  5: "p"
 }
 
 function range(length, start = 1) {
   return Array.from({ length }, (_, i) => i + start)
 }
 
-const Workspaces = () => range(5).map(i => Widget.Button({
+const Workspaces = () => range(4).map(i => Widget.Button({
   attribute: i,
   on_clicked: () => hyprland.messageAsync(`dispatch workspace ${i}`),
   label: workSpaceIcons[i],

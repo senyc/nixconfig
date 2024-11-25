@@ -11,7 +11,10 @@
       enable = true;
       settings = {
         enable_notify = false;
-        cover_img_scale = 1.8;
+        cover_img_scale =
+          if config.modules.user ? "alacritty"
+          then 1.0
+          else 1.8;
         device = {
           volume = 100;
         };
