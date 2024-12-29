@@ -67,7 +67,7 @@
           "$mod" = "SUPER";
           bind =
             [
-              "$mod, Q, exec, foot"
+              "$mod, Q, exec, alacritty"
               "$mod, B, exec, chromium"
 
               "$mod, X, killactive,"
@@ -155,11 +155,11 @@
             "size 30% 30%, class:^(.blueman-manager-wrapped)$"
           ];
           exec-once = [
-            "[workspace 3 silent] foot spotify_player"
+            "[workspace 3 silent] alacritty -e spotify_player"
             # "[workspace 3 silent] foot ${pkgs.cava}/bin/cava"
             "[workspace 4 silent] slack"
             "[workspace 2 silent] chromium"
-            "foot"
+            "alacritty"
 
             "${pkgs.hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"

@@ -21,7 +21,7 @@
     [
       "unfreePackages"
       "chromium"
-      "foot"
+      "alacritty"
       "spotify"
       "ags"
       "cursor"
