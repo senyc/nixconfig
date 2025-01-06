@@ -7,7 +7,6 @@
 with lib; {
   options = {
     modules.system.general.enable = mkEnableOption "Enable general defaults (fonts, locales, boot)";
- 
   };
 
   config = mkIf config.modules.system.general.enable {
@@ -36,7 +35,10 @@ with lib; {
 
     fonts = {
       packages = with pkgs; [
-        (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+        # (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.iosevka
+        nerd-fonts.fira-code
       ];
       enableDefaultPackages = true;
       fontconfig = {

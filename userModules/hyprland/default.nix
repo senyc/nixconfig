@@ -156,7 +156,7 @@
           ];
           exec-once = [
             "[workspace 3 silent] alacritty -e spotify_player"
-            # "[workspace 3 silent] foot ${pkgs.cava}/bin/cava"
+            "[workspace 3 silent] alacritty -e ${pkgs.cava}/bin/cava"
             "[workspace 4 silent] slack"
             "[workspace 2 silent] chromium"
             "alacritty"
