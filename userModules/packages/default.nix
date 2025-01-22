@@ -12,10 +12,8 @@ with lib; {
 
   config = mkIf config.modules.user.packages.enable {
     # Allow certain unfree user-level packages
-
     allowedUnfree = [
       "slack"
-      "postman"
     ];
 
     nixpkgs.overlays = [outputs.overlays.addPackages];
@@ -32,7 +30,7 @@ with lib; {
       pavucontrol
       senyc-nvimconfig
       slack
-      postman
+      tor-browser
     ];
   };
 }

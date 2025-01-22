@@ -65,10 +65,12 @@
             workspace_swipe = false;
           };
           "$mod" = "SUPER";
+          "$browser" = "firefox";
           bind =
             [
               "$mod, Q, exec, alacritty"
-              "$mod, B, exec, chromium"
+              "$mod, B, exec, $browser"
+              "$mod SHIFT, B, exec, tor-browser"
 
               "$mod, X, killactive,"
               "$mod SHIFT CONTROL, M, exit,"
@@ -158,7 +160,7 @@
             "[workspace 3 silent] alacritty -e spotify_player"
             "[workspace 3 silent] alacritty -e ${pkgs.cava}/bin/cava"
             "[workspace 4 silent] slack"
-            "[workspace 2 silent] chromium"
+            "[workspace 2 silent] $browser"
             "alacritty"
 
             "${pkgs.hypridle}/bin/hypridle"

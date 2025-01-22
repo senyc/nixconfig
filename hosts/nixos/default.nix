@@ -20,7 +20,7 @@
   userModules =
     [
       "unfreePackages"
-      "chromium"
+      "firefox"
       "alacritty"
       "spotify"
       "ags"

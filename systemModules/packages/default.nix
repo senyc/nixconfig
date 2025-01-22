@@ -9,6 +9,7 @@ with lib; {
     modules.system.packages.enable = mkEnableOption "Enable root packages";
   };
   config = mkIf config.modules.system.packages.enable {
+    programs.nix-ld.enable = true;
     environment.systemPackages = with pkgs; [
       curl
       fd

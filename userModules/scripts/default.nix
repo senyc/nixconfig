@@ -30,6 +30,10 @@ with lib; {
         nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
       '')
 
+      (writeShellScriptBin "addcookieexception" ''
+        nix run nixpkgs#sqlite -- ~/projects/nixconfig/userModules/firefox/permissions.sqlite "INSERT INTO moz_perms (origin,type,permission,expireType,expireTime,modificationTime) VALUES ('https://$1','cookie',1,0,0,1737570736582); INSERT INTO moz_perms (origin,type,permission,expireType,expireTime,modificationTime) VALUES ('http://$1','cookie',1,0,0,1737570736582)"
+      '')
+
       (writeShellScriptBin "getsecret" ''
         cat "/var/run/secrets/$1"
       '')
