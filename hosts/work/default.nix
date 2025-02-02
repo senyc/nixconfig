@@ -15,6 +15,7 @@
     "pipewire"
     "users"
     "xorg"
+    "tailscale"
   ];
   userModules = [
     "chromium"

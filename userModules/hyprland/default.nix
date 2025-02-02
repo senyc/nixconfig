@@ -143,7 +143,7 @@
             "$mod CONTROL, J, resizeactive, 0 20"
           ];
           monitor = [
-            ",highrr,auto,1"
+            "DP-2, 2560x1440@75, 0x0, 1"
           ];
           workspace = [
             "1 default:true, monitor:DP-2"
