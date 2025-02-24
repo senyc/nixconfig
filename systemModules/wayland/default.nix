@@ -27,6 +27,7 @@
 
     environment.systemPackages = with pkgs; [
       wl-clipboard
+      grim
     ];
 
     environment.sessionVariables = {

@@ -23,6 +23,9 @@ with lib; {
           ${docker}/bin/docker rm $i
         done
       '')
+      (writeShellScriptBin "flameshotwayland" ''
+        ${flameshotGrim}/bin/flameshot $@
+      '')
 
       (writeShellScriptBin "makekeyfromssh" ''
         mkdir -p ~/.config/sops/age/

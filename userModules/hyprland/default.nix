@@ -66,9 +66,10 @@
           };
           "$mod" = "SUPER";
           "$browser" = "firefox";
+          "$terminal" = "alacritty";
           bind =
             [
-              "$mod, Q, exec, alacritty"
+              "$mod, Q, exec, $terminal"
               "$mod, B, exec, $browser"
               "$mod SHIFT, B, exec, tor-browser"
 
@@ -157,11 +158,10 @@
             "size 30% 30%, class:^(.blueman-manager-wrapped)$"
           ];
           exec-once = [
-            "[workspace 3 silent] alacritty -e spotify_player"
-            "[workspace 3 silent] alacritty -e ${pkgs.cava}/bin/cava"
+            "[workspace 3 silent] $terminal -e spotify_player"
             "[workspace 4 silent] slack"
             "[workspace 2 silent] $browser"
-            "alacritty"
+            "$terminal"
 
             "${pkgs.hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
