@@ -15,10 +15,11 @@
     "pipewire"
     "users"
     "xorg"
-    "tailscale"
+    "unfreePackages"
+    "steam"
   ];
   userModules = [
-    "chromium"
+    "firefox"
     "cursor"
     "spotify"
     "dev"
