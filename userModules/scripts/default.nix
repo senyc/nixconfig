@@ -87,10 +87,6 @@ with lib; {
           gh issue develop "$1" -c -n "issue_$1"
         fi
       '')
-      (writeShellScriptBin "goodmorning" ''
-        # This contains financial and banking sites I use, so it is hidden in sops
-        chromium $(getsecret morning-tabs)
-      '')
 
       # Simple reminder for available conventional commits (as based on angular commit convention)
       (writeShellScriptBin "commits" ''
@@ -107,9 +103,6 @@ with lib; {
         echo "revert: first include title of commit in the body include sha"
         echo "chore: grunt tasks; no production code change, e.g. update .gitignore, nothing main user would see"
         echo "---------------------------------------------------------"
-      '')
-      (writeShellScriptBin "likespotifysong" ''
-        spotify_player like
       '')
     ];
   };

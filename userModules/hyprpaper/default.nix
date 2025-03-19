@@ -9,7 +9,7 @@
   };
 
   config = let
-    wallpaper = ../../backgrounds/winter_cabin.jpg;
+    wallpaper = ../../backgrounds/water.jpg;
   in
     lib.mkIf config.modules.user.hyprpaper.enable {
       services.hyprpaper = {

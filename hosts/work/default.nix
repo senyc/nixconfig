@@ -16,12 +16,11 @@
     "users"
     "xorg"
     "unfreePackages"
-    "steam"
+    "ollama"
   ];
   userModules = [
     "firefox"
     "cursor"
-    "spotify"
     "dev"
     "direnv"
     "gh"

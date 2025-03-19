@@ -16,13 +16,13 @@
     "containerization"
     "wayland"
     "pipewire"
+    "ollama"
   ];
   userModules =
     [
       "unfreePackages"
       "firefox"
       "alacritty"
-      "spotify"
       "ags"
       "cursor"
       "ssh"

@@ -23,12 +23,9 @@
       };
       defaultKeymap = "emacs";
       shellAliases = {
-        v = "nvim";
-        vim = "nvim";
         k = "kubectl";
         d = "docker";
         g = "git";
-        ls = "ls --color=auto";
         la = "ls -a";
         gd = "git diff";
         gds = "git diff --staged";

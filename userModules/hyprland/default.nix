@@ -123,7 +123,6 @@
             ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
             ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
             ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
-            "$mod SHIFT CONTROL, l, exec, likespotifysong"
           ];
           bindle = [
             ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 2"
@@ -153,12 +152,12 @@
             "workspace 3, title:^(Spotify( Premium)?)$"
             "workspace 4, class:^(Slack)$"
             "float, class:^(org.keepassxc.KeePassXC)$"
-            "size 30% 30%, class:^(org.keepassxc.KeePassXC)$"
+            "size 35% 35%, class:^(org.keepassxc.KeePassXC)$"
             "float, class:^(.blueman-manager-wrapped)$"
             "size 30% 30%, class:^(.blueman-manager-wrapped)$"
           ];
           exec-once = [
-            "[workspace 3 silent] $terminal -e spotify_player"
+            "[workspace 3 silent] spotify"
             "[workspace 4 silent] slack"
             "[workspace 2 silent] $browser"
             "$terminal"

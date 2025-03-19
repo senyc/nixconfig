@@ -14,19 +14,17 @@ with lib; {
     # Allow certain unfree user-level packages
     allowedUnfree = [
       "slack"
+      "spotify"
     ];
 
     nixpkgs.overlays = [outputs.overlays.addPackages];
-    nixpkgs.config.permittedInsecurePackages = [
-      "electron-27.3.11"
-    ];
 
     home.packages = with pkgs; [
       aspell
       aspellDicts.en
       keepassxc
-      logseq
       obs-studio
+      spotify
       pavucontrol
       senyc-nvimconfig
       slack
