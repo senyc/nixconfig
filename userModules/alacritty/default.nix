@@ -10,6 +10,7 @@
     programs.alacritty = {
       enable = true;
       settings = {
+        general.import = [./catppuccin-mocha.toml];
         env.TERM = "xterm-256color";
         font = {
           size = 13;
@@ -32,8 +33,8 @@
         };
         window = {
           opacity = 1;
-          padding.x = 3;
-          padding.y = 3;
+          padding.x = 1;
+          padding.y = 1;
         };
 
         scrolling = {
@@ -42,12 +43,6 @@
 
         keyboard = {
           bindings = [
-            # Set <C-B> to toggle vim mode
-            {
-              key = "B";
-              mods = "Control";
-              action = "ToggleViMode";
-            }
             # On append enter "insert" mode
             {
               key = "A";
