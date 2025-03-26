@@ -20,6 +20,8 @@
       linode-cli
       yq
       fzf
+      yarn
+      sqlite
       bun
       stern
     ];

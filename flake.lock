@@ -173,10 +173,10 @@
       },
       "locked": {
         "lastModified": 1742122437,
-        "narHash": "sha256-lf7w1ExcGCtrmPX3n2kgYG7J+Lm5pItfZYtWHSAUfOw=",
+        "narHash": "sha256-vvnNJMmM7xDugiVLg8b6vhEuxHtJTg3SWM9UHykXKGo=",
         "owner": "senyc",
         "repo": "nvimconfig",
-        "rev": "ae4695bf039844790b970f8fc9d21d2abbe32d88",
+        "rev": "c9e4c88a1b0d2c8b7c5d969ce9f33936afc490b5",
         "type": "github"
       },
       "original": {
