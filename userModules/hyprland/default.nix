@@ -18,7 +18,7 @@
             gaps_in = 4;
             gaps_out = "4, 8, 8, 8";
             border_size = 1;
-            layout = "master";
+            layout = "dwindle";
           };
           cursor = {
             inactive_timeout = 10;
@@ -59,6 +59,7 @@
           dwindle = {
             pseudotile = true; # master switch for pseudotiling. Enabling is bound to mod + P in the keybinds section below
             preserve_split = true; # you probably want this
+            force_split = 2;
           };
           gestures = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
@@ -89,6 +90,7 @@
               "$mod SHIFT, L, movewindow, r"
               "$mod SHIFT, K, movewindow, u"
               "$mod SHIFT, J, movewindow, d"
+              "$mod, P, pseudo, "
 
               "$mod, SEMICOLON, exec, pkill wofi || wofi --show=run"
             ]

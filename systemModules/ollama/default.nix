@@ -20,7 +20,7 @@ with lib; {
         enable = true;
 
         loadModels = [
-          "deepseek-r1:14b"
+          "gemma3:12b"
         ];
 
         acceleration = "rocm";

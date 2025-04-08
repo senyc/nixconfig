@@ -13,7 +13,7 @@
         general.import = [./catppuccin-mocha.toml];
         env.TERM = "xterm-256color";
         font = {
-          size = 13;
+          size = 14;
           bold = {
             family = "JetBrainsMono Nerd Font Mono";
             style = "Bold";
