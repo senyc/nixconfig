@@ -26,9 +26,10 @@
             };
             "org/gnome/desktop/wm/keybindings" = {
               switch-to-workspace-1 = ["<Super>e"];
-              switch-to-workspace-2 = ["<Super>r"];
-              switch-to-workspace-3 = ["<Super>o"];
-              switch-to-workspace-4 = ["<Super>m"];
+              switch-to-workspace-2 = ["<Super>t"];
+              switch-to-workspace-3 = ["<Super>r"];
+              switch-to-workspace-4 = ["<Super>o"];
+              switch-to-workspace-5 = ["<Super>m"];
               toggle-maximized = ["<Super>f"];
               cycle-windows = ["<Super>h"];
               cycle-windows-backward = ["<Super>l"];

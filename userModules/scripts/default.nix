@@ -104,6 +104,35 @@ with lib; {
         echo "chore: grunt tasks; no production code change, e.g. update .gitignore, nothing main user would see"
         echo "---------------------------------------------------------"
       '')
+      (writeShellScriptBin "search" ''
+        is_url() {
+          local input="$1"
+
+          if [[ "$input" =~ ^(https?://)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(/.*)?$ ]]; then
+            return 0  # true
+          else
+            return 1  # false
+          fi
+        }
+
+        # Configuration
+        BROWSER="firefox"  # Replace with your preferred browser (e.g., chromium, google-chrome)
+        SEARCH_ENGINE="https://google.com/search?q="  # Replace with your preferred search engine
+
+        # Run wofi in drun mode and capture user input
+        INPUT=$(echo "" | wofi --dmenu  --prompt "Search:" --lines 1)
+
+        # Exit if wofi is canceled
+        if [ -z "$INPUT" ]; then
+            exit 0
+        fi
+
+        if is_url "$INPUT"; then
+          "$BROWSER" "$INPUT" &
+        else
+          "$BROWSER" "''${SEARCH_ENGINE}''${INPUT}" &
+        fi
+      '')
     ];
   };
 }

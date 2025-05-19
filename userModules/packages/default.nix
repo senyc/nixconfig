@@ -24,6 +24,7 @@ with lib; {
       aspellDicts.en
       keepassxc
       obs-studio
+      chromium
       spotify
       pavucontrol
       senyc-nvimconfig

@@ -16,14 +16,13 @@
     "containerization"
     "wayland"
     "pipewire"
-    "ollama"
   ];
   userModules =
     [
       "unfreePackages"
       "firefox"
-      "alacritty"
-      "ags"
+      "foot"
+      "waybar"
       "cursor"
       "ssh"
       "direnv"
@@ -35,6 +34,8 @@
       "scripts"
       "wofi"
       "zsh"
+      "starship"
+      "tmux"
     ]
     ++ map (i: "hypr${i}") ["idle" "paper" "lock" "land"];
 in

@@ -33,7 +33,6 @@
         };
         window = {
           opacity = 1;
-          padding.x = 1;
           padding.y = 1;
         };
 

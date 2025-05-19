@@ -19,11 +19,12 @@
       shell = "${pkgs.zsh}/bin/zsh";
       escapeTime = 10;
       disableConfirmationPrompt = true;
-      newSession = true;
+      newSession = false;
       plugins = with pkgs; [
         tmuxPlugins.yank
       ];
       extraConfig = ''
+        if-shell '[ -f ~/.tmux-extra-bindings ]' 'source-file ~/.tmux-extra-bindings'
         set -g default-terminal "xterm-256color"
         set-option -ga terminal-overrides ",xterm-256color:Tc"
         # vim like pane switching
@@ -32,7 +33,8 @@
         bind k select-pane -U
         bind l select-pane -R
 
-        set -g pane-active-border-style "bg=default fg=#EBBCBA"
+        set -g status-left-length 40
+        set-option -g status-position top
 
         set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q' # This is for the cursor shape in nvim
 
@@ -40,52 +42,51 @@
         bind % split-window -h -c "#{pane_current_path}"
         bind c new-window -c "#{pane_current_path}"
 
-        bind-key -r f run-shell "tmux neww tmux-sessionizer"
-        bind-key -r b run-shell "tmux neww tmux-sessionizer -"
+        bind -r f run-shell "tmux neww tmux-sessionizer"
 
-        bind-key -T copy-mode-vi v send-keys -X begin-selection
-        bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-        bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-        set-option -g status off
+        bind -T copy-mode-vi v send-keys -X begin-selection
+        bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
+        bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+        bind -r "<" swap-window -d -t -1
+        bind -r ">" swap-window -d -t +1
+        bind - switch-client -l
       '';
     };
 
     home.packages = with pkgs; [
-      (writeShellScriptBin "tmux-sessionizer" ''
-        fuzzy_find_projects() { echo -e "$(find ~/projects ~/work -mindepth 1 -maxdepth 1 -type d)\n/home/senyc/nixconfig\nmain" | ${fzf}/bin/fzf --cycle; }
+      (writeShellScriptBin "tmux-sessionizer" /*bash*/''
+        fuzzy_find_projects() {
+          # echo -e "$(find ~/p ~/p/archive ~/w ~/w/archive -mindepth 1 -maxdepth 1 -type d \( -path ~/w/archive -o -path ~/p/archive \) -prune -o -print | sed "s|$HOME|~|g")" | ${fzf}/bin/fzf --cycle;
+          echo -e "$(find ~/p ~/w -mindepth 1 -maxdepth 1 -type d | sed "s|$HOME|~|g")" | ${fzf}/bin/fzf --cycle;
+        }
         if [[ $# -eq 1 ]]; then
-            if [[ "$1" == "-" ]]; then
-                if [[ -n $TMUX ]]; then
-                    # Gets the most recently used tmux session
-                    selected=$(tmux list-sessions -F "#{session_name}:#{session_activity}" | sort -t':' -k2r | head -n2 | tail -n1 | cut -d: -f1)
-                else
-                    selected=$(fuzzy_find_projects)
-                fi
-            else
-                selected=$1
-            fi
+          selected=$1
         else
-            selected=$(fuzzy_find_projects)
+          selected=$(fuzzy_find_projects)
         fi
 
         if [[ -z $selected ]]; then
             exit 0
         fi
+
+        selected=$(echo -e $selected | sed "s|~|"$HOME"|")
         # If there is a period in the name, remove it
-        selected_name=$(basename "$selected" | tr -d .)
+        selected_name=$(basename "$selected" | tr . _)
 
         if [[ -z $TMUX ]] && [[ -z $(pgrep tmux) ]]; then
             tmux new-session -s "$selected_name" -c "$selected"
             exit 0
-        elif [[ -z $TMUX ]]; then
-            tmux attach
         fi
 
         if ! tmux has-session -t="$selected_name" 2> /dev/null; then
             tmux new-session -ds "$selected_name" -c "$selected"
         fi
 
-        tmux switch-client -t "$selected_name"
+        if [[ -z $TMUX ]]; then
+            tmux attach-session -t $selected_name
+        else
+            tmux switch-client -t $selected_name
+        fi
       '')
     ];
   };

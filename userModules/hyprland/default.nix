@@ -19,6 +19,7 @@
             gaps_out = "4, 8, 8, 8";
             border_size = 1;
             layout = "dwindle";
+            "col.active_border" = "0xff7f849c";
           };
           cursor = {
             inactive_timeout = 10;
@@ -32,6 +33,7 @@
             sensitivity = 0.8; # -1.0 - 1.0, 0 means no modification.
           };
           misc = {
+            focus_on_activate = true;
             enable_swallow = true;
             disable_hyprland_logo = true;
             disable_splash_rendering = true;
@@ -45,7 +47,7 @@
             };
           };
           animations = {
-            enabled = true;
+            enabled = false;
             bezier = "myBezier, 0.25, 0.9, 0.1, 1.02";
             animation = [
               "windows, 1, 7, myBezier"
@@ -67,7 +69,7 @@
           };
           "$mod" = "SUPER";
           "$browser" = "firefox";
-          "$terminal" = "alacritty";
+          "$terminal" = "foot";
           bind =
             [
               "$mod, Q, exec, $terminal"
@@ -93,6 +95,7 @@
               "$mod, P, pseudo, "
 
               "$mod, SEMICOLON, exec, pkill wofi || wofi --show=run"
+              "$mod, s, exec, search"
             ]
             ++ [
               # Scroll through existing workspaces with mod + scroll
@@ -102,18 +105,22 @@
               "$mod, E, workspace, 1"
               "$mod SHIFT, E, movetoworkspace, 1"
               "$mod CONTROL, E, movetoworkspacesilent, 1"
+              # Test
+              "$mod, T, workspace, 2"
+              "$mod SHIFT, T, movetoworkspace, 2"
+              "$mod CONTROL, T, movetoworkspacesilent, 2"
               # Browser
-              "$mod, R, workspace, 2"
-              "$mod SHIFT, R, movetoworkspace, 2"
-              "$mod CONTROL, R, movetoworkspacesilent, 2"
+              "$mod, R, workspace, 3"
+              "$mod SHIFT, R, movetoworkspace, 3"
+              "$mod CONTROL, R, movetoworkspacesilent, 3"
               # Music
-              "$mod, M, workspace, 3"
-              "$mod SHIFT, M, movetoworkspace, 3"
-              "$mod CONTROL, M, movetoworkspacesilent, 3"
+              "$mod, M, workspace, 4"
+              "$mod SHIFT, M, movetoworkspace, 4"
+              "$mod CONTROL, M, movetoworkspacesilent, 4"
               # Other
-              "$mod, O, workspace, 4"
-              "$mod SHIFT, O, movetoworkspace, 4"
-              "$mod CONTROL, O, movetoworkspacesilent, 4"
+              "$mod, O, workspace, 5"
+              "$mod SHIFT, O, movetoworkspace, 5"
+              "$mod CONTROL, O, movetoworkspacesilent, 5"
             ]
             ++ [
               # Screenshot
@@ -151,22 +158,24 @@
             "1 default:true, monitor:DP-2"
           ];
           windowrulev2 = [
-            "workspace 3, title:^(Spotify( Premium)?)$"
-            "workspace 4, class:^(Slack)$"
+            "workspace 4, title:^(Spotify( Premium)?)$"
+            "workspace 5, class:^(Slack)$"
             "float, class:^(org.keepassxc.KeePassXC)$"
             "size 35% 35%, class:^(org.keepassxc.KeePassXC)$"
             "float, class:^(.blueman-manager-wrapped)$"
+            "float, class:^(.org.pulseaudio.pavucontrol)$"
             "size 30% 30%, class:^(.blueman-manager-wrapped)$"
+            "size 30% 30%, class:^(.org.pulseaudio.pavucontrol)$"
           ];
           exec-once = [
-            "[workspace 3 silent] spotify"
-            "[workspace 4 silent] slack"
-            "[workspace 2 silent] $browser"
+            "waybar"
+            "[workspace 4 silent] spotify"
+            "[workspace 5 silent] slack"
+            "[workspace 3 silent] $browser"
             "$terminal"
 
             "${pkgs.hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
-            "ags"
             # Adds blueman to the top bar
             "blueman-applet"
           ];

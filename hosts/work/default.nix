@@ -16,10 +16,10 @@
     "users"
     "xorg"
     "unfreePackages"
-    "ollama"
   ];
   userModules = [
     "firefox"
+    "tmux"
     "cursor"
     "dev"
     "direnv"
@@ -34,6 +34,7 @@
     "wofi"
     "work"
     "zsh"
+    "starship"
   ];
 in
   utils.addSystemModules systemModules {
