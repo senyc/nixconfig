@@ -14,7 +14,6 @@
       settings = {
         general = {
           grace = 0;
-          no_fade_in = false;
         };
         background = [
           {

@@ -14,10 +14,12 @@
       # terraform
       act
       bun
+      gimp
       doctl
       fzf
       jq
       kubectl
+      stripe-cli
       kubernetes-helm
       linode-cli
       sqlite

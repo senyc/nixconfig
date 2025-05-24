@@ -23,7 +23,7 @@
       plugins = with pkgs; [
         tmuxPlugins.yank
       ];
-      extraConfig = ''
+      extraConfig = /*tmux*/''
         if-shell '[ -f ~/.tmux-extra-bindings ]' 'source-file ~/.tmux-extra-bindings'
         set -g default-terminal "xterm-256color"
         set-option -ga terminal-overrides ",xterm-256color:Tc"
@@ -49,7 +49,7 @@
         bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
         bind -r "<" swap-window -d -t -1
         bind -r ">" swap-window -d -t +1
-        bind - switch-client -l
+        # bind - switch-client -l
       '';
     };
 

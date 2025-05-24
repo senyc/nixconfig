@@ -62,7 +62,7 @@ with lib; {
           echo "usage: ghid issue [prefix]"
           echo
           echo "Creates and attaches a branch to the issue."
-          echo "Checks out the created branch, if specifed, will"
+          echo "Checks out the created branch, if specified, will"
           echo "prepend the prefix in the form of <prefix>-<issue #>"
           echo "If not specified will default to the format of"
           echo "issue_<issue #>"
@@ -105,6 +105,14 @@ with lib; {
         echo "---------------------------------------------------------"
       '')
       (writeShellScriptBin "search" ''
+        CACHE_DIR="''${XDG_RUNTIME_DIR:-$HOME/.cache}/"
+        CACHE_FILE="$CACHE_DIR/search"
+
+        # If file does not exist, create it
+        if  [[ ! -e "$CACHE_FILE" ]]; then
+          touch $CACHE_FILE
+        fi
+
         is_url() {
           local input="$1"
 
@@ -120,11 +128,16 @@ with lib; {
         SEARCH_ENGINE="https://google.com/search?q="  # Replace with your preferred search engine
 
         # Run wofi in drun mode and capture user input
-        INPUT=$(echo "" | wofi --dmenu  --prompt "Search:" --lines 1)
+        # show items in the order that they are appended
+        INPUT=$(tac "$CACHE_FILE" | wofi --dmenu  --prompt "Search:" --lines 5)
 
         # Exit if wofi is canceled
         if [ -z "$INPUT" ]; then
             exit 0
+        fi
+
+        if ! "$(cat "$CACHE_FILE")" | grep -q "$INPUT"; then
+          echo "$INPUT" >> "$CACHE_FILE"
         fi
 
         if is_url "$INPUT"; then

@@ -69,6 +69,7 @@
           };
           "$mod" = "SUPER";
           "$browser" = "firefox";
+          "$altbrowser" = "chromium";
           "$terminal" = "foot";
           bind =
             [
@@ -106,10 +107,29 @@
               "$mod SHIFT, E, movetoworkspace, 1"
               "$mod CONTROL, E, movetoworkspacesilent, 1"
               # Test
+              #
+              # This should only contain chrome windows
+              #
+              # This should be for things in active development
+              # Some examples include:
+              # 1. running application
+              # 2. jira ticket relating to thing in progress
+              # 3. Github branch in-progress
+              #
+              # Basically if it isn't actively being worked on it should be removed from this workspace
               "$mod, T, workspace, 2"
               "$mod SHIFT, T, movetoworkspace, 2"
               "$mod CONTROL, T, movetoworkspacesilent, 2"
               # Browser
+              # These can be things that hang around and do not need to be actively worked on
+              #
+              # Some examples include:
+              # 1. Documentation related to a feature
+              # 2. Random google search
+              # 3. Email
+              # 4. Virtual meeting, etc
+              #
+              # Basically if it is on the web and does not include the three things mentioned in Test
               "$mod, R, workspace, 3"
               "$mod SHIFT, R, movetoworkspace, 3"
               "$mod CONTROL, R, movetoworkspacesilent, 3"
@@ -117,10 +137,14 @@
               "$mod, M, workspace, 4"
               "$mod SHIFT, M, movetoworkspace, 4"
               "$mod CONTROL, M, movetoworkspacesilent, 4"
-              # Other
-              "$mod, O, workspace, 5"
-              "$mod SHIFT, O, movetoworkspace, 5"
-              "$mod CONTROL, O, movetoworkspacesilent, 5"
+              # Gimp
+              "$mod, G, workspace, 5"
+              "$mod SHIFT, G, movetoworkspace, 5"
+              "$mod CGNTRGL, G, movetoworkspacesilent, 5"
+              # Other (messaging like slack)
+              "$mod, O, workspace, 6"
+              "$mod SHIFT, O, movetoworkspace, 6"
+              "$mod CONTROL, O, movetoworkspacesilent, 6"
             ]
             ++ [
               # Screenshot
@@ -159,7 +183,8 @@
           ];
           windowrulev2 = [
             "workspace 4, title:^(Spotify( Premium)?)$"
-            "workspace 5, class:^(Slack)$"
+            "workspace 6, class:^(Slack)$"
+            "workspace 5, class:^(Gimp)$"
             "float, class:^(org.keepassxc.KeePassXC)$"
             "size 35% 35%, class:^(org.keepassxc.KeePassXC)$"
             "float, class:^(.blueman-manager-wrapped)$"
@@ -170,8 +195,10 @@
           exec-once = [
             "waybar"
             "[workspace 4 silent] spotify"
-            "[workspace 5 silent] slack"
+            "[workspace 5 silent] gimp"
+            "[workspace 2 silent] $altbrowser"
             "[workspace 3 silent] $browser"
+            "[workspace 6 silent] slack"
             "$terminal"
 
             "${pkgs.hypridle}/bin/hypridle"
