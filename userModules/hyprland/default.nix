@@ -97,6 +97,7 @@
 
               "$mod, SEMICOLON, exec, pkill wofi || wofi --show=run"
               "$mod, s, exec, search"
+              "$mod, c, exec, ${pkgs.mako}/bin/makoctl dismiss --all"
             ]
             ++ [
               # Scroll through existing workspaces with mod + scroll
@@ -185,8 +186,6 @@
             "workspace 4, title:^(Spotify( Premium)?)$"
             "workspace 6, class:^(Slack)$"
             "workspace 5, class:^(Gimp)$"
-            "float, class:^(org.keepassxc.KeePassXC)$"
-            "size 35% 35%, class:^(org.keepassxc.KeePassXC)$"
             "float, class:^(.blueman-manager-wrapped)$"
             "float, class:^(.org.pulseaudio.pavucontrol)$"
             "size 30% 30%, class:^(.blueman-manager-wrapped)$"
@@ -199,7 +198,8 @@
             "[workspace 2 silent] $altbrowser"
             "[workspace 3 silent] $browser"
             "[workspace 6 silent] slack"
-            "$terminal"
+            # Starts with a new tmux session
+            "$terminal tmux new -s $USER"
 
             "${pkgs.hypridle}/bin/hypridle"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"

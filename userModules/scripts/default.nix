@@ -23,6 +23,34 @@ with lib; {
           ${docker}/bin/docker rm $i
         done
       '')
+
+      (writeShellScriptBin "gifrecord" ''
+        # create random file name for temporary movie file
+        temp_video="/tmp/video_$(date +%s)_$RANDOM.mp4"
+        # Create temp files
+        output_gif="$HOME/Downloads/output_$(date +%Y%m%d_%H%M%S).gif"
+        temp_palette=$(mktemp --suffix=.png)
+
+        # Select area using slurp
+        echo "Select region to record..."
+        region=$(${slurp}/bin/slurp -w 0 -b 80808044)
+        if [ -z "$region" ]; then
+          echo "No region selected. Exiting."
+          exit 1
+        fi
+
+        echo "Recording... Press Ctrl+C to stop."
+
+        ${wf-recorder}/bin/wf-recorder -g "$region" -f "$temp_video"
+
+        ${ffmpeg}/bin/ffmpeg -y -i "$temp_video" -vf "fps=15,scale=iw:-1:flags=lanczos,palettegen" "$temp_palette"
+
+        ${ffmpeg}/bin/ffmpeg -i "$temp_video" -i "$temp_palette" -filter_complex "fps=15,scale=iw:-1:flags=lanczos[x];[x][1:v]paletteuse" -y "$output_gif"
+        echo "GIF saved as $output_gif"
+        rm "$temp_video"
+        rm "$temp_palette"
+      '')
+
       (writeShellScriptBin "flameshotwayland" ''
         ${flameshotGrim}/bin/flameshot $@
       '')
@@ -104,6 +132,7 @@ with lib; {
         echo "chore: grunt tasks; no production code change, e.g. update .gitignore, nothing main user would see"
         echo "---------------------------------------------------------"
       '')
+
       (writeShellScriptBin "search" ''
         CACHE_DIR="''${XDG_RUNTIME_DIR:-$HOME/.cache}/"
         CACHE_FILE="$CACHE_DIR/search"
