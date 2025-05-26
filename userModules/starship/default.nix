@@ -12,6 +12,9 @@
       enable = true;
       settings = {
         add_newline = false;
+        line_break = {
+          disabled = true;
+        };
         git_status = {
           renamed = ''[R''${count}](orange) '';
           deleted = ''[D''${count}](red) '';
@@ -31,8 +34,14 @@
           format = "[$path]($style)[$lock_symbol]($lock_style) ";
         };
         character = {
-          success_symbol = ";";
-          error_symbol = ";";
+          success_symbol = ''[\$](white)'';
+          error_symbol = ''[\$](white)'';
+        };
+        package = {
+          disabled = true;
+        };
+        aws = {
+          disabled = true;
         };
         username = {
           style_user = "bold green";
