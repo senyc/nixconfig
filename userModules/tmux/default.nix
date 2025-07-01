@@ -27,16 +27,31 @@
         if-shell '[ -f ~/.tmux-extra-bindings ]' 'source-file ~/.tmux-extra-bindings'
         set -g default-terminal "xterm-256color"
         set-option -ga terminal-overrides ",xterm-256color:Tc"
+
         # vim like pane switching
         bind h select-pane -L
         bind j select-pane -D
         bind k select-pane -U
         bind l select-pane -R
 
-        set -g status-left-length 40
-        set-option -g status-position top
+        set -g status-position top
+        set -g status-justify absolute-centre
+        set -g status-style 'fg=color8 bg=default'
+        set -g status-right ""
+        set -g status-left '#S'
+        set -g status-left-style 'fg=color8 dim'
+        set -g status-right-length 0
+        set -g status-left-length 100
+        setw -g window-status-current-style 'fg=colour1 bg=default bold'
+        setw -g window-status-current-format '#I:#W '
+        setw -g window-status-style 'fg=color8 dim'
 
+        set-option -sa terminal-features ',xterm-256color:RGB'
+        set-option -g allow-passthrough on
         set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q' # This is for the cursor shape in nvim
+        set -g renumber-windows on   # renumber all windows when any window is closed
+        set -g escape-time 0         # zero-out escape time delay
+        set-window-option -g mode-keys vi
 
         bind '"' split-window -v -c "#{pane_current_path}"
         bind % split-window -h -c "#{pane_current_path}"

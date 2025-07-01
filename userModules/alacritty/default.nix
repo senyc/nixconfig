@@ -13,6 +13,10 @@
         general.import = [./catppuccin-mocha.toml];
         env.TERM = "xterm-256color";
         font = {
+          offset = {
+            x = 0;
+            y = 0;
+          };
           size = 14;
           bold = {
             family = "JetBrainsMono Nerd Font Mono";
@@ -33,7 +37,9 @@
         };
         window = {
           opacity = 1;
-          padding.y = 1;
+          padding.y = 0;
+          padding.x = 0;
+          decorations = "None";
         };
 
         scrolling = {

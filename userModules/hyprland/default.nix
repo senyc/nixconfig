@@ -146,6 +146,11 @@
               "$mod, O, workspace, 6"
               "$mod SHIFT, O, movetoworkspace, 6"
               "$mod CONTROL, O, movetoworkspacesilent, 6"
+
+              # Access (Access codes, passwords)
+              "$mod, A, workspace, 7"
+              "$mod SHIFT, A, movetoworkspace, 7"
+              "$mod CONTROL, A, movetoworkspacesilent, 7"
             ]
             ++ [
               # Screenshot
@@ -184,8 +189,9 @@
           ];
           windowrulev2 = [
             "workspace 4, title:^(Spotify( Premium)?)$"
-            "workspace 6, class:^(Slack)$"
             "workspace 5, class:^(Gimp)$"
+            "workspace 6, class:^(Slack)$"
+            "workspace 7, class:^(org.keepassxc.KeePassXC)$"
             "float, class:^(.blueman-manager-wrapped)$"
             "float, class:^(.org.pulseaudio.pavucontrol)$"
             "size 30% 30%, class:^(.blueman-manager-wrapped)$"
@@ -198,6 +204,7 @@
             "[workspace 2 silent] $altbrowser"
             "[workspace 3 silent] $browser"
             "[workspace 6 silent] slack"
+            "[workspace 7 silent] keepassxc"
             # Starts with a new tmux session
             "$terminal tmux new -s $USER"
 

@@ -11,7 +11,7 @@
       enable = true;
       settings = {
         main = {
-          font = "JetBrainsMono Nerd Font Mono:size=14";
+          font = "JetBrainsMono Nerd Font Mono:size=15";
         };
         cursor = {
           color = "11111b f5e0dc";

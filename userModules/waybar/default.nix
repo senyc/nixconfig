@@ -217,7 +217,7 @@
               on-click = "activate";
               all-outputs = true;
               persistent-workspaces = {
-                "*" = 6;
+                "*" = 7;
               };
               activate-only = false;
               on-scroll-up = "hyprctl dispatch workspace e+1";
@@ -229,6 +229,7 @@
                 "4" = "m";
                 "5" = "g";
                 "6" = "o";
+                "7" = "a";
               };
             };
 
@@ -269,7 +270,7 @@
 
             clock = {
               interval = 1;
-              format = "{:%H\n%M\n%S}";
+              format = "{:%H\n%M\n%S\n--\n%m\n%d}";
               tooltip-format = "<tt><small>{calendar}</small></tt>";
               calendar = {
                 mode = "month";

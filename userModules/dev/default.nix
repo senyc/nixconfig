@@ -9,10 +9,13 @@
   };
   config = lib.mkIf config.modules.user.dev.enable {
     # allowedUnfree = ["terraform"];
+    allowedUnfree = ["postman" "ngrok"];
 
     home.packages = with pkgs; [
       # terraform
       act
+      ngrok
+      postman
       bun
       gimp
       doctl
