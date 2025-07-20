@@ -39,10 +39,9 @@
             # Output JSON for Waybar
             cat <<EOF
               {"text":"$text","tooltip":"$tooltip"}
-      EOF
+EOF
     '';
     timerScript = pkgs.writeShellScript "timer.sh" ''
-
                   format_time() {
                     local total_seconds=$1
                     local minutes=$((total_seconds / 60))
@@ -87,8 +86,8 @@
                         NEW_TIMER=$((CURRENT_TIMER + (5 * 60)))
                         echo "$NEW_TIMER" > "$TIMER_FILE"
                           cat <<EOF
-                          {"text":"$(to_minutes "$NEW_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+                        {"text":"$(to_minutes "$NEW_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
+EOF
                         ;;
 
                     down)
@@ -105,19 +104,19 @@
                         echo "$NEW_TIMER" > "$TIMER_FILE"
                           cat <<EOF
                           {"text":"$(to_minutes "$NEW_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+EOF
                         ;;
                     toggle)
                         if [[ "$STATUS" == "ACTIVE" ]]; then
                           echo "STOPPED" > "$TIMER_STATUS"
                           cat <<EOF
                           {"text":"󱡥","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+EOF
                         else
                           echo "ACTIVE" > "$TIMER_STATUS"
                                 cat <<EOF
                                 {"text":"$(to_minutes "$CURRENT_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+EOF
                         fi
                     ;;
                   reset)
@@ -126,7 +125,7 @@
                       echo "$NEW_TIMER" > "$TIMER_FILE"
                           cat <<EOF
                           {"text":"","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+EOF
                       exit 0
                   ;;
                     *)
@@ -141,12 +140,12 @@
                                 ${pkgs.libnotify}/bin/notify-send "Timer" "Timer has completed."
                                 cat <<EOF
                                 {"text":"󰾨","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+EOF
                                 exit 0
                             fi
                                 cat <<EOF
                                 {"text":"$(to_minutes "$CURRENT_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+EOF
 
                             exit 0
                         fi
@@ -154,7 +153,7 @@
                         if [[ "$STATUS" == "COMPLETED" ]]; then
                                 cat <<EOF
                                 {"text":"󰾨","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+EOF
 
                         fi
 
@@ -162,13 +161,13 @@
                         if [[ "$STATUS" == "STOPPED" ]]; then
                           cat <<EOF
                           {"text":"󱡥","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+EOF
                         fi
 
                         if [[ "$STATUS" == "READY" ]]; then
                           cat <<EOF
                           {"text":"","tooltip":"$(format_time "$CURRENT_TIMER")"}
-      EOF
+EOF
                         fi
                         ;;
                   esac
