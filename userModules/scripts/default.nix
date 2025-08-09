@@ -158,7 +158,7 @@ with lib; {
 
         # Run wofi in drun mode and capture user input
         # show items in the order that they are appended
-        INPUT=$(tac "$CACHE_FILE" | wofi --dmenu  --prompt "Search:" --lines 5)
+        INPUT=$(tac "$CACHE_FILE" | wofi --dmenu  --prompt "Search:" )
 
         # Exit if wofi is canceled
         if [ -z "$INPUT" ]; then

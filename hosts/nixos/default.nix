@@ -9,13 +9,13 @@
     "disk"
     "general"
     "greetd"
-    "keepassxc"
     "network"
     "packages"
     "users"
     "containerization"
     "wayland"
     "pipewire"
+    "tailscale"
   ];
   userModules =
     [

@@ -15,6 +15,7 @@
           extensions = with pkgs.nur.repos.rycee.firefox-addons; [
             keepassxc-browser
             vimium
+            bitwarden
           ];
           settings = {
             # Allows for the above added extensions to be enabled

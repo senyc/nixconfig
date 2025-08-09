@@ -69,7 +69,7 @@
           };
           "$mod" = "SUPER";
           "$browser" = "firefox";
-          "$altbrowser" = "chromium";
+          "$altbrowser" = "chromium --new-window";
           "$terminal" = "foot";
           bind =
             [
@@ -114,8 +114,7 @@
               # This should be for things in active development
               # Some examples include:
               # 1. running application
-              # 2. jira ticket relating to thing in progress
-              # 3. Github branch in-progress
+              # 2. test metrics
               #
               # Basically if it isn't actively being worked on it should be removed from this workspace
               "$mod, T, workspace, 2"
@@ -138,19 +137,10 @@
               "$mod, M, workspace, 4"
               "$mod SHIFT, M, movetoworkspace, 4"
               "$mod CONTROL, M, movetoworkspacesilent, 4"
-              # Gimp
-              "$mod, G, workspace, 5"
-              "$mod SHIFT, G, movetoworkspace, 5"
-              "$mod CGNTRGL, G, movetoworkspacesilent, 5"
               # Other (messaging like slack)
-              "$mod, O, workspace, 6"
-              "$mod SHIFT, O, movetoworkspace, 6"
-              "$mod CONTROL, O, movetoworkspacesilent, 6"
-
-              # Access (Access codes, passwords)
-              "$mod, A, workspace, 7"
-              "$mod SHIFT, A, movetoworkspace, 7"
-              "$mod CONTROL, A, movetoworkspacesilent, 7"
+              "$mod, O, workspace, 5"
+              "$mod SHIFT, O, movetoworkspace, 5"
+              "$mod CONTROL, O, movetoworkspacesilent, 5"
             ]
             ++ [
               # Screenshot
@@ -189,9 +179,7 @@
           ];
           windowrulev2 = [
             "workspace 4, title:^(Spotify( Premium)?)$"
-            "workspace 5, class:^(Gimp)$"
-            "workspace 6, class:^(Slack)$"
-            "workspace 7, class:^(org.keepassxc.KeePassXC)$"
+            "workspace 5, class:^(Slack)$"
             "float, class:^(.blueman-manager-wrapped)$"
             "float, class:^(.org.pulseaudio.pavucontrol)$"
             "size 30% 30%, class:^(.blueman-manager-wrapped)$"
@@ -200,11 +188,9 @@
           exec-once = [
             "waybar"
             "[workspace 4 silent] spotify"
-            "[workspace 5 silent] gimp"
             "[workspace 2 silent] $altbrowser"
             "[workspace 3 silent] $browser"
-            "[workspace 6 silent] slack"
-            "[workspace 7 silent] keepassxc"
+            "[workspace 5 silent] slack"
             # Starts with a new tmux session
             "$terminal tmux new -s $USER"
 

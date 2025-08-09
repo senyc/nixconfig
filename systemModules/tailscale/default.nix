@@ -8,6 +8,11 @@
   };
 
   config = lib.mkIf config.modules.system.tailscale.enable {
-    services.tailscale.enable = true;
+    services.tailscale = {
+      enable = true;
+      extraSetFlags = [
+        "--accept-dns=false"
+      ];
+    };
   };
 }

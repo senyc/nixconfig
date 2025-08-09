@@ -13,11 +13,9 @@
         main = {
           font = "JetBrainsMono Nerd Font Mono:size=15";
         };
-        cursor = {
-          color = "11111b f5e0dc";
-        };
 
         colors = {
+          cursor = "11111b f5e0dc";
           foreground = "cdd6f4";
           background = "1e1e2e";
 

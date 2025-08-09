@@ -12,6 +12,7 @@
       enable = true;
       userName = "kyler";
       userEmail = "95313103+senyc@users.noreply.github.com";
+      ignores = ["local.env"];
       extraConfig = {
         core = {
           pager = "less";
