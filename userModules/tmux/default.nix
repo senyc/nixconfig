@@ -38,12 +38,13 @@
         set -g status-justify absolute-centre
         set -g status-style 'fg=color7 bg=default'
         set -g status-left '#S'
-        set -g status-left-style 'fg=color8 dim'
+        set -g status-right ""
+        set -g status-left-style 'fg=color8'
         set -g status-right-length 0
         set -g status-left-length 100
         setw -g window-status-current-style 'fg=colour6 bg=default bold'
         setw -g window-status-current-format '#I:#W '
-        setw -g window-status-style 'fg=color8 '
+        setw -g window-status-style 'fg=color8'
 
         set-option -sa terminal-features ',xterm-256color:RGB'
         set-option -g allow-passthrough on
