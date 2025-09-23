@@ -21,6 +21,8 @@
       doctl
       fzf
       jq
+      dig
+      hyprpicker
       kubectl
       stripe-cli
       kubernetes-helm

@@ -9,12 +9,9 @@
     disko = {
       url = "github:nix-community/disko";
     };
-    ags = {
-      url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
-    };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-    };
+    # sops-nix = {
+    #   url = "github:Mic92/sops-nix";
+    # };
     home-manager = {
       url = "github:nix-community/home-manager";
     };

@@ -35,7 +35,6 @@
       };
       extraConfig = ''
         Include ~/.ssh/extra_config
-
       '';
     };
   };

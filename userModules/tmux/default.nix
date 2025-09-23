@@ -48,9 +48,9 @@
 
         set-option -sa terminal-features ',xterm-256color:RGB'
         set-option -g allow-passthrough on
-        set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q' # This is for the cursor shape in nvim
+        # set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q' # This is for the cursor shape in nvim
         set -g renumber-windows on   # renumber all windows when any window is closed
-        set -g escape-time 0         # zero-out escape time delay
+        # set -g escape-time 0         # zero-out escape time delay
         set-window-option -g mode-keys vi
 
         bind '"' split-window -v -c "#{pane_current_path}"

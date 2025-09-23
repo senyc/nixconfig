@@ -28,7 +28,6 @@ with lib; {
       pavucontrol
       senyc-nvimconfig
       slack
-      tor-browser
     ];
   };
 }

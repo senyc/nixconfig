@@ -51,14 +51,14 @@ with lib; {
         rm "$temp_palette"
       '')
 
-      (writeShellScriptBin "flameshotwayland" ''
-        ${flameshotGrim}/bin/flameshot $@
-      '')
-
       (writeShellScriptBin "makekeyfromssh" ''
         mkdir -p ~/.config/sops/age/
         nix run nixpkgs#ssh-to-age -- -private-key -i  ~/.ssh/id_personal > ~/.config/sops/age/keys.txt
         nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
+      '')
+
+      (writeShellScriptBin "colorpicker" ''
+        ${hyprpicker}/bin/hyprpicker -a
       '')
 
       (writeShellScriptBin "addcookieexception" ''

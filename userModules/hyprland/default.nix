@@ -31,6 +31,7 @@
             };
             force_no_accel = true;
             sensitivity = 0.8; # -1.0 - 1.0, 0 means no modification.
+            # kb_options = "caps:swapescape";
           };
           misc = {
             focus_on_activate = true;
@@ -63,10 +64,10 @@
             preserve_split = true; # you probably want this
             force_split = 2;
           };
-          gestures = {
+          # gestures = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
-            workspace_swipe = false;
-          };
+            # workspace_swipe = false;
+          # };
           "$mod" = "SUPER";
           "$browser" = "firefox";
           "$altbrowser" = "chromium --new-window";
@@ -192,9 +193,10 @@
             "[workspace 3 silent] $browser"
             "[workspace 5 silent] slack"
             # Starts with a new tmux session
-            "$terminal tmux new -s $USER"
+            ''sh -c 'export TMUX_TMPDIR=/run/user/1000; $terminal tmux new -s $USER' ''
 
             "${pkgs.hypridle}/bin/hypridle"
+            "${pkgs.hyprsunset}/bin/hyprsunset"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
             # Adds blueman to the top bar
             "blueman-applet"

@@ -36,8 +36,11 @@
       "zsh"
       "starship"
       "tmux"
+      "flameshot"
     ]
-    ++ map (i: "hypr${i}") ["idle" "paper" "lock" "land"];
+    ++ map (i: "hypr${i}") [
+      "idle" "paper" "lock" "land"
+    ];
 in
   utils.addSystemModules systemModules {
     imports = [
@@ -50,7 +53,6 @@ in
       extraSpecialArgs = {inherit inputs outputs;};
       users = {
         "senyc" = utils.addUserModules userModules {
-          imports = [inputs.ags.homeManagerModules.default];
           home = rec {
             username = "senyc";
             homeDirectory = "/home/${username}";
