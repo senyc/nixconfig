@@ -57,7 +57,10 @@ with lib; {
     services = {
       blueman.enable = true;
       printing.enable = true;
-      openssh.enable = true;
+      openssh = {
+        allowAgentForwarding = true;
+        enable = true;
+      };
     };
 
     environment.sessionVariables = {

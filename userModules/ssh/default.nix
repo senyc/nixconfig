@@ -28,6 +28,7 @@
           ];
         };
         "*" = {
+          forwardAgent = true;
           setEnv = {
             TERM = "xterm-256color";
           };

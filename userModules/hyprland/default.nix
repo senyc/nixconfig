@@ -76,7 +76,6 @@
             [
               "$mod, Q, exec, $terminal"
               "$mod, B, exec, $browser"
-              "$mod SHIFT, B, exec, tor-browser"
 
               "$mod, X, killactive,"
               "$mod SHIFT CONTROL, M, exit,"
