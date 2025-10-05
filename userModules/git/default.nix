@@ -10,7 +10,7 @@
   config = lib.mkIf config.modules.user.git.enable {
     programs.git = {
       enable = true;
-      userName = "kyler";
+      userName = "senyc";
       userEmail = "95313103+senyc@users.noreply.github.com";
       ignores = ["local.env"];
       extraConfig = {
@@ -24,25 +24,19 @@
           defaultBranch = "main";
         };
         url = {
-          "git@github.com-personal:" = {
+          "git@github.com:" = {
             insteadOf = "gh:";
           };
           "git@github.com-work:" = {
             insteadOf = "gw:";
           };
-          # "ssh://git@github.com-work/" = {
-          #   insteadOf = "https://github.com/";
-          # };
-          # "ssh://git@github.com/" = {
-          #   insteadOf = "https://github.com/";
-          # };
         };
       };
       hooks = {
         pre-push = pkgs.writeTextFile {
           name = "pre-push";
           executable = true;
-          text = /* bash */''
+          text = /* bash */ ''
               # Check if package.json exists to determine if it's an npm project
               # TODO: update this to not matter what the pwd is
               if [ -f package.json ]; then
@@ -65,7 +59,8 @@
         commit-msg = pkgs.writeTextFile {
           name = "commit-msg";
           executable = true;
-          text = /* bash */''
+          text = /* bash */
+            ''
               title=$(head -1 "$1")
 
               # Checking that commit follows commit guidelines

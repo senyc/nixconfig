@@ -23,6 +23,7 @@
       jq
       dig
       hyprpicker
+      qpdf
       kubectl
       stripe-cli
       kubernetes-helm

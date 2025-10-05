@@ -10,7 +10,7 @@
     programs.ssh = {
       enable = true;
       matchBlocks = {
-        "github.com-personal" = {
+        "github.com" = {
           hostname = "github.com";
           user = "git";
           identityFile = [
@@ -28,7 +28,6 @@
           ];
         };
         "*" = {
-          forwardAgent = true;
           setEnv = {
             TERM = "xterm-256color";
           };

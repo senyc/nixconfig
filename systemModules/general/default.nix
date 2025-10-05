@@ -35,7 +35,6 @@ with lib; {
 
     fonts = {
       packages = with pkgs; [
-        # (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
         nerd-fonts.jetbrains-mono
         nerd-fonts.iosevka
         nerd-fonts.fira-code
@@ -58,7 +57,9 @@ with lib; {
       blueman.enable = true;
       printing.enable = true;
       openssh = {
-        allowAgentForwarding = true;
+        extraConfig = ''
+          AllowAgentForwarding yes
+        '';
         enable = true;
       };
     };

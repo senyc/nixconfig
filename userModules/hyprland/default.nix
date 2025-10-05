@@ -31,7 +31,7 @@
             };
             force_no_accel = true;
             sensitivity = 0.8; # -1.0 - 1.0, 0 means no modification.
-            # kb_options = "caps:swapescape";
+            kb_options = "caps:escape";
           };
           misc = {
             focus_on_activate = true;
