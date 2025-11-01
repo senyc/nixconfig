@@ -15,19 +15,21 @@ with lib; {
     allowedUnfree = [
       "slack"
       "spotify"
+      "obsidian"
     ];
 
     nixpkgs.overlays = [outputs.overlays.addPackages];
 
     home.packages = with pkgs; [
+      obsidian
       aspell
       aspellDicts.en
-      obs-studio
       chromium
-      spotify
+      obs-studio
       pavucontrol
       senyc-nvimconfig
       slack
+      spotify
     ];
   };
 }

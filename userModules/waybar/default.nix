@@ -216,7 +216,7 @@ EOF
               on-click = "activate";
               all-outputs = true;
               persistent-workspaces = {
-                "*" = 5;
+                "*" = 6;
               };
               activate-only = false;
               on-scroll-up = "hyprctl dispatch workspace e+1";
@@ -227,6 +227,7 @@ EOF
                 "3" = "r";
                 "4" = "m";
                 "5" = "o";
+                "6" = "n";
               };
             };
 

@@ -13,9 +13,11 @@
     "packages"
     "users"
     "containerization"
-    "wayland"
     "pipewire"
+    "wayland"
     "tailscale"
+    "steam"
+    "nfs"
   ];
   userModules =
     [

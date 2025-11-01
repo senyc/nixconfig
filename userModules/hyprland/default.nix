@@ -141,6 +141,10 @@
               "$mod, O, workspace, 5"
               "$mod SHIFT, O, movetoworkspace, 5"
               "$mod CONTROL, O, movetoworkspacesilent, 5"
+              # Notes (obsidian)
+              "$mod, N, workspace, 6"
+              "$mod SHIFT, N, movetoworkspace, 6"
+              "$mod CONTROL, N, movetoworkspacesilent, 6"
             ]
             ++ [
               # Screenshot
@@ -180,6 +184,7 @@
           windowrulev2 = [
             "workspace 4, title:^(Spotify( Premium)?)$"
             "workspace 5, class:^(Slack)$"
+            "workspace 6, class:^(obsidian)$"
             "float, class:^(.blueman-manager-wrapped)$"
             "float, class:^(.org.pulseaudio.pavucontrol)$"
             "size 30% 30%, class:^(.blueman-manager-wrapped)$"
@@ -191,6 +196,7 @@
             "[workspace 2 silent] $altbrowser"
             "[workspace 3 silent] $browser"
             "[workspace 5 silent] slack"
+            "[workspace 6 silent] obsidian"
             # Starts with a new tmux session
             ''sh -c 'export TMUX_TMPDIR=/run/user/1000; $terminal tmux new -s $USER' ''
 
