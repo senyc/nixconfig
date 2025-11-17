@@ -29,10 +29,12 @@
         "soft"
         "timeo=5"
         "retrans=1"
-        "x-systemd.device-timeout=1s"
+        "x-systemd.device-timeout=5s"
         "x-systemd.requires=network-online.target"
         # Required otherwise reboot/shutdown will hang since tailscale is shutdown before it tries to unmount
         "x-systemd.requires=tailscaled.service"
+        # Wait for tailscale to be fully online before attempting mount
+        "x-systemd.after=tailscaled.service"
       ];
     };
   };

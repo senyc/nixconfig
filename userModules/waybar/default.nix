@@ -9,168 +9,168 @@
   };
   config = let
     notificationScript = pkgs.writeShellScript "notification.sh" ''
-            ICON="󰂚" # Nerd Font bell
-            RED_DOT="<span color='red'><sup></sup></span>"
+                  ICON="󰂚" # Nerd Font bell
+                  RED_DOT="<span color='red'><sup></sup></span>"
 
-            # Actions
-            case "$1" in
-                dismiss)
-                    makoctl dismiss -a
-                    exit 0
-                    ;;
-                restore_one)
-                    makoctl restore
-                    exit 0
-                    ;;
-                dismiss_one)
-                    makoctl dismiss
-                    exit 0
-                    ;;
-            esac
+                  # Actions
+                  case "$1" in
+                      dismiss)
+                          makoctl dismiss -a
+                          exit 0
+                          ;;
+                      restore_one)
+                          makoctl restore
+                          exit 0
+                          ;;
+                      dismiss_one)
+                          makoctl dismiss
+                          exit 0
+                          ;;
+                  esac
 
-            if [[ -n $(makoctl list) ]]; then
-                text="$ICON$RED_DOT"
-                tooltip="Notification(s) pending"
-            else
-                text="$ICON"
-                tooltip="No notifications"
-            fi
+                  if [[ -n $(makoctl list) ]]; then
+                      text="$ICON$RED_DOT"
+                      tooltip="Notification(s) pending"
+                  else
+                      text="$ICON"
+                      tooltip="No notifications"
+                  fi
 
-            # Output JSON for Waybar
-            cat <<EOF
-              {"text":"$text","tooltip":"$tooltip"}
-EOF
+                  # Output JSON for Waybar
+                  cat <<EOF
+                    {"text":"$text","tooltip":"$tooltip"}
+      EOF
     '';
     timerScript = pkgs.writeShellScript "timer.sh" ''
-                  format_time() {
-                    local total_seconds=$1
-                    local minutes=$((total_seconds / 60))
-                    local seconds=$((total_seconds % 60))
-                    echo "''${minutes}m ''${seconds}s"
-                  }
+                        format_time() {
+                          local total_seconds=$1
+                          local minutes=$((total_seconds / 60))
+                          local seconds=$((total_seconds % 60))
+                          echo "''${minutes}m ''${seconds}s"
+                        }
 
-                  to_minutes() {
-                    local seconds=$1
-                    echo "$(( (seconds + 59) / 60 ))m"
-                  }
+                        to_minutes() {
+                          local seconds=$1
+                          echo "$(( (seconds + 59) / 60 ))m"
+                        }
 
-                  # Use a safe, user-writable temporary location
-                  TIMER_DIR="''${XDG_RUNTIME_DIR:-$HOME/.cache}/"
-                  TIMER_FILE="$TIMER_DIR/timer_state"
-                  TIMER_STATUS="$TIMER_DIR/timer_status"
+                        # Use a safe, user-writable temporary location
+                        TIMER_DIR="''${XDG_RUNTIME_DIR:-$HOME/.cache}/"
+                        TIMER_FILE="$TIMER_DIR/timer_state"
+                        TIMER_STATUS="$TIMER_DIR/timer_status"
 
-                  # If state and status files do not exist create them
-                  if  [[ ! -e "$TIMER_FILE" ]]; then
-                      echo $((30 * 60)) > "$TIMER_FILE"
-                  fi
-
-                  if  [[ ! -e "$TIMER_STATUS" ]]; then
-                      echo "READY" > "$TIMER_STATUS"
-                  fi
-
-
-                  STATUS="$(cat "$TIMER_STATUS")"
-                  CURRENT_TIMER=$(cat "$TIMER_FILE")
-
-                  case "$1" in
-                    up)
-                        if [[ "$STATUS" == "ACTIVE" ]]; then
-                            ${pkgs.libnotify}/bin/notify-send "Timer" "Timer is active, cannot increase time."
-                            exit 1
+                        # If state and status files do not exist create them
+                        if  [[ ! -e "$TIMER_FILE" ]]; then
+                            echo $((30 * 60)) > "$TIMER_FILE"
                         fi
 
-                        if [[ -z $CURRENT_TIMER ]]; then
-                            CURRENT_TIMER=0
+                        if  [[ ! -e "$TIMER_STATUS" ]]; then
+                            echo "READY" > "$TIMER_STATUS"
                         fi
 
-                        NEW_TIMER=$((CURRENT_TIMER + (5 * 60)))
-                        echo "$NEW_TIMER" > "$TIMER_FILE"
-                          cat <<EOF
-                        {"text":"$(to_minutes "$NEW_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
-                        ;;
 
-                    down)
-                        if [[ "$STATUS" == "ACTIVE" ]]; then
-                            ${pkgs.libnotify}/bin/notify-send "Timer" "Timer is active, cannot decrease time."
-                            exit 1
-                        fi
+                        STATUS="$(cat "$TIMER_STATUS")"
+                        CURRENT_TIMER=$(cat "$TIMER_FILE")
 
-                        if [[ -z $CURRENT_TIMER ]]; then
-                            CURRENT_TIMER=0
-                        fi
+                        case "$1" in
+                          up)
+                              if [[ "$STATUS" == "ACTIVE" ]]; then
+                                  ${pkgs.libnotify}/bin/notify-send "Timer" "Timer is active, cannot increase time."
+                                  exit 1
+                              fi
 
-                        NEW_TIMER=$((CURRENT_TIMER - (5 * 60)))
-                        echo "$NEW_TIMER" > "$TIMER_FILE"
-                          cat <<EOF
-                          {"text":"$(to_minutes "$NEW_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
-                        ;;
-                    toggle)
-                        if [[ "$STATUS" == "ACTIVE" ]]; then
-                          echo "STOPPED" > "$TIMER_STATUS"
-                          cat <<EOF
-                          {"text":"󱡥","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
-                        else
-                          echo "ACTIVE" > "$TIMER_STATUS"
+                              if [[ -z $CURRENT_TIMER ]]; then
+                                  CURRENT_TIMER=0
+                              fi
+
+                              NEW_TIMER=$((CURRENT_TIMER + (5 * 60)))
+                              echo "$NEW_TIMER" > "$TIMER_FILE"
                                 cat <<EOF
-                                {"text":"$(to_minutes "$CURRENT_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
-                        fi
-                    ;;
-                  reset)
-                      echo "READY" > "$TIMER_STATUS"
-                      NEW_TIMER=$((30 * 60 ))
-                      echo "$NEW_TIMER" > "$TIMER_FILE"
-                          cat <<EOF
-                          {"text":"","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
-                      exit 0
-                  ;;
-                    *)
-                        # This will actually decrement the timer
-                        if [[ "$STATUS" == "ACTIVE" ]]; then
-                            if [[ "$CURRENT_TIMER" -gt 1 ]]; then
-                                NEW_TIMER=$((CURRENT_TIMER - 1))
-                                echo "$NEW_TIMER" > "$TIMER_FILE"
-                                CURRENT_TIMER=$(cat "$TIMER_FILE")
-                            else
-                                echo "COMPLETED" > "$TIMER_STATUS"
-                                ${pkgs.libnotify}/bin/notify-send "Timer" "Timer has completed."
-                                cat <<EOF
-                                {"text":"󰾨","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
-                                exit 0
-                            fi
-                                cat <<EOF
-                                {"text":"$(to_minutes "$CURRENT_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
+                              {"text":"$(to_minutes "$NEW_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
+                              ;;
 
+                          down)
+                              if [[ "$STATUS" == "ACTIVE" ]]; then
+                                  ${pkgs.libnotify}/bin/notify-send "Timer" "Timer is active, cannot decrease time."
+                                  exit 1
+                              fi
+
+                              if [[ -z $CURRENT_TIMER ]]; then
+                                  CURRENT_TIMER=0
+                              fi
+
+                              NEW_TIMER=$((CURRENT_TIMER - (5 * 60)))
+                              echo "$NEW_TIMER" > "$TIMER_FILE"
+                                cat <<EOF
+                                {"text":"$(to_minutes "$NEW_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
+                              ;;
+                          toggle)
+                              if [[ "$STATUS" == "ACTIVE" ]]; then
+                                echo "STOPPED" > "$TIMER_STATUS"
+                                cat <<EOF
+                                {"text":"󱡥","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
+                              else
+                                echo "ACTIVE" > "$TIMER_STATUS"
+                                      cat <<EOF
+                                      {"text":"$(to_minutes "$CURRENT_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
+                              fi
+                          ;;
+                        reset)
+                            echo "READY" > "$TIMER_STATUS"
+                            NEW_TIMER=$((30 * 60 ))
+                            echo "$NEW_TIMER" > "$TIMER_FILE"
+                                cat <<EOF
+                                {"text":"","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
                             exit 0
-                        fi
-
-                        if [[ "$STATUS" == "COMPLETED" ]]; then
-                                cat <<EOF
-                                {"text":"󰾨","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
-
-                        fi
-
-
-                        if [[ "$STATUS" == "STOPPED" ]]; then
-                          cat <<EOF
-                          {"text":"󱡥","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
-                        fi
-
-                        if [[ "$STATUS" == "READY" ]]; then
-                          cat <<EOF
-                          {"text":"","tooltip":"$(format_time "$CURRENT_TIMER")"}
-EOF
-                        fi
                         ;;
-                  esac
+                          *)
+                              # This will actually decrement the timer
+                              if [[ "$STATUS" == "ACTIVE" ]]; then
+                                  if [[ "$CURRENT_TIMER" -gt 1 ]]; then
+                                      NEW_TIMER=$((CURRENT_TIMER - 1))
+                                      echo "$NEW_TIMER" > "$TIMER_FILE"
+                                      CURRENT_TIMER=$(cat "$TIMER_FILE")
+                                  else
+                                      echo "COMPLETED" > "$TIMER_STATUS"
+                                      ${pkgs.libnotify}/bin/notify-send "Timer" "Timer has completed."
+                                      cat <<EOF
+                                      {"text":"󰾨","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
+                                      exit 0
+                                  fi
+                                      cat <<EOF
+                                      {"text":"$(to_minutes "$CURRENT_TIMER")","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
+
+                                  exit 0
+                              fi
+
+                              if [[ "$STATUS" == "COMPLETED" ]]; then
+                                      cat <<EOF
+                                      {"text":"󰾨","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
+
+                              fi
+
+
+                              if [[ "$STATUS" == "STOPPED" ]]; then
+                                cat <<EOF
+                                {"text":"󱡥","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
+                              fi
+
+                              if [[ "$STATUS" == "READY" ]]; then
+                                cat <<EOF
+                                {"text":"","tooltip":"$(format_time "$CURRENT_TIMER")"}
+      EOF
+                              fi
+                              ;;
+                        esac
     '';
   in
     lib.mkIf config.modules.user.waybar.enable {
@@ -208,6 +208,7 @@ EOF
             ];
             "modules-right" = [
               "group/sound"
+              "battery"
               "tray"
             ];
 
@@ -323,6 +324,23 @@ EOF
               icon-size = 21;
               min-length = 3;
               spacing = 10;
+            };
+
+            battery = {
+              bat = "BAT0";
+              interval = 60;
+              states = {
+                warning = 30;
+                critical = 15;
+              };
+              format = "{capacity}% {icon}";
+              "format-icons" = [
+                ""
+                ""
+                ""
+                ""
+                ""
+              ];
             };
           }
         ];

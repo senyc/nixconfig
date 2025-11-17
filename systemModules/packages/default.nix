@@ -16,6 +16,7 @@ with lib; {
     environment.systemPackages = with pkgs; [
       curl
       fd
+      lsof
       gcc
       gnumake
       go
