@@ -20,19 +20,11 @@
       escapeTime = 10;
       disableConfirmationPrompt = true;
       newSession = false;
+      tmuxinator = {
+        enable = true;
+      };
       plugins = with pkgs; [
         tmuxPlugins.yank
-        {
-          plugin = tmuxPlugins.resurrect;
-          extraConfig = "set -g @resurrect-capture-pane-contents 'on'";
-        }
-        {
-          plugin = tmuxPlugins.continuum;
-          extraConfig = ''
-            set -g @continuum-restore 'on'
-            set -g @continuum-save-interval '15' # minutes
-          '';
-        }
       ];
       extraConfig =
         /*

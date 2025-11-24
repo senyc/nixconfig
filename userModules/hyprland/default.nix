@@ -198,7 +198,7 @@
             "[workspace 5 silent] slack"
             "[workspace 6 silent] obsidian"
             # Attaches to tmux session
-            ''sh -c 'export TMUX_TMPDIR=/run/user/1000; $terminal tmux a -s $USER' ''
+            ''sh -c 'export TMUX_TMPDIR=/run/user/1000; $terminal' ''
 
             "${pkgs.hypridle}/bin/hypridle"
             "${pkgs.hyprsunset}/bin/hyprsunset"
