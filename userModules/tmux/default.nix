@@ -64,6 +64,8 @@
           bind '"' split-window -v -c "#{pane_current_path}"
           bind % split-window -h -c "#{pane_current_path}"
           bind c new-window -c "#{pane_current_path}"
+          # This runs the tmux popup as a regular pane to allow scrolling
+          bind g display-popup -E 'tmux new-session -A -s scratch zsh \; set status off'
 
           bind -r f run-shell "tmux neww tmux-sessionizer"
           bind -r G run-shell "opengithub"

@@ -12,6 +12,9 @@ with lib; {
     networking = {
       hostName = "nixos";
       networkmanager.enable = true;
+      hosts = {
+        "100.76.122.59" = ["vault"];
+      };
     };
   };
 }

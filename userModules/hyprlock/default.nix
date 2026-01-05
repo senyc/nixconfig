@@ -32,7 +32,7 @@
           };
           background = [
             {
-              path = "${../../backgrounds/water.jpg}";
+              path = "${../../backgrounds/winter_bridge.jpg}";
               blur_passes = 1;
             }
           ];

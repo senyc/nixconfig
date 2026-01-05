@@ -11,7 +11,7 @@
     services.tailscale = {
       enable = true;
       extraSetFlags = [
-        "--accept-dns=true"
+        "--accept-dns=false"
       ];
     };
   };

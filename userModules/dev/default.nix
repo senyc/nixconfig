@@ -19,6 +19,8 @@
       bun
       gimp
       doctl
+      inkscape
+      nmap
       claude-code
       fzf
       jq

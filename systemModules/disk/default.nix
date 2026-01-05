@@ -8,6 +8,8 @@ with lib; {
     modules.system.disk.enable = mkEnableOption "Enable default primary disk partitions";
   };
 
+  # to run on install (not tested)
+  # sudo nix --experimental-features "nix-command flakes" run 'github:nix-community/disko/latest#disko-install' -- --flake .#<flake-attr> --disk main /dev/nvme0n1
   config = mkIf config.modules.system.disk.enable {
     disko.devices = {
       disk.main = {

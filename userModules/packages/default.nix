@@ -21,6 +21,7 @@ with lib; {
     nixpkgs.overlays = [outputs.overlays.addPackages];
 
     home.packages = with pkgs; [
+      vlc
       obsidian
       aspell
       aspellDicts.en

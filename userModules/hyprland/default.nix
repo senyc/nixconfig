@@ -149,6 +149,8 @@
             ++ [
               # Screenshot
               ",Print, exec, screenshot"
+              # GIF recording (press once to start, again to stop)
+              "SHIFT, Print, exec, gifrecord"
             ];
           # l flag will allow for these to be used while screen is locked
           bindl = [

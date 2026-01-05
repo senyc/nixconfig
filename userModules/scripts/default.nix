@@ -42,30 +42,73 @@ with lib; {
       '')
 
       (writeShellScriptBin "gifrecord" ''
-        # create random file name for temporary movie file
+        PID_FILE="/tmp/gifrecord.pid"
+        INFO_FILE="/tmp/gifrecord.info"
+
+        # Function to cleanup stale files
+        cleanup_stale() {
+            rm -f "$PID_FILE" "$INFO_FILE"
+        }
+
+        # Check if already recording
+        if [ -f "$PID_FILE" ]; then
+            pid=$(cat "$PID_FILE")
+
+            # Check if process is still running
+            if kill -0 "$pid" 2>/dev/null; then
+                # Stop the recording
+                kill -INT "$pid"
+
+                # Give it a moment to finish writing
+                sleep 1
+
+                # Read saved info
+                temp_video=$(sed -n '1p' "$INFO_FILE")
+                temp_palette=$(sed -n '2p' "$INFO_FILE")
+                output_gif=$(sed -n '3p' "$INFO_FILE")
+
+                ${libnotify}/bin/notify-send "GIF Recorder" "Processing..."
+
+                # Convert to GIF
+                ${ffmpeg}/bin/ffmpeg -y -i "$temp_video" -vf "fps=15,scale=iw:-1:flags=lanczos,palettegen" "$temp_palette" 2>/dev/null
+                ${ffmpeg}/bin/ffmpeg -i "$temp_video" -i "$temp_palette" -filter_complex "fps=15,scale=iw:-1:flags=lanczos[x];[x][1:v]paletteuse" -y "$output_gif" 2>/dev/null
+
+                # Cleanup
+                rm -f "$temp_video" "$temp_palette" "$PID_FILE" "$INFO_FILE"
+
+                ${libnotify}/bin/notify-send "GIF Recorder" "GIF saved as $output_gif"
+                exit 0
+            else
+                # Stale PID file
+                cleanup_stale
+            fi
+        fi
+
+        # Start new recording
         temp_video="/tmp/video_$(date +%s)_$RANDOM.mp4"
-        # Create temp files
         output_gif="$HOME/Downloads/output_$(date +%Y%m%d_%H%M%S).gif"
         temp_palette=$(mktemp --suffix=.png)
 
-        # Select area using slurp
-        echo "Select region to record..."
+        # Save info for later
+        cat > "$INFO_FILE" << EOF
+        $temp_video
+        $temp_palette
+        $output_gif
+        EOF
+
+        # Select area
         region=$(${slurp}/bin/slurp -w 0 -b 80808044)
         if [ -z "$region" ]; then
-          echo "No region selected. Exiting."
-          exit 1
+            ${libnotify}/bin/notify-send "GIF Recorder" "No region selected"
+            cleanup_stale
+            exit 1
         fi
 
-        echo "Recording... Press Ctrl+C to stop."
+        ${libnotify}/bin/notify-send "GIF Recorder" "Recording started. Run again to stop."
 
-        ${wf-recorder}/bin/wf-recorder -g "$region" -f "$temp_video"
-
-        ${ffmpeg}/bin/ffmpeg -y -i "$temp_video" -vf "fps=15,scale=iw:-1:flags=lanczos,palettegen" "$temp_palette"
-
-        ${ffmpeg}/bin/ffmpeg -i "$temp_video" -i "$temp_palette" -filter_complex "fps=15,scale=iw:-1:flags=lanczos[x];[x][1:v]paletteuse" -y "$output_gif"
-        echo "GIF saved as $output_gif"
-        rm "$temp_video"
-        rm "$temp_palette"
+        # Start recording in background
+        ${wf-recorder}/bin/wf-recorder -g "$region" -f "$temp_video" &
+        echo $! > "$PID_FILE"
       '')
 
       (writeShellScriptBin "makekeyfromssh" ''
@@ -153,8 +196,9 @@ with lib; {
       (writeShellScriptBin "search" ''
         CACHE_DIR="''${XDG_RUNTIME_DIR:-$HOME/.cache}/"
         CACHE_FILE="$CACHE_DIR/search"
+        BOOKMARKS_FILE="$HOME/.bookmarks"
 
-        # If file does not exist, create it
+        # If cache file does not exist, create it
         if  [[ ! -e "$CACHE_FILE" ]]; then
           touch $CACHE_FILE
         fi
@@ -170,26 +214,66 @@ with lib; {
         }
 
         # Configuration
-        BROWSER="firefox"  # Replace with your preferred browser (e.g., chromium, google-chrome)
-        SEARCH_ENGINE="https://google.com/search?q="  # Replace with your preferred search engine
+        BROWSER="firefox"
+        SEARCH_ENGINE="https://google.com/search?q="
 
-        # Run wofi in drun mode and capture user input
-        # show items in the order that they are appended
-        INPUT=$(tac "$CACHE_FILE" | wofi --dmenu  --prompt "Search:" )
+        # Build the list of options
+        declare -A bookmark_map
+        options=""
+
+        # Read bookmarks if file exists
+        if [[ -f "$BOOKMARKS_FILE" ]]; then
+          while IFS= read -r line; do
+            # Skip empty lines and comments
+            [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+
+            # Parse "name => url" format
+            if [[ "$line" =~ ^(.+)[[:space:]]*=\>[[:space:]]*(.+)$ ]]; then
+              name="''${BASH_REMATCH[1]}"
+              url="''${BASH_REMATCH[2]}"
+              # Trim whitespace
+              name="$(echo "$name" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+              url="$(echo "$url" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+              bookmark_map["$name"]="$url"
+              if [[ -n "$options" ]]; then
+                options="$options"$'\n'
+              fi
+              options="$options$name"
+            fi
+          done < "$BOOKMARKS_FILE"
+        fi
+
+        # Add cached searches
+        if [[ -f "$CACHE_FILE" && -s "$CACHE_FILE" ]]; then
+          if [[ -n "$options" ]]; then
+            options="$options"$'\n'
+          fi
+          options="$options$(tac "$CACHE_FILE")"
+        fi
+
+        # Run wofi to select
+        INPUT=$(printf "%s" "$options" | wofi --dmenu --prompt "Search:" --no-sort)
 
         # Exit if wofi is canceled
         if [ -z "$INPUT" ]; then
             exit 0
         fi
 
-        if ! "$(cat "$CACHE_FILE")" | grep -q "$INPUT"; then
-          echo "$INPUT" >> "$CACHE_FILE"
-        fi
-
-        if is_url "$INPUT"; then
-          "$BROWSER" "$INPUT" &
+        # Check if it's a bookmark
+        if [[ -n "''${bookmark_map[$INPUT]}" ]]; then
+          "$BROWSER" "''${bookmark_map[$INPUT]}" &
         else
-          "$BROWSER" "''${SEARCH_ENGINE}''${INPUT}" &
+          # Add to cache if not already there
+          if ! grep -Fxq "$INPUT" "$CACHE_FILE" 2>/dev/null; then
+            echo "$INPUT" >> "$CACHE_FILE"
+          fi
+
+          # Handle as URL or search query
+          if is_url "$INPUT"; then
+            "$BROWSER" "$INPUT" &
+          else
+            "$BROWSER" "''${SEARCH_ENGINE}''${INPUT}" &
+          fi
         fi
       '')
     ];
