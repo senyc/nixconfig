@@ -178,11 +178,11 @@
             "$mod CONTROL, J, resizeactive, 0 20"
           ];
           monitor = [
-            "DP-2, 2560x1440@75, 0x0, 1"
+            ",preferred,auto,1"
           ];
-          workspace = [
-            "1 default:true, monitor:DP-2"
-          ];
+          # workspace = [
+          #   "1 default:true, monitor:DP-2"
+          # ];
           windowrulev2 = [
             "workspace 4, title:^(Spotify( Premium)?)$"
             "workspace 5, class:^(Slack)$"

@@ -24,9 +24,10 @@ with lib; {
       vlc
       obsidian
       aspell
+      vlc
       aspellDicts.en
       chromium
-      obs-studio
+      yubikey-manager
       pavucontrol
       senyc-nvimconfig
       slack
