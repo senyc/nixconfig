@@ -20,19 +20,27 @@ with lib; {
           partitions = {
             ESP = {
               type = "EF00";
-              size = "500M";
+              size = "512M";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+                mountOptions = ["umask=0077"];
               };
             };
-            root = {
+            luks = {
               size = "100%";
               content = {
-                type = "filesystem";
+                type = "luks";
+                name = "crypted";
+                settings.allowDiscards = true;
                 format = "ext4";
                 mountpoint = "/";
+                content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/";
+                };
               };
             };
           };

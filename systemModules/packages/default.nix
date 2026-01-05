@@ -20,6 +20,7 @@ with lib; {
       gcc
       gnumake
       go
+      ffmpeg
       lm_sensors # run sudo sensors-detect initially then sensors to get results
       lua
       nodejs

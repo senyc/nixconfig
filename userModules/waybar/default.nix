@@ -210,6 +210,7 @@
               "group/sound"
               "battery"
               "tray"
+              "battery"
             ];
 
             "hyprland/workspaces" = {
@@ -327,13 +328,13 @@
             };
 
             battery = {
-              bat = "BAT0";
+              bat = "BAT1";
               interval = 60;
               states = {
                 warning = 30;
                 critical = 15;
               };
-              format = "{capacity}% {icon}";
+              format = "{icon} ";
               "format-icons" = [
                 ""
                 ""
@@ -441,6 +442,11 @@
                 margin: 0px 2px;
                 padding: 4px 0px 0px 0px;
                 border-radius: 8px;
+              }
+
+              #battery {
+                margin: 0px 0px;
+                padding: 0px 0px;
               }
 
               #workspaces button {

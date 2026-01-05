@@ -16,8 +16,21 @@ with lib; {
       loader = {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
+        systemd-boot.editor = false;
+      };
+      initrd.luks.devices.cryptroot = {
+        device = "/dev/disk/by-label/cryptroot";
       };
     };
+
+    environment.systemPackages = [
+      (pkgs.writeShellScriptBin "tmpenroll" ''
+        sudo systemd-cryptenroll \
+          --tpm2-device=auto \
+          --tpm2-pcrs=0+2+4+7 \
+          /dev/disk/by-label/cryptroot
+      '')
+    ];
 
     hardware.bluetooth = {
       enable = true; # enables support for Bluetooth
