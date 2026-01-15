@@ -16,7 +16,6 @@
     "pipewire"
     "wayland"
     "tailscale"
-    "steam"
     "nfs"
   ];
   userModules =

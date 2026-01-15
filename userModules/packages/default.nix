@@ -16,6 +16,8 @@ with lib; {
       "slack"
       "spotify"
       "obsidian"
+      "_1password-gui"
+      "1password"
     ];
 
     nixpkgs.overlays = [outputs.overlays.addPackages];
@@ -25,6 +27,7 @@ with lib; {
       obsidian
       aspell
       aspellDicts.en
+      _1password-gui
       chromium
       obs-studio
       pavucontrol

@@ -197,7 +197,6 @@
             "[workspace 4 silent] spotify"
             "[workspace 2 silent] $altbrowser"
             "[workspace 3 silent] $browser"
-            "[workspace 5 silent] slack"
             "[workspace 6 silent] obsidian"
             # Attaches to tmux session
             ''sh -c 'export TMUX_TMPDIR=/run/user/1000; $terminal' ''
