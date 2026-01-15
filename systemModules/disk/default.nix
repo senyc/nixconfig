@@ -36,6 +36,8 @@ with lib; {
                 settings.allowDiscards = true;
                 format = "ext4";
                 mountpoint = "/";
+                # This new was in the other content before
+                extraArgs = ["-Lcryptroot"];
                 content = {
                   type = "filesystem";
                   format = "ext4";
