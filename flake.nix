@@ -30,6 +30,6 @@
   in {
     overlays = import ./nix/overlays.nix {inherit inputs outputs;};
     # nixos is the equivalent of "default" in that it is invoked by not specifying a host
-    nixosConfigurations = utils.mkHosts ["nixos" "laptop" "work"];
+    nixosConfigurations = utils.mkHosts ["nixos" "laptop" "work" "basic"];
   };
 }

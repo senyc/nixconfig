@@ -46,7 +46,7 @@
                           local total_seconds=$1
                           local minutes=$((total_seconds / 60))
                           local seconds=$((total_seconds % 60))
-                          echo "''${minutes}m ''${seconds}s"
+                          echo "''${minutes}m ''${seconds}s remaining"
                         }
 
                         to_minutes() {
