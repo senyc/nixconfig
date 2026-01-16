@@ -33,6 +33,7 @@ with lib; {
                 type = "luks";
                 name = "cryptroot";
                 settings.allowDiscards = true;
+                # This new was in the other content before
                 content = {
                   type = "filesystem";
                   format = "ext4";
