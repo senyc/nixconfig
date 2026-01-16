@@ -12,11 +12,17 @@ with lib; {
   config = mkIf config.modules.system.general.enable {
     nix.settings.experimental-features = ["nix-command" "flakes"];
 
+    environment.systemPackages = with pkgs; [
+      tpm2-tss
+    ];
     boot = {
       loader = {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
         systemd-boot.editor = false;
+      };
+      initrd = {
+        systemd.enable = true;
       };
     };
 
