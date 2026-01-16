@@ -6,7 +6,7 @@
   utils = import ../../nix/utils.nix {inherit inputs outputs;};
   systemModules = [
     "unfreePackages"
-    "disk"
+    "diskOld"
     "general"
     "greetd"
     "network"

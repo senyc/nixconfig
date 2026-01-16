@@ -15,6 +15,7 @@ with lib; {
     environment.systemPackages = with pkgs; [
       tpm2-tss
     ];
+
     boot = {
       loader = {
         systemd-boot.enable = true;
