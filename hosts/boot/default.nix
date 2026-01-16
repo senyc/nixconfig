@@ -9,9 +9,11 @@
     "general"
     "network"
     "users"
+    "initPackages"
   ];
   userModules = [
     "ssh"
+    "zsh"
   ];
 in
   utils.addSystemModules systemModules {

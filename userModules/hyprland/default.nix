@@ -64,10 +64,6 @@
             preserve_split = true; # you probably want this
             force_split = 2;
           };
-          # gestures = {
-            # See https://wiki.hyprland.org/Configuring/Variables/ for more
-            # workspace_swipe = false;
-          # };
           "$mod" = "SUPER";
           "$browser" = "firefox";
           "$altbrowser" = "chromium --new-window";
@@ -183,6 +179,9 @@
           # workspace = [
           #   "1 default:true, monitor:DP-2"
           # ];
+          workspace = [
+            "1 default:true, monitor:"
+          ];
           windowrulev2 = [
             "workspace 4, title:^(Spotify( Premium)?)$"
             "workspace 5, class:^(Slack)$"
