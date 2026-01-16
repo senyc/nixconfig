@@ -9,7 +9,6 @@ with lib; {
   };
 
   # to run on install (not tested)
-  # sudo nix --experimental-features "nix-command flakes" run 'github:nix-community/disko/latest#disko-install' -- --flake .#<flake-attr> --disk main /dev/nvme0n1
   config = mkIf config.modules.system.disk.enable {
     disko.devices = {
       disk.main = {
@@ -32,16 +31,13 @@ with lib; {
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted";
+                name = "cryptroot";
                 settings.allowDiscards = true;
-                format = "ext4";
-                mountpoint = "/";
-                # This new was in the other content before
-                extraArgs = ["-Lcryptroot"];
                 content = {
                   type = "filesystem";
                   format = "ext4";
                   mountpoint = "/";
+                  extraArgs = ["-Lcryptroot"];
                 };
               };
             };
