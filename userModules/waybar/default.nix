@@ -270,7 +270,7 @@
 
             clock = {
               interval = 1;
-              format = "{:%H\n%M\n%S\n--\n%m\n%d}";
+              format = "{:%H\n%M\n--\n%m\n%d}";
               tooltip-format = "<tt><small>{calendar}</small></tt>";
               calendar = {
                 mode = "month";
