@@ -8,7 +8,6 @@ with lib; {
     modules.system.disk.enable = mkEnableOption "Enable default primary disk partitions";
   };
 
-  # to run on install (not tested)
   config = mkIf config.modules.system.disk.enable {
     disko.devices = {
       disk.main = {
@@ -33,7 +32,6 @@ with lib; {
                 type = "luks";
                 name = "cryptroot";
                 settings.allowDiscards = true;
-                # This new was in the other content before
                 content = {
                   type = "filesystem";
                   format = "ext4";
