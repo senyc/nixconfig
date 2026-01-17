@@ -3,7 +3,6 @@
   lib,
   ...
 }: {
-
   options = {
     modules.user.hyprpaper.enable = lib.mkEnableOption "Enable hyprpaper";
   };
@@ -18,9 +17,10 @@
           preload = [
             "${wallpaper}"
           ];
-          wallpaper = [
-            ", ${wallpaper}"
-          ];
+          wallpaper = {
+            monitor = "";
+            path = "${wallpaper}";
+          };
         };
       };
     };
