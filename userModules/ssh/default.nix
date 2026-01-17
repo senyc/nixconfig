@@ -14,8 +14,9 @@
           hostname = "github.com";
           user = "git";
           identityFile = [
-            # "~/.ssh/id_ecdsa_sk"
+            "~/.ssh/id_ecdsa_sk"
             "~/.ssh/id_ed25519_sk"
+            # "~/.ssh/id_personal"
           ];
         };
         "*" = {
