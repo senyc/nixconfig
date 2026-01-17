@@ -8,12 +8,13 @@
   };
 
   config = let
-    wallpaper = ../../backgrounds/winter_bridge.jpg;
+    wallpaper = ../../backgrounds/city.png;
   in
     lib.mkIf config.modules.user.hyprpaper.enable {
       services.hyprpaper = {
         enable = true;
         settings = {
+          splash = false;
           preload = [
             "${wallpaper}"
           ];
