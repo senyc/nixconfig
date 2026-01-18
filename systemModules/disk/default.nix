@@ -9,6 +9,10 @@ with lib; {
   };
 
   config = mkIf config.modules.system.disk.enable {
+    environment.systemPackages = with pkgs; [
+      tpm2-tss
+    ];
+
     disko.devices = {
       disk.main = {
         device = "/dev/nvme0n1";

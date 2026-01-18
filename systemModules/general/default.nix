@@ -12,10 +12,6 @@ with lib; {
   config = mkIf config.modules.system.general.enable {
     nix.settings.experimental-features = ["nix-command" "flakes"];
 
-    environment.systemPackages = with pkgs; [
-      tpm2-tss
-    ];
-
     boot = {
       loader = {
         systemd-boot.enable = true;
@@ -39,7 +35,6 @@ with lib; {
 
     time.timeZone = "America/New_York";
     i18n.defaultLocale = "en_US.UTF-8";
-    security.rtkit.enable = true;
 
     fonts = {
       packages = with pkgs; [
