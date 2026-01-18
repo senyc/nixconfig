@@ -33,6 +33,7 @@
             sensitivity = 0.8; # -1.0 - 1.0, 0 means no modification.
             kb_options = "caps:escape";
           };
+          ecosystem.no_update_news = true;
           misc = {
             focus_on_activate = true;
             enable_swallow = true;
@@ -64,10 +65,6 @@
             preserve_split = true; # you probably want this
             force_split = 2;
           };
-          # gestures = {
-            # See https://wiki.hyprland.org/Configuring/Variables/ for more
-            # workspace_swipe = false;
-          # };
           "$mod" = "SUPER";
           "$browser" = "firefox";
           "$altbrowser" = "chromium --new-window";
@@ -177,20 +174,29 @@
             "$mod CONTROL, K, resizeactive, 0 -20"
             "$mod CONTROL, J, resizeactive, 0 20"
           ];
-          monitor = [
-            "DP-2, 2560x1440@75, 0x0, 1"
-          ];
+          # monitor = [
+          #   ",preferred,auto,1"
+          # ];
+          # monitor = [
+          #   "DP-2, 2560x1440@75, 0x0, 1"
+          # ];
+
+          # workspace = [
+          #   "1 default:true, monitor:DP-2"
+          # ];
           workspace = [
-            "1 default:true, monitor:DP-2"
+            "1 default:true, monitor:"
           ];
-          windowrulev2 = [
-            "workspace 4, title:^(Spotify( Premium)?)$"
-            "workspace 5, class:^(Slack)$"
-            "workspace 6, class:^(obsidian)$"
-            "float, class:^(.blueman-manager-wrapped)$"
-            "float, class:^(.org.pulseaudio.pavucontrol)$"
-            "size 30% 30%, class:^(.blueman-manager-wrapped)$"
-            "size 30% 30%, class:^(.org.pulseaudio.pavucontrol)$"
+          windowrule = [
+            "match:class ^(spotify)$, workspace 4"
+            "match:class ^(chromium-browser)$, workspace 2"
+            "match:class ^(obsidian)$, workspace 6"
+            "match:class ^(Slack)$, workspace 5"
+            "match:class ^(.blueman-manager-wrapped)$, float on"
+            # I don't think the size works w/ever
+            "match:class ^(.blueman-manager-wrapped)$, size 50% 50%"
+            "match:class ^(org.pulseaudio.pavucontrol)$, float on"
+            "match:class ^(org.pulseaudio.pavucontrol)$, size 50% 50%"
           ];
           exec-once = [
             "waybar"
@@ -204,7 +210,7 @@
             "${pkgs.hypridle}/bin/hypridle"
             "${pkgs.hyprsunset}/bin/hyprsunset"
             "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
-            # Adds blueman to the top bar
+            # Adds blueman to the bar
             "blueman-applet"
           ];
         };

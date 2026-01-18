@@ -10,8 +10,6 @@ with lib; {
   };
   config = mkIf config.modules.system.packages.enable {
     services.postgresql.enable = true;
-    services.davfs2.enable = true;
-    services.nfs.server.enable = true;
     programs.nix-ld.enable = true;
     environment.systemPackages = with pkgs; [
       curl
@@ -20,13 +18,13 @@ with lib; {
       gcc
       gnumake
       go
+      ffmpeg
       lm_sensors # run sudo sensors-detect initially then sensors to get results
       lua
       nodejs
       python3
       ripgrep
       ruby
-      sops
       tree
       unzip
       wget

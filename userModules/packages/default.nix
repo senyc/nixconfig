@@ -26,10 +26,11 @@ with lib; {
       vlc
       obsidian
       aspell
+      vlc
       aspellDicts.en
       _1password-gui
       chromium
-      obs-studio
+      yubikey-manager
       pavucontrol
       senyc-nvimconfig
       slack

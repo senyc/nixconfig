@@ -111,22 +111,12 @@ with lib; {
         echo $! > "$PID_FILE"
       '')
 
-      (writeShellScriptBin "makekeyfromssh" ''
-        mkdir -p ~/.config/sops/age/
-        nix run nixpkgs#ssh-to-age -- -private-key -i  ~/.ssh/id_personal > ~/.config/sops/age/keys.txt
-        nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
-      '')
-
       (writeShellScriptBin "colorpicker" ''
         ${hyprpicker}/bin/hyprpicker -a
       '')
 
       (writeShellScriptBin "addcookieexception" ''
         nix run nixpkgs#sqlite -- ~/projects/nixconfig/userModules/firefox/permissions.sqlite "INSERT INTO moz_perms (origin,type,permission,expireType,expireTime,modificationTime) VALUES ('https://$1','cookie',1,0,0,1737570736582); INSERT INTO moz_perms (origin,type,permission,expireType,expireTime,modificationTime) VALUES ('http://$1','cookie',1,0,0,1737570736582)"
-      '')
-
-      (writeShellScriptBin "getsecret" ''
-        cat "/var/run/secrets/$1"
       '')
 
       (writeShellScriptBin "gfs" ''

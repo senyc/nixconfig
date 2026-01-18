@@ -13,7 +13,12 @@ with lib; {
       hostName = "nixos";
       networkmanager.enable = true;
       hosts = {
-        "100.76.122.59" = ["vault"];
+        "100.76.122.59" = [
+          "vault"
+        ];
+        "100.107.64.116" = [
+          "server"
+        ];
       };
     };
   };

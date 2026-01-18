@@ -9,9 +9,6 @@
     disko = {
       url = "github:nix-community/disko";
     };
-    # sops-nix = {
-    #   url = "github:Mic92/sops-nix";
-    # };
     home-manager = {
       url = "github:nix-community/home-manager";
     };
@@ -30,6 +27,6 @@
   in {
     overlays = import ./nix/overlays.nix {inherit inputs outputs;};
     # nixos is the equivalent of "default" in that it is invoked by not specifying a host
-    nixosConfigurations = utils.mkHosts ["nixos" "laptop" "work" "basic"];
+    nixosConfigurations = utils.mkHosts ["nixos" "laptop" "work" "boot"];
   };
 }

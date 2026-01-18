@@ -8,6 +8,7 @@
   };
   config = lib.mkIf config.modules.system.nfs.enable {
     # Enable NFS client support
+    services.davfs2.enable = true;
     services.nfs.server.enable = true;
 
     # Ensure NFS utilities are available

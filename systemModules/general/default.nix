@@ -16,6 +16,10 @@ with lib; {
       loader = {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
+        systemd-boot.editor = false;
+      };
+      initrd = {
+        systemd.enable = true;
       };
     };
 
@@ -31,7 +35,6 @@ with lib; {
 
     time.timeZone = "America/New_York";
     i18n.defaultLocale = "en_US.UTF-8";
-    security.rtkit.enable = true;
 
     fonts = {
       packages = with pkgs; [
