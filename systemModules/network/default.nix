@@ -14,10 +14,13 @@ with lib; {
       networkmanager.enable = true;
       hosts = {
         "100.76.122.59" = [
-          "vault"
+          "server"
         ];
         "100.107.64.116" = [
-          "server"
+          "desktop"
+        ];
+        "100.73.169.95" = [
+          "laptop"
         ];
       };
     };

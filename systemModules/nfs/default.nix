@@ -20,7 +20,7 @@
     ];
 
     fileSystems."/home/senyc/ob/data" = {
-      device = "vault:/home/senyc/data";
+      device = "server:/home/senyc/data";
       fsType = "nfs";
       options = [
         "x-systemd.automount"
