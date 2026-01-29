@@ -27,6 +27,18 @@ with lib; {
         fi
       '')
 
+      (writeShellScriptBin "devflake" ''
+        nix flake init --template github:senyc/flakes#dev
+        echo 'use flake' > .envrc
+        direnv allow
+      '')
+
+      (writeShellScriptBin "pythonflake" ''
+        nix flake init --template github:senyc/flakes#python
+        echo 'use flake' > .envrc
+        direnv allow
+      '')
+
       (writeShellScriptBin "screenshot" ''
         if ! [[ -d "$HOME/Pictures/screenshots/" ]]; then
             mkdir -p "$HOME/Pictures/screenshots/"
