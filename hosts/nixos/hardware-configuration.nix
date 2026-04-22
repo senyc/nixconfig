@@ -10,6 +10,10 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "cryptd"];
+  boot.kernel.sysctl = {
+    "kernel.perf_event_paranoid" = 1;
+    "kernel.kptr_restrict" = 0;
+  };
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 

@@ -195,6 +195,7 @@
             "match:class ^(.blueman-manager-wrapped)$, float on"
             # I don't think the size works w/ever
             "match:class ^(.blueman-manager-wrapped)$, size 50% 50%"
+            "match:title ^(Qalculate!)$, size 50% 50%"
             "match:class ^(org.pulseaudio.pavucontrol)$, float on"
             "match:class ^(org.pulseaudio.pavucontrol)$, size 50% 50%"
           ];

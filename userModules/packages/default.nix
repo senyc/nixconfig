@@ -16,8 +16,7 @@ with lib; {
       "slack"
       "spotify"
       "obsidian"
-      "_1password-gui"
-      "1password"
+      "discord"
     ];
 
     nixpkgs.overlays = [outputs.overlays.addPackages];
@@ -26,12 +25,13 @@ with lib; {
       vlc
       obsidian
       aspell
+      discord
       vlc
       aspellDicts.en
-      _1password-gui
       chromium
       yubikey-manager
       pavucontrol
+      qalculate-qt
       senyc-nvimconfig
       slack
       spotify

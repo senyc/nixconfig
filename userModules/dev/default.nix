@@ -9,7 +9,7 @@
   };
   config = lib.mkIf config.modules.user.dev.enable {
     # allowedUnfree = ["terraform"];
-    allowedUnfree = ["postman" "claude-code" "ngrok"];
+    allowedUnfree = ["postman" "claude-code" "ngrok" "idea"];
 
     home.packages = with pkgs; [
       # terraform
@@ -18,7 +18,9 @@
       postman
       bun
       gimp
+      jetbrains.idea
       doctl
+      caddy
       inkscape
       nmap
       claude-code
