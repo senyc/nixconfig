@@ -37,6 +37,7 @@
       "zsh"
       "starship"
       "tmux"
+      "ranger"
       "flameshot"
     ]
     ++ map (i: "hypr${i}") [
