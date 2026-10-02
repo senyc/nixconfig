@@ -19,7 +19,7 @@
             gaps_out = "4, 8, 8, 8";
             border_size = 1;
             layout = "dwindle";
-            "col.active_border" = "0xff7f849c";
+            "col.active_border" = "0xffcba6f7";
           };
           cursor = {
             inactive_timeout = 10;
