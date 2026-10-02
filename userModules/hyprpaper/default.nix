@@ -8,7 +8,7 @@
   };
 
   config = let
-    wallpaper = ../../backgrounds/city.png;
+    wallpaper = ../../backgrounds/foggy_highland_trees_loch_tay.jpg;
   in
     lib.mkIf config.modules.user.hyprpaper.enable {
       services.hyprpaper = {
